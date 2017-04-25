@@ -5,9 +5,10 @@
  *      Author: chinm_000
  */
 
+#include "../App/application.h"
+
 #include <stdio.h>
 #include <stdarg.h>
-#include "application.h"
 #include "usart.h"
 #include "stm32f4xx_hal_uart.h"
 

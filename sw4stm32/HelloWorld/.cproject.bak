@@ -27,19 +27,17 @@
 							<builder buildPath="${workspace_loc:/HelloWorld}/Debug" id="fr.ac6.managedbuild.builder.gnu.cross.1042152483" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="fr.ac6.managedbuild.builder.gnu.cross">
 								<outputEntries>
 									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Debug"/>
-									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Release"/>
 								</outputEntries>
 							</builder>
 							<tool id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.1644052670" name="MCU GCC Compiler" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler">
 								<option defaultValue="gnu.c.optimization.level.none" id="fr.ac6.managedbuild.gnu.c.compiler.option.optimization.level.70533071" name="Optimization Level" superClass="fr.ac6.managedbuild.gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" value="fr.ac6.managedbuild.gnu.c.optimization.level.debug" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.debugging.level.35866030" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.1601170593" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="E:/repositories/plasticsandpcbsposts/sw4stm32/HelloWorld/Inc"/>
-									<listOptionValue builtIn="false" value="E:/repositories/plasticsandpcbsposts/sw4stm32/HelloWorld/Drivers/STM32F4xx_HAL_Driver/Inc"/>
-									<listOptionValue builtIn="false" value="E:/repositories/plasticsandpcbsposts/sw4stm32/HelloWorld/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
-									<listOptionValue builtIn="false" value="E:/repositories/plasticsandpcbsposts/sw4stm32/HelloWorld/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
-									<listOptionValue builtIn="false" value="E:/repositories/plasticsandpcbsposts/sw4stm32/HelloWorld/Drivers/CMSIS/Include"/>
-									<listOptionValue builtIn="false" value="E:/repositories/plasticsandpcbsposts/sw4stm32/HelloWorld/Debug"/>
+									<listOptionValue builtIn="false" value="../Inc"/>
+									<listOptionValue builtIn="false" value="../Drivers/STM32F4xx_HAL_Driver/Inc"/>
+									<listOptionValue builtIn="false" value="../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
+									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
+									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.715776526" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__weak=__attribute__((weak))"/>
@@ -69,15 +67,40 @@
 							<tool id="fr.ac6.managedbuild.tool.gnu.archiver.981045014" name="MCU GCC Archiver" superClass="fr.ac6.managedbuild.tool.gnu.archiver"/>
 							<tool id="fr.ac6.managedbuild.tool.gnu.cross.assembler.883609450" name="MCU GCC Assembler" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler">
 								<option id="gnu.both.asm.option.include.paths.1861409802" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="E:/repositories/plasticsandpcbsposts/sw4stm32/HelloWorld/Inc"/>
-									<listOptionValue builtIn="false" value="E:/repositories/plasticsandpcbsposts/sw4stm32/HelloWorld/Drivers/STM32F4xx_HAL_Driver/Inc"/>
-									<listOptionValue builtIn="false" value="E:/repositories/plasticsandpcbsposts/sw4stm32/HelloWorld/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
-									<listOptionValue builtIn="false" value="E:/repositories/plasticsandpcbsposts/sw4stm32/HelloWorld/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
-									<listOptionValue builtIn="false" value="E:/repositories/plasticsandpcbsposts/sw4stm32/HelloWorld/Drivers/CMSIS/Include"/>
-									<listOptionValue builtIn="false" value="E:/repositories/plasticsandpcbsposts/sw4stm32/HelloWorld/Debug"/>
+									<listOptionValue builtIn="false" value=""/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.90674938" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.assembler.input.610419693" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.519449010.723019933" name="/" resourcePath="App">
+						<toolChain id="fr.ac6.managedbuild.toolchain.gnu.cross.exe.debug.2021320473" name="Ac6 STM32 MCU GCC" superClass="fr.ac6.managedbuild.toolchain.gnu.cross.exe.debug" unusedChildren="">
+							<option id="fr.ac6.managedbuild.option.gnu.cross.prefix.1572724604.943304658" name="Prefix" superClass="fr.ac6.managedbuild.option.gnu.cross.prefix.1572724604"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.mcu.38280385.1742290583" name="Mcu" superClass="fr.ac6.managedbuild.option.gnu.cross.mcu.38280385"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.board.1219950589.49593851" name="Board" superClass="fr.ac6.managedbuild.option.gnu.cross.board.1219950589"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.instructionSet.1819902481.1035723928" name="Instruction Set" superClass="fr.ac6.managedbuild.option.gnu.cross.instructionSet.1819902481"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.fpu.1374582954.492108621" name="Floating point hardware" superClass="fr.ac6.managedbuild.option.gnu.cross.fpu.1374582954"/>
+							<option id="fr.ac6.managedbuild.option.gnu.cross.floatabi.623709714.1310819655" name="Floating-point ABI" superClass="fr.ac6.managedbuild.option.gnu.cross.floatabi.623709714"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.1044941110" name="MCU GCC Compiler" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.1644052670">
+								<option id="gnu.c.compiler.option.include.paths.442134097" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="../Inc"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/App}&quot;"/>
+									<listOptionValue builtIn="false" value="../Drivers/STM32F4xx_HAL_Driver/Inc"/>
+									<listOptionValue builtIn="false" value="../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
+									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
+									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
+								</option>
+								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c.1666968173" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c"/>
+								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.s.671377003" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.s"/>
+							</tool>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.cpp.compiler.487659192" name="MCU G++ Compiler" superClass="fr.ac6.managedbuild.tool.gnu.cross.cpp.compiler.1838857221"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.c.linker.365927474" name="MCU GCC Linker" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.linker.1077768374"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.cpp.linker.824581195" name="MCU G++ Linker" superClass="fr.ac6.managedbuild.tool.gnu.cross.cpp.linker.2100341841"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.archiver.594545540" name="MCU GCC Archiver" superClass="fr.ac6.managedbuild.tool.gnu.archiver.981045014"/>
+							<tool id="fr.ac6.managedbuild.tool.gnu.cross.assembler.1826940656" name="MCU GCC Assembler" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler.883609450">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.336069706" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.assembler.input.1471574617" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler.input"/>
 							</tool>
 						</toolChain>
 					</folderInfo>
