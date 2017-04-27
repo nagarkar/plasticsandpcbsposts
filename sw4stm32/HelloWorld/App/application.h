@@ -9,6 +9,8 @@
 #define APPLICATION_H_
 
 #define LESS(a_, b_) (((a_) < (b_)) ? (a_) : (b_))
+#define COUNTOF(v)  (sizeof(v)/sizeof(v[0]))
+
 void App_Init(void);
 void App_Printf(char const *format, ...);
 
