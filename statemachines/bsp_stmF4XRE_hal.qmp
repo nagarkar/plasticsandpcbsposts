@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package name="BSP" stereotype="0x00" namespace="BSP">
+ <directory name="bsp_stmf4xre_hal">
+  <file name="bsp.h">
+   <text>#ifndef BSP_H_
+#define BSP_H_
+
+#ifdef __cplusplus
+ extern &quot;C&quot; {
+#endif
+
+#include &lt;stdint.h&gt;
+#include &lt;stdarg.h&gt;
+#include &lt;stdio.h&gt;
+#include &quot;stm32f4xx.h&quot;
+#include &quot;stm32f4xx_hal.h&quot;
+#include &quot;usart.h&quot;
+
+#define BSP_TICKS_PER_SEC            (1000)
+#define BSP_MSEC_PER_TICK            (1000 / BSP_TICKS_PER_SEC)
+
+void BSP_Init(void);
+
+// Cycle Counters         //
+#define GetElapsedCycles(fromCycle)    (DWT-&gt;CYCCNT - (fromCycle))
+void BSP_InitPerfMarker(void);
+// Cycle Counters DONE    //
+
+typedef enum {
+  BSP_OK = HAL_OK,
+  BSP_ERROR = HAL_ERROR,
+  BSP_BUSY = HAL_BUSY,
+  BSP_TIMEOUT = HAL_TIMEOUT
+} BSP_STATUS;
+
+// QF KERNEL AWARE STUFF //
+enum KernelUnawareISRs { // see NOTE00
+    // ...
+    MAX_KERNEL_UNAWARE_CMSIS_PRI  // keep always last
+};
+
+void BSP_Printf(char const *format, ...);
+
+void BSP_LED_DeInit(uint16_t LED);
+void BSP_LED_Init(uint16_t LED);
+void BSP_LED_On(uint16_t LED);
+void BSP_LED_Off(uint16_t LED);
+
+void BSP_Delay(volatile uint32_t delay);
+#define BSP_GET_SYSTEM_MS (HAL_GetTick() * BSP_MSEC_PER_TICK)
+
+#define BSP_UART_TRANSMIT_DMA(x,y,z) { \
+    HAL_UART_Transmit_DMA(x, y, z); \
+    BSP_OVERRIDE_UART_CALLBACKS(x); \
+}
+#define BSP_XMIT_ON_DEFAULT_UART(buf,len) HAL_UART_Transmit(&amp;huart2, (uint8_t *)buf, len, 0xFFFF /* timeout */);
+#define BSP_UART_RECEIVE_DMA(x,y,z) HAL_UART_Receive_DMA(x, y, z)
+#define BSP_UART_DMA_STOP(x) HAL_UART_DMAStop(x)
+
+typedef UART_HandleTypeDef USART_HANDLE_TYPE_DEF;
+void BSP_OVERRIDE_UART_CALLBACKS(USART_HANDLE_TYPE_DEF *uart);
+void BSP_EnableRxInt(USART_HANDLE_TYPE_DEF *uart);
+void BSP_DisableRxInt(USART_HANDLE_TYPE_DEF *uart);
+uint32_t BSP_GetCountOfRemainingDmaXferUnits(USART_HANDLE_TYPE_DEF *uart);
+
+#ifdef __cplusplus
+}
+#endif
+#endif</text>
+  </file>
+  <file name="bsp.cpp">
+   <text>#include &quot;bsp.h&quot;
+#include &quot;usart.h&quot;
+#include &quot;stm32f4xx_hal.h&quot;
+#include &quot;gpio.h&quot;
+#include &quot;stm32f4xx_hal_gpio.h&quot;
+#include &quot;macros.h&quot;
+#include &quot;qpcpp.h&quot;
+
+#ifdef __cplusplus
+ extern &quot;C&quot; {
+#endif
+
+#define QF_CRIT_STAT_TYPE void *
+
+/*** Private Function Prototypes **/
+/**/
+
+__weak void BSP_Init() {
+   BSP_InitPerfMarker();
+}
+
+__weak void BSP_OVERRIDE_UART_CALLBACKS(USART_HANDLE_TYPE_DEF *uart) {
+    (void)0;
+}
+
+__weak HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority) {
+    (void)TickPriority;
+    SysTick_Config(SystemCoreClock / BSP_TICKS_PER_SEC);
+    HAL_NVIC_SetPriority(SysTick_IRQn, 0, /* Higher than DMA, UART etc */3);
+    return HAL_OK;
+}
+
+__weak void BSP_InitPerfMarker() {
+    DWT-&gt;CYCCNT = 0;
+    DWT-&gt;CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+}
+
+static uint16_t PRINTF_BUF_LEN = 200;
+__weak void BSP_Printf(char const *format, ...) {
+    va_list arg;
+    va_start(arg, format);
+    char buf[PRINTF_BUF_LEN];
+    uint32_t len = vsnprintf(buf, ARRAY_COUNT(buf), format, arg);
+    va_end(arg);
+    len = LESS(len, ARRAY_COUNT(buf) - 1);
+    HAL_UART_Transmit(&amp;huart2, (uint8_t *) buf, len, 0xFFFF);
+}
+
+__weak void BSP_LED_DeInit(uint16_t LED) {
+    (void)LED;
+}
+
+__weak void BSP_LED_Init(uint16_t LED) {
+    (void)LED;
+}
+
+__weak void BSP_LED_On(uint16_t LED) {
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+}
+
+__weak void BSP_LED_Off(uint16_t LED) {
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+}
+
+__weak void BSP_Delay(volatile uint32_t delay) {
+    HAL_Delay(delay);
+}
+
+__weak void BSP_DisableRxInt(USART_HANDLE_TYPE_DEF *uart) {
+    QF_CRIT_STAT_TYPE crit;
+    QF_CRIT_ENTRY(crit);
+    CLEAR_BIT(uart-&gt;Instance-&gt;CR1, USART_CR1_RXNEIE);
+    QF_CRIT_EXIT(crit);
+}
+
+__weak void BSP_EnableRxInt(USART_HANDLE_TYPE_DEF *uart) {
+    // Enable Data Register not empty Interrupt.
+    QF_CRIT_STAT_TYPE crit;
+    QF_CRIT_ENTRY(crit);
+    SET_BIT(uart-&gt;Instance-&gt;CR1, USART_CR1_RXNEIE);
+    QF_CRIT_EXIT(crit);
+}
+
+__weak uint32_t BSP_GetCountOfRemainingDmaXferUnits(USART_HANDLE_TYPE_DEF *uart) {
+    return __HAL_DMA_GET_COUNTER(uart-&gt;hdmarx);
+}
+
+#ifdef __cplusplus
+ }
+#endif
+</text>
+  </file>
+  <file name="macros.h">
+   <text>#ifndef MACROS_H
+#define MACROS_H
+
+#include &lt;stdint.h&gt;
+#include &lt;string.h&gt;
+
+
+#define STRING_COPY(to_, from_, len_) \
+    do { \
+        strncpy((to_), (from_), (len_)); \
+        if ((len_) &gt; 0) { \
+            (to_)[(len_) - 1] = '\0'; \
+        } \
+    } while(0)
+
+#define CONST_STRING_LEN(a_)        (sizeof(a_) - 1)
+
+#define ARRAY_COUNT(a_)             (sizeof(a_) / sizeof((a_)[0]))
+
+#define LESS(a_, b_)                (((a_) &lt; (b_)) ? (a_) : (b_))
+#define GREATER(a_, b_)             (((a_) &gt; (b_)) ? (a_) : (b_))
+
+#define ROUND_UP_MASK(a_, m_)       (((a_) + (m_)) &amp; ~(m_))
+#define ROUND_UP_4(a_)              ROUND_UP_MASK((a_), 0x3)
+#define ROUND_UP_8(a_)              ROUND_UP_MASK((a_), 0x7)
+#define ROUND_UP_16(a_)             ROUND_UP_MASK((a_), 0xF)
+#define ROUND_UP_32(a_)             ROUND_UP_MASK((a_), 0x1F)
+
+#define ROUND_DOWN_MASK(a_, m_)     ((a_) &amp; ~(m_))
+#define ROUND_DOWN_4(a_)            ROUND_DOWN_MASK((a_), 0x3)
+#define ROUND_DOWN_8(a_)            ROUND_DOWN_MASK((a_), 0x7)
+#define ROUND_DOWN_16(a_)           ROUND_DOWN_MASK((a_), 0xF)
+#define ROUND_DOWN_32(a_)           ROUND_DOWN_MASK((a_), 0x1F)
+
+#define ROUND_UP_DIV(a_, d_)        (((a_) + (d_) - 1) / (d_))
+#define ROUND_UP_DIV_4(a_)          ROUND_UP_DIV((a_), 4)
+#define ROUND_UP_DIV_8(a_)          ROUND_UP_DIV((a_), 8)
+
+#define IS_ALIGNED_MASK(a_, m_)     (((uint32_t)(a_) &amp; (m_)) == 0)
+#define IS_ALIGNED_4(a_)            IS_ALIGNED_MASK((a_), 0x3)
+#define IS_ALIGNED_8(a_)            IS_ALIGNED_MASK((a_), 0x7)
+
+#define BYTE_TO_SHORT(a1_, a0_)     (((((uint16_t)(a1_)) &amp; 0xFF) &lt;&lt; 8) | (((uint16_t)(a0_)) &amp; 0xFF))
+#define BYTE_TO_LONG(a3_, a2_, a1_, a0_) \
+                                    (((((uint32_t)(a3_)) &amp; 0xFF) &lt;&lt; 24) | ((((uint16_t)(a2_)) &amp; 0xFF) &lt;&lt; 16) | \
+                                     ((((uint32_t)(a1_)) &amp; 0xFF) &lt;&lt; 8) | (((uint16_t)(a0_)) &amp; 0xFF))
+#define BYTE_0(a_)                  ((a_) &amp; 0xFF)
+#define BYTE_1(a_)                  (((a_) &gt;&gt; 8) &amp; 0xFF)
+#define BYTE_2(a_)                  (((a_) &gt;&gt; 16) &amp; 0xFF)
+#define BYTE_3(a_)                  (((a_) &gt;&gt; 24) &amp; 0xFF)
+
+#define BIT_MASK_AT(b_)             (1UL &lt;&lt; (b_))
+#define BIT_MASK_UP_TO(b_)          (BIT_MASK_AT(b_) | (BIT_MASK_AT(b_) - 1))
+#define BIT_MASK_OF_RANGE(b1_, b0_) ((BIT_MASK_UP_TO(b1_) &amp; ~BIT_MASK_UP_TO(b0_)) | BIT_MASK_AT(b0_))
+// This macro only works with s_ &gt; 0
+#define BIT_MASK_OF_SIZE(s_)        BIT_MASK_UP_TO((s_) - 1)
+
+#define BIT_SET(a_, m_, b_)         ((a_) | ((m_) &lt;&lt; (b_)))
+#define BIT_CLR(a_, m_, b_)         ((a_) &amp; ~((m_) &lt;&lt; (b_)))
+#define BIT_DEF(a_, m_, b_)         (((a_) &amp; (m_)) &lt;&lt; (b_))
+#define BIT_READ(a_, m_, b_)        (((a_) &gt;&gt; (b_)) &amp; (m_))
+#define BIT_WRITE(a_, m_, b_, v_)   (BIT_CLR((a_), (m_), (b_)) | BIT_DEF((v_), (m_), (b_)))
+
+#define _STRINGIZE(a) #a
+#define STRINGIZE(a) _STRINGIZE(a)
+#endif // MACROS_H</text>
+  </file>
+ </directory>
+</package>

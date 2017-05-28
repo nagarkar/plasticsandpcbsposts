@@ -1,0 +1,1041 @@
+Archive member included to satisfy reference by file (symbol)
+
+e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o)
+                              dbg/mini_cpp.o (malloc)
+e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+                              e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o) (_malloc_r)
+e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mlock.o)
+                              e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o) (__malloc_lock)
+e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-sbrkr.o)
+                              e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o) (_sbrk_r)
+e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+                              e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o) (_free_r)
+e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-impure.o)
+                              e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o) (_impure_ptr)
+e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+                              e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-sbrkr.o) (errno)
+
+Allocating common symbols
+Common symbol       size              file
+
+errno               0x4               e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 dbg/qk_port.o
+ .data          0x00000000        0x0 dbg/qk_port.o
+ .bss           0x00000000        0x0 dbg/qk_port.o
+ .text.QK_init  0x00000000       0x70 dbg/qk_port.o
+ .text.PendSV_Handler
+                0x00000000       0x34 dbg/qk_port.o
+ .text.Thread_ret
+                0x00000000       0x1c dbg/qk_port.o
+ .text.NMI_Handler
+                0x00000000        0xa dbg/qk_port.o
+ .debug_line    0x00000000       0xe1 dbg/qk_port.o
+ .debug_info    0x00000000       0x8f dbg/qk_port.o
+ .debug_abbrev  0x00000000       0x12 dbg/qk_port.o
+ .debug_aranges
+                0x00000000       0x38 dbg/qk_port.o
+ .debug_ranges  0x00000000       0x30 dbg/qk_port.o
+ .ARM.attributes
+                0x00000000       0x25 dbg/qk_port.o
+ .group         0x00000000        0x8 dbg/qep_hsm.o
+ .text          0x00000000        0x0 dbg/qep_hsm.o
+ .data          0x00000000        0x0 dbg/qep_hsm.o
+ .bss           0x00000000        0x0 dbg/qep_hsm.o
+ .text._ZN2QP4QHsm4initEv
+                0x00000000        0xc dbg/qep_hsm.o
+ .text._ZN2QP4QHsmD2Ev
+                0x00000000        0x4 dbg/qep_hsm.o
+ .text._ZN2QP4QHsm3topEPvPKNS_4QEvtE
+                0x00000000        0x4 dbg/qep_hsm.o
+ .text._ZN2QP4QHsm4initEPKNS_4QEvtE
+                0x00000000       0xbc dbg/qep_hsm.o
+ .text._ZN2QP4QHsmD0Ev
+                0x00000000        0xc dbg/qep_hsm.o
+ .text._ZN2QP4QHsmC2EPFjPvPKNS_4QEvtEE
+                0x00000000       0x14 dbg/qep_hsm.o
+ .text._ZN2QP4QHsm8hsm_tranERA6_PFjPvPKNS_4QEvtEE
+                0x00000000      0x118 dbg/qep_hsm.o
+ .text._ZN2QP4QHsm8dispatchEPKNS_4QEvtE
+                0x00000000      0x118 dbg/qep_hsm.o
+ .text._ZN2QP4QHsm4isInEPFjPvPKNS_4QEvtEE
+                0x00000000       0x40 dbg/qep_hsm.o
+ .text._ZN2QP4QHsm10childStateEPFjPvPKNS_4QEvtEE
+                0x00000000       0x40 dbg/qep_hsm.o
+ .rodata._ZN2QPL14Q_this_module_E
+                0x00000000        0x8 dbg/qep_hsm.o
+ .rodata._ZN2QPL16QEP_reservedEvt_E
+                0x00000000       0x10 dbg/qep_hsm.o
+ .rodata._ZTVN2QP4QHsmE
+                0x00000000       0x1c dbg/qep_hsm.o
+ .debug_info    0x00000000      0xf64 dbg/qep_hsm.o
+ .debug_abbrev  0x00000000      0x45b dbg/qep_hsm.o
+ .debug_loc     0x00000000      0x6d7 dbg/qep_hsm.o
+ .debug_aranges
+                0x00000000       0x68 dbg/qep_hsm.o
+ .debug_ranges  0x00000000       0x70 dbg/qep_hsm.o
+ .debug_line    0x00000000      0x3ff dbg/qep_hsm.o
+ .debug_str     0x00000000      0x97f dbg/qep_hsm.o
+ .comment       0x00000000       0x6f dbg/qep_hsm.o
+ .debug_frame   0x00000000      0x128 dbg/qep_hsm.o
+ .ARM.attributes
+                0x00000000       0x39 dbg/qep_hsm.o
+ .group         0x00000000        0x8 dbg/qep_msm.o
+ .group         0x00000000        0xc dbg/qep_msm.o
+ .text          0x00000000        0x0 dbg/qep_msm.o
+ .data          0x00000000        0x0 dbg/qep_msm.o
+ .bss           0x00000000        0x0 dbg/qep_msm.o
+ .text._ZN2QP4QMsm4initEv
+                0x00000000        0xc dbg/qep_msm.o
+ .text._ZN2QP4QMsmD2Ev
+                0x00000000       0x14 dbg/qep_msm.o
+ .text._ZN2QP4QMsmD0Ev
+                0x00000000       0x1c dbg/qep_msm.o
+ .text._ZN2QP4QMsmC2EPFjPvPKNS_4QEvtEE
+                0x00000000       0x20 dbg/qep_msm.o
+ .text._ZN2QP4QMsm10execTatbl_EPKNS_14QMTranActTableE
+                0x00000000       0x3c dbg/qep_msm.o
+ .text._ZN2QP4QMsm4initEPKNS_4QEvtE
+                0x00000000       0x4c dbg/qep_msm.o
+ .text._ZN2QP4QMsm17exitToTranSource_EPKNS_7QMStateES3_
+                0x00000000       0x44 dbg/qep_msm.o
+ .text._ZN2QP4QMsm13enterHistory_EPKNS_7QMStateE
+                0x00000000       0x7c dbg/qep_msm.o
+ .text._ZN2QP4QMsm8dispatchEPKNS_4QEvtE
+                0x00000000      0x10c dbg/qep_msm.o
+ .text._ZNK2QP4QMsm9isInStateEPKNS_7QMStateE
+                0x00000000       0x24 dbg/qep_msm.o
+ .text._ZNK2QP4QMsm13childStateObjEPKNS_7QMStateE
+                0x00000000       0x34 dbg/qep_msm.o
+ .rodata._ZN2QPL14Q_this_module_E
+                0x00000000        0x8 dbg/qep_msm.o
+ .rodata._ZN2QP4QMsm9msm_top_sE
+                0x00000000       0x14 dbg/qep_msm.o
+ .rodata._ZTVN2QP4QMsmE
+                0x00000000       0x1c dbg/qep_msm.o
+ .rodata._ZN2QP10versionStrE
+                0x00000000        0x6 dbg/qep_msm.o
+ .debug_info    0x00000000      0xcbf dbg/qep_msm.o
+ .debug_abbrev  0x00000000      0x3f8 dbg/qep_msm.o
+ .debug_loc     0x00000000      0x681 dbg/qep_msm.o
+ .debug_aranges
+                0x00000000       0x70 dbg/qep_msm.o
+ .debug_ranges  0x00000000       0x98 dbg/qep_msm.o
+ .debug_line    0x00000000      0x3ce dbg/qep_msm.o
+ .debug_str     0x00000000      0x688 dbg/qep_msm.o
+ .comment       0x00000000       0x6f dbg/qep_msm.o
+ .debug_frame   0x00000000      0x14c dbg/qep_msm.o
+ .ARM.attributes
+                0x00000000       0x39 dbg/qep_msm.o
+ .text          0x00000000        0x0 dbg/qf_act.o
+ .data          0x00000000        0x0 dbg/qf_act.o
+ .bss           0x00000000        0x0 dbg/qf_act.o
+ .text._ZN2QP2QF4add_EPNS_7QActiveE
+                0x00000000       0x38 dbg/qf_act.o
+ .text._ZN2QP2QF7remove_EPNS_7QActiveE
+                0x00000000       0x40 dbg/qf_act.o
+ .text._ZN2QP2QF5bzeroEPvj
+                0x00000000       0x10 dbg/qf_act.o
+ .rodata._ZN2QPL14Q_this_module_E
+                0x00000000        0x7 dbg/qf_act.o
+ .bss._ZN2QP2QF7active_E
+                0x00000000       0x84 dbg/qf_act.o
+ .debug_info    0x00000000      0x9c3 dbg/qf_act.o
+ .debug_abbrev  0x00000000      0x372 dbg/qf_act.o
+ .debug_loc     0x00000000       0xe8 dbg/qf_act.o
+ .debug_aranges
+                0x00000000       0x30 dbg/qf_act.o
+ .debug_ranges  0x00000000       0x20 dbg/qf_act.o
+ .debug_line    0x00000000      0x2a3 dbg/qf_act.o
+ .debug_str     0x00000000      0x919 dbg/qf_act.o
+ .comment       0x00000000       0x6f dbg/qf_act.o
+ .debug_frame   0x00000000       0x58 dbg/qf_act.o
+ .ARM.attributes
+                0x00000000       0x39 dbg/qf_act.o
+ .group         0x00000000        0x8 dbg/qf_actq.o
+ .group         0x00000000        0x8 dbg/qf_actq.o
+ .group         0x00000000        0xc dbg/qf_actq.o
+ .text          0x00000000        0x0 dbg/qf_actq.o
+ .data          0x00000000        0x0 dbg/qf_actq.o
+ .bss           0x00000000        0x0 dbg/qf_actq.o
+ .text._ZN2QP7QActive5startEjPPKNS_4QEvtEjPvj
+                0x00000000       0x1c dbg/qf_actq.o
+ .text._ZN2QP7QTicker4initEv
+                0x00000000        0xc dbg/qf_actq.o
+ .text._ZN2QP7QTicker4initEPKNS_4QEvtE
+                0x00000000        0x8 dbg/qf_actq.o
+ .text._ZN2QP7QTicker8postLIFOEPKNS_4QEvtE
+                0x00000000       0x14 dbg/qf_actq.o
+ .text._ZN2QP7QTicker5post_EPKNS_4QEvtEj
+                0x00000000       0x50 dbg/qf_actq.o
+ .text._ZN2QP7QTicker8dispatchEPKNS_4QEvtE
+                0x00000000       0x28 dbg/qf_actq.o
+ .text._ZN2QP7QTickerD2Ev
+                0x00000000       0x14 dbg/qf_actq.o
+ .text._ZN2QP7QTickerD0Ev
+                0x00000000       0x1c dbg/qf_actq.o
+ .text._ZN2QP7QActive5post_EPKNS_4QEvtEj
+                0x00000000       0xa0 dbg/qf_actq.o
+ .text._ZN2QP7QActive8postLIFOEPKNS_4QEvtE
+                0x00000000       0x90 dbg/qf_actq.o
+ .text._ZN2QP7QActive4get_Ev
+                0x00000000       0x60 dbg/qf_actq.o
+ .text._ZN2QP2QF11getQueueMinEj
+                0x00000000       0x38 dbg/qf_actq.o
+ .text._ZN2QP7QTickerC2Eh
+                0x00000000       0x1c dbg/qf_actq.o
+ .rodata._ZN2QPL14Q_this_module_E
+                0x00000000        0x8 dbg/qf_actq.o
+ .rodata._ZZN2QP7QTicker5post_EPKNS_4QEvtEjE7tickEvt
+                0x00000000        0x4 dbg/qf_actq.o
+ .rodata._ZTVN2QP7QTickerE
+                0x00000000       0x2c dbg/qf_actq.o
+ .debug_info    0x00000000     0x1293 dbg/qf_actq.o
+ .debug_abbrev  0x00000000      0x615 dbg/qf_actq.o
+ .debug_loc     0x00000000      0x495 dbg/qf_actq.o
+ .debug_aranges
+                0x00000000       0x80 dbg/qf_actq.o
+ .debug_ranges  0x00000000       0x70 dbg/qf_actq.o
+ .debug_line    0x00000000      0x499 dbg/qf_actq.o
+ .debug_str     0x00000000      0xc13 dbg/qf_actq.o
+ .comment       0x00000000       0x6f dbg/qf_actq.o
+ .debug_frame   0x00000000      0x15c dbg/qf_actq.o
+ .ARM.attributes
+                0x00000000       0x39 dbg/qf_actq.o
+ .text          0x00000000        0x0 dbg/qf_defer.o
+ .data          0x00000000        0x0 dbg/qf_defer.o
+ .bss           0x00000000        0x0 dbg/qf_defer.o
+ .text._ZNK2QP7QActive5deferEPNS_7QEQueueEPKNS_4QEvtE
+                0x00000000       0x10 dbg/qf_defer.o
+ .text._ZN2QP7QActive6recallEPNS_7QEQueueE
+                0x00000000       0x50 dbg/qf_defer.o
+ .text._ZNK2QP7QActive13flushDeferredEPNS_7QEQueueE
+                0x00000000       0x2c dbg/qf_defer.o
+ .rodata._ZN2QPL14Q_this_module_E
+                0x00000000        0x9 dbg/qf_defer.o
+ .debug_info    0x00000000      0xcd6 dbg/qf_defer.o
+ .debug_abbrev  0x00000000      0x426 dbg/qf_defer.o
+ .debug_loc     0x00000000      0x1a8 dbg/qf_defer.o
+ .debug_aranges
+                0x00000000       0x30 dbg/qf_defer.o
+ .debug_ranges  0x00000000       0x20 dbg/qf_defer.o
+ .debug_line    0x00000000      0x2c3 dbg/qf_defer.o
+ .debug_str     0x00000000      0xb3a dbg/qf_defer.o
+ .comment       0x00000000       0x6f dbg/qf_defer.o
+ .debug_frame   0x00000000       0x60 dbg/qf_defer.o
+ .ARM.attributes
+                0x00000000       0x39 dbg/qf_defer.o
+ .text          0x00000000        0x0 dbg/qf_dyn.o
+ .data          0x00000000        0x0 dbg/qf_dyn.o
+ .bss           0x00000000        0x0 dbg/qf_dyn.o
+ .text._ZN2QP2QF8poolInitEPvjj
+                0x00000000       0x64 dbg/qf_dyn.o
+ .text._ZN2QP2QF5newX_Ejji
+                0x00000000       0x78 dbg/qf_dyn.o
+ .text._ZN2QP2QF2gcEPKNS_4QEvtE
+                0x00000000       0x60 dbg/qf_dyn.o
+ .text._ZN2QP2QF7newRef_EPKNS_4QEvtES3_
+                0x00000000       0x30 dbg/qf_dyn.o
+ .text._ZN2QP2QF19poolGetMaxBlockSizeEv
+                0x00000000       0x1c dbg/qf_dyn.o
+ .rodata._ZN2QPL14Q_this_module_E
+                0x00000000        0x7 dbg/qf_dyn.o
+ .bss._ZN2QP11QF_maxPool_E
+                0x00000000        0x4 dbg/qf_dyn.o
+ .text          0x00000000        0x0 dbg/qf_mem.o
+ .data          0x00000000        0x0 dbg/qf_mem.o
+ .bss           0x00000000        0x0 dbg/qf_mem.o
+ .text._ZN2QP6QMPool4initEPvjj
+                0x00000000       0x88 dbg/qf_mem.o
+ .text._ZN2QP6QMPool3putEPv
+                0x00000000       0x44 dbg/qf_mem.o
+ .text._ZN2QP6QMPool3getEj
+                0x00000000       0x7c dbg/qf_mem.o
+ .text._ZN2QP2QF10getPoolMinEj
+                0x00000000       0x40 dbg/qf_mem.o
+ .rodata._ZN2QPL14Q_this_module_E
+                0x00000000        0x7 dbg/qf_mem.o
+ .text          0x00000000        0x0 dbg/qf_ps.o
+ .data          0x00000000        0x0 dbg/qf_ps.o
+ .bss           0x00000000        0x0 dbg/qf_ps.o
+ .text._ZN2QP2QF6psInitEPNS_5QPSetEi
+                0x00000000       0x1c dbg/qf_ps.o
+ .text._ZN2QP2QF8publish_EPKNS_4QEvtE
+                0x00000000       0xc4 dbg/qf_ps.o
+ .text._ZNK2QP7QActive9subscribeEi
+                0x00000000       0x60 dbg/qf_ps.o
+ .text._ZNK2QP7QActive11unsubscribeEi
+                0x00000000       0x64 dbg/qf_ps.o
+ .text._ZNK2QP7QActive14unsubscribeAllEv
+                0x00000000       0x70 dbg/qf_ps.o
+ .bss._ZN2QP16QF_maxPubSignal_E
+                0x00000000        0x4 dbg/qf_ps.o
+ .rodata._ZN2QPL14Q_this_module_E
+                0x00000000        0x6 dbg/qf_ps.o
+ .bss._ZN2QP14QF_subscrList_E
+                0x00000000        0x4 dbg/qf_ps.o
+ .debug_info    0x00000000      0xe58 dbg/qf_ps.o
+ .debug_abbrev  0x00000000      0x4b2 dbg/qf_ps.o
+ .debug_loc     0x00000000      0x33f dbg/qf_ps.o
+ .debug_aranges
+                0x00000000       0x40 dbg/qf_ps.o
+ .debug_ranges  0x00000000       0x48 dbg/qf_ps.o
+ .debug_line    0x00000000      0x3cb dbg/qf_ps.o
+ .debug_str     0x00000000      0xabb dbg/qf_ps.o
+ .comment       0x00000000       0x6f dbg/qf_ps.o
+ .debug_frame   0x00000000       0xa8 dbg/qf_ps.o
+ .ARM.attributes
+                0x00000000       0x39 dbg/qf_ps.o
+ .text          0x00000000        0x0 dbg/qf_qact.o
+ .data          0x00000000        0x0 dbg/qf_qact.o
+ .bss           0x00000000        0x0 dbg/qf_qact.o
+ .text._ZN2QP7QActiveC2EPFjPvPKNS_4QEvtEE
+                0x00000000       0x28 dbg/qf_qact.o
+ .debug_info    0x00000000      0x3e9 dbg/qf_qact.o
+ .debug_abbrev  0x00000000      0x19c dbg/qf_qact.o
+ .debug_loc     0x00000000       0x4a dbg/qf_qact.o
+ .debug_aranges
+                0x00000000       0x20 dbg/qf_qact.o
+ .debug_ranges  0x00000000       0x10 dbg/qf_qact.o
+ .debug_line    0x00000000      0x24a dbg/qf_qact.o
+ .debug_str     0x00000000      0x3cf dbg/qf_qact.o
+ .comment       0x00000000       0x6f dbg/qf_qact.o
+ .debug_frame   0x00000000       0x28 dbg/qf_qact.o
+ .ARM.attributes
+                0x00000000       0x39 dbg/qf_qact.o
+ .text          0x00000000        0x0 dbg/qf_qeq.o
+ .data          0x00000000        0x0 dbg/qf_qeq.o
+ .bss           0x00000000        0x0 dbg/qf_qeq.o
+ .text._ZN2QP7QEQueueC2Ev
+                0x00000000       0x14 dbg/qf_qeq.o
+ .text._ZN2QP7QEQueue4initEPPKNS_4QEvtEj
+                0x00000000       0x18 dbg/qf_qeq.o
+ .text._ZN2QP7QEQueue4postEPKNS_4QEvtEj
+                0x00000000       0x78 dbg/qf_qeq.o
+ .text._ZN2QP7QEQueue8postLIFOEPKNS_4QEvtE
+                0x00000000       0x6c dbg/qf_qeq.o
+ .text._ZN2QP7QEQueue3getEv
+                0x00000000       0x54 dbg/qf_qeq.o
+ .rodata._ZN2QPL14Q_this_module_E
+                0x00000000        0x7 dbg/qf_qeq.o
+ .debug_info    0x00000000      0x7a8 dbg/qf_qeq.o
+ .debug_abbrev  0x00000000      0x32e dbg/qf_qeq.o
+ .debug_loc     0x00000000      0x20e dbg/qf_qeq.o
+ .debug_aranges
+                0x00000000       0x40 dbg/qf_qeq.o
+ .debug_ranges  0x00000000       0x30 dbg/qf_qeq.o
+ .debug_line    0x00000000      0x337 dbg/qf_qeq.o
+ .debug_str     0x00000000      0x58b dbg/qf_qeq.o
+ .comment       0x00000000       0x6f dbg/qf_qeq.o
+ .debug_frame   0x00000000       0x80 dbg/qf_qeq.o
+ .ARM.attributes
+                0x00000000       0x39 dbg/qf_qeq.o
+ .group         0x00000000        0x8 dbg/qf_qmact.o
+ .group         0x00000000        0xc dbg/qf_qmact.o
+ .text          0x00000000        0x0 dbg/qf_qmact.o
+ .data          0x00000000        0x0 dbg/qf_qmact.o
+ .bss           0x00000000        0x0 dbg/qf_qmact.o
+ .text._ZN2QP7QActive5startEjPPKNS_4QEvtEjPvj
+                0x00000000       0x1c dbg/qf_qmact.o
+ .text._ZN2QP8QMActive4initEv
+                0x00000000        0xc dbg/qf_qmact.o
+ .text._ZN2QP8QMActiveD2Ev
+                0x00000000       0x14 dbg/qf_qmact.o
+ .text._ZN2QP8QMActiveD0Ev
+                0x00000000       0x1c dbg/qf_qmact.o
+ .text._ZN2QP8QMActiveC2EPFjPvPKNS_4QEvtEE
+                0x00000000       0x20 dbg/qf_qmact.o
+ .text._ZNK2QP8QMActive9isInStateEPKNS_7QMStateE
+                0x00000000        0x8 dbg/qf_qmact.o
+ .text._ZNK2QP8QMActive13childStateObjEPKNS_7QMStateE
+                0x00000000        0x8 dbg/qf_qmact.o
+ .text._ZN2QP8QMActive4initEPKNS_4QEvtE
+                0x00000000        0x8 dbg/qf_qmact.o
+ .text._ZN2QP8QMActive8dispatchEPKNS_4QEvtE
+                0x00000000        0x8 dbg/qf_qmact.o
+ .rodata._ZTVN2QP8QMActiveE
+                0x00000000       0x2c dbg/qf_qmact.o
+ .debug_info    0x00000000      0xa17 dbg/qf_qmact.o
+ .debug_abbrev  0x00000000      0x38d dbg/qf_qmact.o
+ .debug_loc     0x00000000      0x2af dbg/qf_qmact.o
+ .debug_aranges
+                0x00000000       0x60 dbg/qf_qmact.o
+ .debug_ranges  0x00000000       0x50 dbg/qf_qmact.o
+ .debug_line    0x00000000      0x2fc dbg/qf_qmact.o
+ .debug_str     0x00000000      0x72e dbg/qf_qmact.o
+ .comment       0x00000000       0x6f dbg/qf_qmact.o
+ .debug_frame   0x00000000       0xf4 dbg/qf_qmact.o
+ .ARM.attributes
+                0x00000000       0x39 dbg/qf_qmact.o
+ .text          0x00000000        0x0 dbg/qf_time.o
+ .data          0x00000000        0x0 dbg/qf_time.o
+ .bss           0x00000000        0x0 dbg/qf_time.o
+ .text._ZN2QP2QF6tickX_Eh
+                0x00000000       0xa8 dbg/qf_time.o
+ .text._ZN2QP2QF17noTimeEvtsActiveXEh
+                0x00000000       0x38 dbg/qf_time.o
+ .text._ZN2QP8QTimeEvtC2EPNS_7QActiveEih
+                0x00000000       0x34 dbg/qf_time.o
+ .text._ZN2QP8QTimeEvt4armXEtt
+                0x00000000       0x64 dbg/qf_time.o
+ .text._ZN2QP8QTimeEvt6disarmEv
+                0x00000000       0x24 dbg/qf_time.o
+ .text._ZN2QP8QTimeEvt5rearmEt
+                0x00000000       0x6c dbg/qf_time.o
+ .text._ZNK2QP8QTimeEvt3ctrEv
+                0x00000000       0x18 dbg/qf_time.o
+ .rodata._ZN2QPL14Q_this_module_E
+                0x00000000        0x8 dbg/qf_time.o
+ .group         0x00000000        0x8 dbg/qk.o
+ .group         0x00000000        0x8 dbg/qk.o
+ .group         0x00000000        0xc dbg/qk.o
+ .text          0x00000000        0x0 dbg/qk.o
+ .data          0x00000000        0x0 dbg/qk.o
+ .bss           0x00000000        0x0 dbg/qk.o
+ .text._ZN2QP4QHsm4initEv
+                0x00000000        0xc dbg/qk.o
+ .text._ZN2QP7QActive5startEjPPKNS_4QEvtEjPvj
+                0x00000000       0x1c dbg/qk.o
+ .text._ZN2QP7QActive5startEjPPKNS_4QEvtEjPvjS3_
+                0x00000000       0x54 dbg/qk.o
+ .text._ZN2QP7QActiveD2Ev
+                0x00000000       0x14 dbg/qk.o
+ .text._ZN2QP7QActiveD0Ev
+                0x00000000       0x1c dbg/qk.o
+ .text._ZN2QP2QF4initEv
+                0x00000000       0x50 dbg/qk.o
+ .text._ZN2QP2QF4stopEv
+                0x00000000        0x8 dbg/qk.o
+ .text._ZN2QP7QActive4stopEv
+                0x00000000        0x8 dbg/qk.o
+ .text.QK_sched_
+                0x00000000       0x44 dbg/qk.o
+ .text.QK_activate_
+                0x00000000       0xa0 dbg/qk.o
+ .text._ZN2QP2QF3runEv
+                0x00000000       0x2c dbg/qk.o
+ .rodata._ZTVN2QP7QActiveE
+                0x00000000       0x2c dbg/qk.o
+ .bss.QK_attr_  0x00000000       0x14 dbg/qk.o
+ .rodata._ZL14Q_this_module_
+                0x00000000        0x3 dbg/qk.o
+ .debug_info    0x00000000     0x13b6 dbg/qk.o
+ .debug_abbrev  0x00000000      0x5c9 dbg/qk.o
+ .debug_loc     0x00000000      0x376 dbg/qk.o
+ .debug_aranges
+                0x00000000       0x70 dbg/qk.o
+ .debug_ranges  0x00000000       0x60 dbg/qk.o
+ .debug_line    0x00000000      0x3ee dbg/qk.o
+ .debug_str     0x00000000      0xe5d dbg/qk.o
+ .comment       0x00000000       0x6f dbg/qk.o
+ .debug_frame   0x00000000      0x138 dbg/qk.o
+ .ARM.attributes
+                0x00000000       0x39 dbg/qk.o
+ .text          0x00000000        0x0 dbg/qk_mutex.o
+ .data          0x00000000        0x0 dbg/qk_mutex.o
+ .bss           0x00000000        0x0 dbg/qk_mutex.o
+ .text._ZN2QP6QMutex4initEj
+                0x00000000        0x8 dbg/qk_mutex.o
+ .text._ZN2QP6QMutex4lockEv
+                0x00000000       0x44 dbg/qk_mutex.o
+ .text._ZN2QP6QMutex6unlockEv
+                0x00000000       0x4c dbg/qk_mutex.o
+ .rodata._ZN2QPL14Q_this_module_E
+                0x00000000        0x9 dbg/qk_mutex.o
+ .debug_info    0x00000000      0x6db dbg/qk_mutex.o
+ .debug_abbrev  0x00000000      0x293 dbg/qk_mutex.o
+ .debug_loc     0x00000000       0x6b dbg/qk_mutex.o
+ .debug_aranges
+                0x00000000       0x30 dbg/qk_mutex.o
+ .debug_ranges  0x00000000       0x20 dbg/qk_mutex.o
+ .debug_line    0x00000000      0x2f0 dbg/qk_mutex.o
+ .debug_str     0x00000000      0x593 dbg/qk_mutex.o
+ .comment       0x00000000       0x6f dbg/qk_mutex.o
+ .debug_frame   0x00000000       0x50 dbg/qk_mutex.o
+ .ARM.attributes
+                0x00000000       0x39 dbg/qk_mutex.o
+ .text          0x00000000        0x0 dbg/mini_cpp.o
+ .data          0x00000000        0x0 dbg/mini_cpp.o
+ .bss           0x00000000        0x0 dbg/mini_cpp.o
+ .text._Znwj    0x00000000        0x8 dbg/mini_cpp.o
+ .text._ZdlPv   0x00000000        0x8 dbg/mini_cpp.o
+ .text._ZdlPvj  0x00000000        0x8 dbg/mini_cpp.o
+ .text.__cxa_atexit
+                0x00000000        0x4 dbg/mini_cpp.o
+ .text.__cxa_guard_acquire
+                0x00000000        0x4 dbg/mini_cpp.o
+ .text.__cxa_guard_release
+                0x00000000        0x4 dbg/mini_cpp.o
+ .bss.__dso_handle
+                0x00000000        0x4 dbg/mini_cpp.o
+ .debug_info    0x00000000      0x1d3 dbg/mini_cpp.o
+ .debug_abbrev  0x00000000      0x128 dbg/mini_cpp.o
+ .debug_loc     0x00000000       0x63 dbg/mini_cpp.o
+ .debug_aranges
+                0x00000000       0x48 dbg/mini_cpp.o
+ .debug_ranges  0x00000000       0x38 dbg/mini_cpp.o
+ .debug_line    0x00000000      0x1e4 dbg/mini_cpp.o
+ .debug_str     0x00000000      0x261 dbg/mini_cpp.o
+ .comment       0x00000000       0x6f dbg/mini_cpp.o
+ .debug_frame   0x00000000       0x88 dbg/mini_cpp.o
+ .ARM.attributes
+                0x00000000       0x39 dbg/mini_cpp.o
+ .text          0x00000000        0x0 dbg/qstamp.o
+ .data          0x00000000        0x0 dbg/qstamp.o
+ .bss           0x00000000        0x0 dbg/qstamp.o
+ .rodata._ZN2QP10BUILD_DATEE
+                0x00000000        0xc dbg/qstamp.o
+ .rodata._ZN2QP10BUILD_TIMEE
+                0x00000000        0x9 dbg/qstamp.o
+ .debug_info    0x00000000      0x39f dbg/qstamp.o
+ .debug_abbrev  0x00000000      0x127 dbg/qstamp.o
+ .debug_aranges
+                0x00000000       0x18 dbg/qstamp.o
+ .debug_line    0x00000000      0x21f dbg/qstamp.o
+ .debug_str     0x00000000      0x3c7 dbg/qstamp.o
+ .comment       0x00000000       0x6f dbg/qstamp.o
+ .ARM.attributes
+                0x00000000       0x39 dbg/qstamp.o
+ .text          0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o)
+ .data          0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o)
+ .bss           0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o)
+ .text.malloc   0x00000000       0x10 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o)
+ .text.free     0x00000000       0x10 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o)
+ .debug_frame   0x00000000       0x30 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o)
+ .ARM.attributes
+                0x00000000       0x34 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o)
+ .text          0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+ .data          0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+ .bss           0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+ .text._malloc_r
+                0x00000000      0x570 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+ .data.__malloc_av_
+                0x00000000      0x408 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+ .data.__malloc_trim_threshold
+                0x00000000        0x4 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+ .bss.__malloc_max_total_mem
+                0x00000000        0x4 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+ .bss.__malloc_max_sbrked_mem
+                0x00000000        0x4 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+ .bss.__malloc_top_pad
+                0x00000000        0x4 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+ .bss.__malloc_current_mallinfo
+                0x00000000       0x28 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+ .data.__malloc_sbrk_base
+                0x00000000        0x4 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+ .debug_frame   0x00000000       0x58 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+ .ARM.attributes
+                0x00000000       0x34 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+ .text          0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mlock.o)
+ .data          0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mlock.o)
+ .bss           0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mlock.o)
+ .text.__malloc_lock
+                0x00000000        0x4 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mlock.o)
+ .text.__malloc_unlock
+                0x00000000        0x4 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mlock.o)
+ .debug_frame   0x00000000       0x30 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mlock.o)
+ .ARM.attributes
+                0x00000000       0x34 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mlock.o)
+ .text          0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-sbrkr.o)
+ .data          0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-sbrkr.o)
+ .bss           0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-sbrkr.o)
+ .text._sbrk_r  0x00000000       0x24 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-sbrkr.o)
+ .debug_frame   0x00000000       0x2c e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-sbrkr.o)
+ .ARM.attributes
+                0x00000000       0x34 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-sbrkr.o)
+ .text          0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+ .data          0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+ .bss           0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+ .text._malloc_trim_r
+                0x00000000       0x9c e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+ .text._free_r  0x00000000      0x1d0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+ .debug_frame   0x00000000       0x74 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+ .ARM.attributes
+                0x00000000       0x34 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+ .text          0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-impure.o)
+ .data          0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-impure.o)
+ .bss           0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-impure.o)
+ .data.impure_data
+                0x00000000      0x428 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x00000000        0x4 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x00000000        0x4 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000000       0x34 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-impure.o)
+ .text          0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+ .data          0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+ .bss           0x00000000        0x0 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+ .text.cleanup_glue
+                0x00000000       0x1c e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+ .text._reclaim_reent
+                0x00000000       0x88 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+ .debug_frame   0x00000000       0x58 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+ .ARM.attributes
+                0x00000000       0x34 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+ COMMON         0x00000000        0x4 e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ROM              0x08000000         0x00080000         xr
+RAM              0x20000000         0x00014000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD dbg/qk_port.o
+LOAD dbg/qep_hsm.o
+LOAD dbg/qep_msm.o
+LOAD dbg/qf_act.o
+LOAD dbg/qf_actq.o
+LOAD dbg/qf_defer.o
+LOAD dbg/qf_dyn.o
+LOAD dbg/qf_mem.o
+LOAD dbg/qf_ps.o
+LOAD dbg/qf_qact.o
+LOAD dbg/qf_qeq.o
+LOAD dbg/qf_qmact.o
+LOAD dbg/qf_time.o
+LOAD dbg/qk.o
+LOAD dbg/qk_mutex.o
+LOAD dbg/mini_cpp.o
+LOAD dbg/qstamp.o
+                0x00000400                STACK_SIZE = 0x400
+                0x00000000                HEAP_SIZE = 0x0
+
+.isr_vector     0x08000000        0x0
+ *(.isr_vector)
+                0x08000000                . = ALIGN (0x4)
+
+.text           0x08000000       0x60
+                0x08000000                . = ALIGN (0x4)
+ *(.text)
+ *(.text*)
+ .text._GLOBAL__sub_I__ZN2QP8QF_pool_E
+                0x08000000       0x20 dbg/qf_dyn.o
+ .text._ZN2QP6QMPoolC2Ev
+                0x08000020       0x14 dbg/qf_mem.o
+                0x08000020                QP::QMPool::QMPool()
+                0x08000020                QP::QMPool::QMPool()
+ .text._ZN2QP8QTimeEvtC2Ev
+                0x08000034       0x14 dbg/qf_time.o
+                0x08000034                QP::QTimeEvt::QTimeEvt()
+                0x08000034                QP::QTimeEvt::QTimeEvt()
+ .text._GLOBAL__sub_I__ZN2QP2QF12timeEvtHead_E
+                0x08000048       0x18 dbg/qf_time.o
+ *(.rodata)
+ *(.rodata*)
+ *(.init)
+ *(.fini)
+                0x08000060                . = ALIGN (0x4)
+
+.glue_7         0x08000060        0x0
+ .glue_7        0x08000060        0x0 linker stubs
+
+.glue_7t        0x08000060        0x0
+ .glue_7t       0x08000060        0x0 linker stubs
+
+.vfp11_veneer   0x08000060        0x0
+ .vfp11_veneer  0x08000060        0x0 linker stubs
+
+.v4_bx          0x08000060        0x0
+ .v4_bx         0x08000060        0x0 linker stubs
+
+.iplt           0x08000060        0x0
+ .iplt          0x08000060        0x0 dbg/qk_port.o
+
+.rel.dyn        0x08000060        0x0
+ .rel.iplt      0x08000060        0x0 dbg/qk_port.o
+
+.preinit_array  0x08000060        0x0
+                [!provide]                PROVIDE (__preinit_array_start, .)
+ *(.preinit_array*)
+                [!provide]                PROVIDE (__preinit_array_end, .)
+
+.init_array     0x08000060        0x8
+                [!provide]                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*))
+ *(.init_array*)
+ .init_array    0x08000060        0x4 dbg/qf_dyn.o
+ .init_array    0x08000064        0x4 dbg/qf_time.o
+                [!provide]                PROVIDE (__init_array_end, .)
+
+.fini_array     0x08000068        0x0
+                [!provide]                PROVIDE (__fini_array_start, .)
+ *(.fini_array*)
+ *(SORT(.fini_array.*))
+                [!provide]                PROVIDE (__fini_array_end, .)
+                0x08000068                _etext = .
+
+.stack          0x20000000      0x400
+                0x20000000                __stack_start__ = .
+                0x20000400                . = (. + STACK_SIZE)
+ *fill*         0x20000000      0x400 
+                0x20000400                . = ALIGN (0x4)
+                0x20000400                __stack_end__ = .
+
+.data           0x20000400        0x0 load address 0x08000068
+                0x08000068                __data_load = LOADADDR (.data)
+                0x20000400                __data_start = .
+ *(.data)
+ *(.data*)
+                0x20000400                . = ALIGN (0x4)
+                0x20000400                __data_end__ = .
+                0x20000400                _edata = __data_end__
+
+.igot.plt       0x20000400        0x0
+ .igot.plt      0x20000400        0x0 dbg/qk_port.o
+
+.bss            0x20000400       0x5c
+                0x20000400                __bss_start__ = .
+ *(.bss)
+ *(.bss*)
+ .bss._ZN2QP8QF_pool_E
+                0x20000400       0x3c dbg/qf_dyn.o
+                0x20000400                QP::QF_pool_
+ .bss._ZN2QP2QF12timeEvtHead_E
+                0x2000043c       0x20 dbg/qf_time.o
+                0x2000043c                QP::QF::timeEvtHead_
+ *(COMMON)
+                0x2000045c                . = ALIGN (0x4)
+                0x2000045c                _ebss = .
+                0x2000045c                __bss_end__ = .
+                [!provide]                PROVIDE (end, _ebss)
+                [!provide]                PROVIDE (_end, _ebss)
+                [!provide]                PROVIDE (__end__, _ebss)
+
+.heap           0x2000045c        0x0
+                0x2000045c                __heap_start__ = .
+                0x2000045c                . = (. + HEAP_SIZE)
+                0x2000045c                . = ALIGN (0x4)
+                0x2000045c                __heap_end__ = .
+
+/DISCARD/
+ libc.a(*)
+ libm.a(*)
+ libgcc.a(*)
+OUTPUT(dbg/dpp-qk.elf elf32-littlearm)
+
+.debug_info     0x00000000     0x28d1
+ .debug_info    0x00000000      0xe9f dbg/qf_dyn.o
+ .debug_info    0x00000e9f      0xce2 dbg/qf_mem.o
+ .debug_info    0x00001b81      0xd50 dbg/qf_time.o
+
+.debug_abbrev   0x00000000      0xe3e
+ .debug_abbrev  0x00000000      0x4c6 dbg/qf_dyn.o
+ .debug_abbrev  0x000004c6      0x46f dbg/qf_mem.o
+ .debug_abbrev  0x00000935      0x509 dbg/qf_time.o
+
+.debug_loc      0x00000000      0x7e5
+ .debug_loc     0x00000000      0x2a3 dbg/qf_dyn.o
+ .debug_loc     0x000002a3      0x1ec dbg/qf_mem.o
+ .debug_loc     0x0000048f      0x356 dbg/qf_time.o
+
+.debug_aranges  0x00000000       0xe8
+ .debug_aranges
+                0x00000000       0x48 dbg/qf_dyn.o
+ .debug_aranges
+                0x00000048       0x40 dbg/qf_mem.o
+ .debug_aranges
+                0x00000088       0x60 dbg/qf_time.o
+
+.debug_ranges   0x00000000       0xb8
+ .debug_ranges  0x00000000       0x38 dbg/qf_dyn.o
+ .debug_ranges  0x00000038       0x30 dbg/qf_mem.o
+ .debug_ranges  0x00000068       0x50 dbg/qf_time.o
+
+.debug_line     0x00000000      0xa6f
+ .debug_line    0x00000000      0x363 dbg/qf_dyn.o
+ .debug_line    0x00000363      0x339 dbg/qf_mem.o
+ .debug_line    0x0000069c      0x3d3 dbg/qf_time.o
+
+.debug_str      0x00000000      0xc43
+ .debug_str     0x00000000      0xb16 dbg/qf_dyn.o
+                                0xb7a (size before relaxing)
+ .debug_str     0x00000b16       0x5c dbg/qf_mem.o
+                                0xa99 (size before relaxing)
+ .debug_str     0x00000b72       0xd1 dbg/qf_time.o
+                                0xa14 (size before relaxing)
+
+.comment        0x00000000       0x6e
+ .comment       0x00000000       0x6e dbg/qf_dyn.o
+                                 0x6f (size before relaxing)
+ .comment       0x0000006e       0x6f dbg/qf_mem.o
+ .comment       0x0000006e       0x6f dbg/qf_time.o
+
+.ARM.attributes
+                0x00000000       0x35
+ .ARM.attributes
+                0x00000000       0x39 dbg/qf_dyn.o
+ .ARM.attributes
+                0x00000039       0x39 dbg/qf_mem.o
+ .ARM.attributes
+                0x00000072       0x39 dbg/qf_time.o
+
+.debug_frame    0x00000000      0x220
+ .debug_frame   0x00000000       0xac dbg/qf_dyn.o
+ .debug_frame   0x000000ac       0x90 dbg/qf_mem.o
+ .debug_frame   0x0000013c       0xe4 dbg/qf_time.o
+
+Cross Reference Table
+
+Symbol                                            File
+NMI_Handler                                       dbg/qk_port.o
+PendSV_Handler                                    dbg/qk_port.o
+QK_activate_                                      dbg/qk.o
+                                                  dbg/qk_mutex.o
+                                                  dbg/qf_actq.o
+                                                  dbg/qk_port.o
+QK_attr_                                          dbg/qk.o
+                                                  dbg/qk_mutex.o
+                                                  dbg/qf_actq.o
+QK_init                                           dbg/qk_port.o
+                                                  dbg/qk.o
+QK_sched_                                         dbg/qk.o
+                                                  dbg/qk_mutex.o
+                                                  dbg/qf_actq.o
+QP::BUILD_DATE                                    dbg/qstamp.o
+QP::BUILD_TIME                                    dbg/qstamp.o
+QP::QActive::QActive(unsigned int (*)(void*, QP::QEvt const*)) dbg/qf_qact.o
+QP::QActive::QActive(unsigned int (*)(void*, QP::QEvt const*)) dbg/qf_qact.o
+                                                  dbg/qf_qmact.o
+                                                  dbg/qf_actq.o
+QP::QActive::defer(QP::QEQueue*, QP::QEvt const*) const dbg/qf_defer.o
+QP::QActive::flushDeferred(QP::QEQueue*) const    dbg/qf_defer.o
+QP::QActive::get_()                               dbg/qf_actq.o
+                                                  dbg/qk.o
+QP::QActive::postLIFO(QP::QEvt const*)            dbg/qf_actq.o
+                                                  dbg/qk.o
+                                                  dbg/qf_qmact.o
+QP::QActive::post_(QP::QEvt const*, unsigned int) dbg/qf_actq.o
+                                                  dbg/qk.o
+                                                  dbg/qf_qmact.o
+QP::QActive::recall(QP::QEQueue*)                 dbg/qf_defer.o
+QP::QActive::start(unsigned int, QP::QEvt const**, unsigned int, void*, unsigned int) dbg/qf_actq.o
+                                                  dbg/qk.o
+                                                  dbg/qf_qmact.o
+QP::QActive::start(unsigned int, QP::QEvt const**, unsigned int, void*, unsigned int, QP::QEvt const*) dbg/qk.o
+                                                  dbg/qf_qmact.o
+                                                  dbg/qf_actq.o
+QP::QActive::stop()                               dbg/qk.o
+QP::QActive::subscribe(int) const                 dbg/qf_ps.o
+QP::QActive::unsubscribe(int) const               dbg/qf_ps.o
+QP::QActive::unsubscribeAll() const               dbg/qf_ps.o
+QP::QActive::~QActive()                           dbg/qk.o
+QP::QActive::~QActive()                           dbg/qk.o
+QP::QActive::~QActive()                           dbg/qk.o
+QP::QEQueue::QEQueue()                            dbg/qf_qeq.o
+QP::QEQueue::QEQueue()                            dbg/qf_qeq.o
+                                                  dbg/qf_qact.o
+QP::QEQueue::get()                                dbg/qf_qeq.o
+                                                  dbg/qf_defer.o
+QP::QEQueue::init(QP::QEvt const**, unsigned int) dbg/qf_qeq.o
+                                                  dbg/qk.o
+QP::QEQueue::post(QP::QEvt const*, unsigned int)  dbg/qf_qeq.o
+                                                  dbg/qf_defer.o
+QP::QEQueue::postLIFO(QP::QEvt const*)            dbg/qf_qeq.o
+QP::QF::active_                                   dbg/qf_act.o
+                                                  dbg/qk.o
+                                                  dbg/qf_ps.o
+                                                  dbg/qf_actq.o
+QP::QF::add_(QP::QActive*)                        dbg/qf_act.o
+                                                  dbg/qk.o
+QP::QF::bzero(void*, unsigned int)                dbg/qf_act.o
+                                                  dbg/qk.o
+                                                  dbg/qf_ps.o
+QP::QF::gc(QP::QEvt const*)                       dbg/qf_dyn.o
+                                                  dbg/qk.o
+                                                  dbg/qf_ps.o
+                                                  dbg/qf_defer.o
+                                                  dbg/qf_actq.o
+QP::QF::getPoolMin(unsigned int)                  dbg/qf_mem.o
+QP::QF::getQueueMin(unsigned int)                 dbg/qf_actq.o
+QP::QF::init()                                    dbg/qk.o
+QP::QF::newRef_(QP::QEvt const*, QP::QEvt const*) dbg/qf_dyn.o
+QP::QF::newX_(unsigned int, unsigned int, int)    dbg/qf_dyn.o
+QP::QF::noTimeEvtsActiveX(unsigned char)          dbg/qf_time.o
+QP::QF::onCleanup()                               dbg/qk.o
+QP::QF::onStartup()                               dbg/qk.o
+QP::QF::poolGetMaxBlockSize()                     dbg/qf_dyn.o
+QP::QF::poolInit(void*, unsigned int, unsigned int) dbg/qf_dyn.o
+QP::QF::psInit(QP::QPSet*, int)                   dbg/qf_ps.o
+QP::QF::publish_(QP::QEvt const*)                 dbg/qf_ps.o
+QP::QF::remove_(QP::QActive*)                     dbg/qf_act.o
+                                                  dbg/qk.o
+QP::QF::run()                                     dbg/qk.o
+QP::QF::stop()                                    dbg/qk.o
+QP::QF::tickX_(unsigned char)                     dbg/qf_time.o
+                                                  dbg/qf_actq.o
+QP::QF::timeEvtHead_                              dbg/qf_time.o
+                                                  dbg/qk.o
+QP::QF_maxPool_                                   dbg/qf_dyn.o
+                                                  dbg/qk.o
+                                                  dbg/qf_mem.o
+QP::QF_maxPubSignal_                              dbg/qf_ps.o
+                                                  dbg/qk.o
+QP::QF_pool_                                      dbg/qf_dyn.o
+                                                  dbg/qf_mem.o
+QP::QF_subscrList_                                dbg/qf_ps.o
+                                                  dbg/qk.o
+QP::QHsm::QHsm(unsigned int (*)(void*, QP::QEvt const*)) dbg/qep_hsm.o
+QP::QHsm::QHsm(unsigned int (*)(void*, QP::QEvt const*)) dbg/qep_hsm.o
+                                                  dbg/qf_qact.o
+                                                  dbg/qep_msm.o
+QP::QHsm::childState(unsigned int (*)(void*, QP::QEvt const*)) dbg/qep_hsm.o
+QP::QHsm::dispatch(QP::QEvt const*)               dbg/qep_hsm.o
+                                                  dbg/qk.o
+QP::QHsm::hsm_tran(unsigned int (* (&) [6])(void*, QP::QEvt const*)) dbg/qep_hsm.o
+QP::QHsm::init()                                  dbg/qep_hsm.o
+                                                  dbg/qk.o
+QP::QHsm::init(QP::QEvt const*)                   dbg/qep_hsm.o
+                                                  dbg/qk.o
+QP::QHsm::isIn(unsigned int (*)(void*, QP::QEvt const*)) dbg/qep_hsm.o
+QP::QHsm::top(void*, QP::QEvt const*)             dbg/qep_hsm.o
+                                                  dbg/qf_qact.o
+QP::QHsm::~QHsm()                                 dbg/qep_hsm.o
+QP::QHsm::~QHsm()                                 dbg/qep_hsm.o
+                                                  dbg/qk.o
+                                                  dbg/qf_qmact.o
+                                                  dbg/qf_actq.o
+                                                  dbg/qep_msm.o
+QP::QHsm::~QHsm()                                 dbg/qep_hsm.o
+QP::QK::onIdle()                                  dbg/qk.o
+QP::QMActive::QMActive(unsigned int (*)(void*, QP::QEvt const*)) dbg/qf_qmact.o
+QP::QMActive::QMActive(unsigned int (*)(void*, QP::QEvt const*)) dbg/qf_qmact.o
+QP::QMActive::childStateObj(QP::QMState const*) const dbg/qf_qmact.o
+QP::QMActive::dispatch(QP::QEvt const*)           dbg/qf_qmact.o
+QP::QMActive::init()                              dbg/qf_qmact.o
+QP::QMActive::init(QP::QEvt const*)               dbg/qf_qmact.o
+QP::QMActive::isInState(QP::QMState const*) const dbg/qf_qmact.o
+QP::QMActive::~QMActive()                         dbg/qf_qmact.o
+QP::QMActive::~QMActive()                         dbg/qf_qmact.o
+QP::QMActive::~QMActive()                         dbg/qf_qmact.o
+QP::QMPool::QMPool()                              dbg/qf_mem.o
+QP::QMPool::QMPool()                              dbg/qf_mem.o
+                                                  dbg/qf_dyn.o
+QP::QMPool::get(unsigned int)                     dbg/qf_mem.o
+                                                  dbg/qf_dyn.o
+QP::QMPool::init(void*, unsigned int, unsigned int) dbg/qf_mem.o
+                                                  dbg/qf_dyn.o
+QP::QMPool::put(void*)                            dbg/qf_mem.o
+                                                  dbg/qf_dyn.o
+QP::QMsm::QMsm(unsigned int (*)(void*, QP::QEvt const*)) dbg/qep_msm.o
+QP::QMsm::QMsm(unsigned int (*)(void*, QP::QEvt const*)) dbg/qep_msm.o
+QP::QMsm::childStateObj(QP::QMState const*) const dbg/qep_msm.o
+                                                  dbg/qf_qmact.o
+QP::QMsm::dispatch(QP::QEvt const*)               dbg/qep_msm.o
+                                                  dbg/qf_qmact.o
+QP::QMsm::enterHistory_(QP::QMState const*)       dbg/qep_msm.o
+QP::QMsm::execTatbl_(QP::QMTranActTable const*)   dbg/qep_msm.o
+QP::QMsm::exitToTranSource_(QP::QMState const*, QP::QMState const*) dbg/qep_msm.o
+QP::QMsm::init()                                  dbg/qep_msm.o
+QP::QMsm::init(QP::QEvt const*)                   dbg/qep_msm.o
+                                                  dbg/qf_qmact.o
+QP::QMsm::isInState(QP::QMState const*) const     dbg/qep_msm.o
+                                                  dbg/qf_qmact.o
+QP::QMsm::msm_top_s                               dbg/qep_msm.o
+                                                  dbg/qf_qmact.o
+QP::QMsm::~QMsm()                                 dbg/qep_msm.o
+QP::QMsm::~QMsm()                                 dbg/qep_msm.o
+QP::QMsm::~QMsm()                                 dbg/qep_msm.o
+QP::QMutex::init(unsigned int)                    dbg/qk_mutex.o
+                                                  dbg/qf_ps.o
+QP::QMutex::lock()                                dbg/qk_mutex.o
+                                                  dbg/qf_ps.o
+QP::QMutex::unlock()                              dbg/qk_mutex.o
+                                                  dbg/qf_ps.o
+QP::QTicker::QTicker(unsigned char)               dbg/qf_actq.o
+QP::QTicker::QTicker(unsigned char)               dbg/qf_actq.o
+QP::QTicker::dispatch(QP::QEvt const*)            dbg/qf_actq.o
+QP::QTicker::init()                               dbg/qf_actq.o
+QP::QTicker::init(QP::QEvt const*)                dbg/qf_actq.o
+QP::QTicker::postLIFO(QP::QEvt const*)            dbg/qf_actq.o
+QP::QTicker::post_(QP::QEvt const*, unsigned int) dbg/qf_actq.o
+QP::QTicker::~QTicker()                           dbg/qf_actq.o
+QP::QTicker::~QTicker()                           dbg/qf_actq.o
+QP::QTicker::~QTicker()                           dbg/qf_actq.o
+QP::QTimeEvt::QTimeEvt()                          dbg/qf_time.o
+QP::QTimeEvt::QTimeEvt()                          dbg/qf_time.o
+QP::QTimeEvt::QTimeEvt(QP::QActive*, int, unsigned char) dbg/qf_time.o
+QP::QTimeEvt::QTimeEvt(QP::QActive*, int, unsigned char) dbg/qf_time.o
+QP::QTimeEvt::armX(unsigned short, unsigned short) dbg/qf_time.o
+QP::QTimeEvt::ctr() const                         dbg/qf_time.o
+QP::QTimeEvt::disarm()                            dbg/qf_time.o
+QP::QTimeEvt::rearm(unsigned short)               dbg/qf_time.o
+QP::versionStr                                    dbg/qep_msm.o
+Q_onAssert                                        dbg/qk_mutex.o
+                                                  dbg/qk.o
+                                                  dbg/qf_time.o
+                                                  dbg/qf_qeq.o
+                                                  dbg/qf_ps.o
+                                                  dbg/qf_mem.o
+                                                  dbg/qf_dyn.o
+                                                  dbg/qf_defer.o
+                                                  dbg/qf_actq.o
+                                                  dbg/qf_act.o
+                                                  dbg/qep_msm.o
+                                                  dbg/qep_hsm.o
+__cxa_atexit                                      dbg/mini_cpp.o
+__cxa_guard_acquire                               dbg/mini_cpp.o
+__cxa_guard_release                               dbg/mini_cpp.o
+__dso_handle                                      dbg/mini_cpp.o
+__malloc_av_                                      e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+__malloc_current_mallinfo                         e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+__malloc_lock                                     e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mlock.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+__malloc_max_sbrked_mem                           e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+__malloc_max_total_mem                            e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+__malloc_sbrk_base                                e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+__malloc_top_pad                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+__malloc_trim_threshold                           e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+__malloc_unlock                                   e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mlock.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+_free_r                                           e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o)
+_global_impure_ptr                                e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-impure.o)
+_impure_ptr                                       e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-impure.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o)
+_malloc_r                                         e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o)
+_malloc_trim_r                                    e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+_reclaim_reent                                    e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+_sbrk                                             e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-sbrkr.o)
+_sbrk_r                                           e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-sbrkr.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+cleanup_glue                                      e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+errno                                             e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reent.o)
+                                                  e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-sbrkr.o)
+free                                              e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o)
+                                                  dbg/mini_cpp.o
+malloc                                            e:/software/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.13.2.201703061525/tools/compiler/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-malloc.o)
+                                                  dbg/mini_cpp.o
+operator delete(void*)                            dbg/mini_cpp.o
+                                                  dbg/qk.o
+                                                  dbg/qf_qmact.o
+                                                  dbg/qf_actq.o
+                                                  dbg/qep_msm.o
+                                                  dbg/qep_hsm.o
+operator delete(void*, unsigned int)              dbg/mini_cpp.o
+operator new(unsigned int)                        dbg/mini_cpp.o
+vtable for QP::QActive                            dbg/qk.o
+                                                  dbg/qf_qmact.o
+                                                  dbg/qf_qact.o
+                                                  dbg/qf_actq.o
+vtable for QP::QHsm                               dbg/qep_hsm.o
+vtable for QP::QMActive                           dbg/qf_qmact.o
+vtable for QP::QMsm                               dbg/qep_msm.o
+vtable for QP::QTicker                            dbg/qf_actq.o

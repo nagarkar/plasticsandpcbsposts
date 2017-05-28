@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version="4.0.1" links="0">
+ <framework name="qpcpp"/>
+ <package file="./uart_fifo_dma.qmp"/>
+ <package file="./std_events.qmp"/>
+</model>

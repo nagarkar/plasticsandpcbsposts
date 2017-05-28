@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version="4.0.1" links="0">
+ <framework name="qpcpp"/>
+ <package file="./std_events.qmp"/>
+ <directory name="stdevents">
+  <file name="active_events.cpp">
+   <text>#include &quot;active_events.h&quot;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+Q_DEFINE_THIS_MODULE(&quot;Standard Events&quot;)
+
+using namespace QP;
+
+$define(StdEvents)</text>
+  </file>
+  <file name="active_events.h">
+   <text>#ifndef STDEVENTS_H
+#define STDEVENTS_H
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &quot;qpcpp.h&quot;
+#include &quot;macros.h&quot;
+#include &quot;app_ao_config.h&quot;
+
+using namespace QP;
+
+#define EVT_CAST(e_)            static_cast&lt;StdEvents::Evt const &amp;&gt;(e_)
+#define ERROR_EVT_CAST(e_)      static_cast&lt;StdEvents::ErrorEvt const &amp;&gt;(e_)
+
+namespace StdEvents {
+    // Common error code for all HSM's.
+    enum Error {
+        ERROR_SUCCESS,      // No error, success.
+        ERROR_UNSPEC,       // Unspecified.
+        ERROR_TIMEOUT,      // Timeout.
+        ERROR_HAL,          // HAL driver error.
+        ERROR_HARDWARE,     // Hardware error.
+        ERROR_STATE,        // Invalid state.
+        ERROR_UNAVAIL,      // Resource unavailable, busy.
+    };
+
+    // HSM specific reason code to explain why an error code has occurred.
+    // When unused it is default to 0.
+    typedef uint16_t Reason;
+
+}// namespace FW
+$declare(StdEvents)
+#endif</text>
+  </file>
+  <file name="active_config.cpp">
+   <text>#include &quot;active_config.h&quot;
+#include &quot;qpcpp.h&quot;
+#include &quot;macros.h&quot;
+#include &quot;stm32f4xx_hal.h&quot;
+
+using namespace QP;
+
+Q_DEFINE_THIS_MODULE(&quot;Active Config&quot;)
+
+void QP_PreInitialize(void) {
+    QF::init();
+    QP_AllocateMemoryPools();
+    QP_AllocateSubscriberLists();
+}
+
+int QP_InitializeRun(void) {
+    QP_StartActiveObjectsAndPublishBootTimeEvents();
+    return QF::run();
+}
+
+// Must be overridden
+__weak void QP_StartActiveObjectsAndPublishBootTimeEvents(void) {
+   (void)0;
+}
+
+// Must be overridden
+__weak void QP_AllocateSubscriberLists(void) {
+   (void)0;
+}
+
+// MEMORY POOL ALLOCATION CODE START
+enum {
+    EVT_SIZE_SMALL = 32,
+    EVT_SIZE_MEDIUM = 64,
+    EVT_SIZE_LARGE = 256,
+};
+
+enum {
+    EVT_COUNT_SMALL = 128,
+    EVT_COUNT_MEDIUM = 16,
+    EVT_COUNT_LARGE = 4
+};
+
+uint32_t evtPoolSmall[ROUND_UP_DIV_4(EVT_SIZE_SMALL * EVT_COUNT_SMALL)];
+uint32_t evtPoolMedium[ROUND_UP_DIV_4(EVT_SIZE_MEDIUM * EVT_COUNT_MEDIUM)];
+uint32_t evtPoolLarge[ROUND_UP_DIV_4(EVT_SIZE_LARGE * EVT_COUNT_LARGE)];
+
+__weak void QP_AllocateMemoryPools(void) {
+    QF::poolInit(evtPoolSmall, sizeof(evtPoolSmall), EVT_SIZE_SMALL);
+    QF::poolInit(evtPoolMedium, sizeof(evtPoolMedium), EVT_SIZE_MEDIUM);
+    QF::poolInit(evtPoolLarge, sizeof(evtPoolLarge), EVT_SIZE_LARGE);
+}
+// MEMORY POOL ALLOCATION CODE END
+
+namespace QP {
+
+__weak void QF::onCleanup(void) {
+    (void)0;
+}
+
+__weak void QXK::onIdle(void) {
+  QF_INT_DISABLE();
+  QF_INT_ENABLE();
+}
+
+__weak void QF::onStartup(void) {
+    (void)0;
+}
+extern &quot;C&quot; __weak void Q_onAssert(char const *module, int loc) {
+    //
+    // NOTE: add here your application-specific error handling
+    //
+    (void)module;
+    (void)loc;
+    QS_ASSERTION(module, loc, static_cast&lt;uint32_t&gt;(10000U));
+    // for debugging, hang on in an endless loop...
+    for (;;) {
+    }
+    //NVIC_SystemReset();
+}
+
+#ifdef Q_SPY
+__weak bool QS::onStartup(void const *arg) {
+  return true;
+}
+__weak void QS::onCleanup(void) {
+  return;
+}
+__weak QSTimeCtr QS::onGetTime(void) {
+  return 0;
+}
+__weak void QS::onFlush(void) {
+  return;
+}
+__weak void QS::onReset(void) {
+  return;
+  //NVIC_SystemReset();
+}
+__weak void QS::onCommand(uint8_t cmdId, uint32_t param) {
+  return;
+}
+#endif // Q_SPY
+}
+
+</text>
+  </file>
+  <file name="active_config.h">
+   <text>#ifndef ACTIVE_CONFIG_H
+#define ACTIVE_CONFIG_H
+
+#include &quot;macros.h&quot;
+
+#ifdef __cplusplus
+extern &quot;C&quot; {
+#endif
+
+void QP_PreInitialize(void);
+
+int QP_InitializeRun(void);
+
+void QP_StartActiveObjectsAndPublishBootTimeEvents(void);
+
+void QP_AllocateSubscriberLists(void);
+
+void QP_AllocateMemoryPools(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // ACTIVE_CONFIG_H
+</text>
+  </file>
+  <file name="active_pipe.h">
+   <text>#ifndef ACTIVE_PIPE_H
+#define ACTIVE_PIPE_H
+
+#include &quot;qpcpp.h&quot;
+#include &quot;macros.h&quot;
+#include &quot;active_events.h&quot;
+
+#define ACTIVE_PIPE_ASSERT(t_) ((t_) ? (void)0 : Q_onAssert(&quot;active_pipe.h&quot;, (int_t)__LINE__))
+
+// QP does not define QF_CRIT_STAT_TYPE for some ports (e.g. arm-cm/iar), since this type
+// is not used (in those ports) for the QF_CRIT_ENTRY and QF_CRIT_EXIT functions. We are
+// defining it here so we can use the same code for both type of ports.
+#ifndef QF_CRIT_STAT_TYPE
+#define QF_CRIT_STAT_TYPE void *
+#endif
+
+namespace StdEvents {
+
+// Critical sections are enforced internally.
+template &lt;class Type&gt;
+class Pipe {
+public:
+    Pipe(Type stor[], uint8_t order):
+        m_stor(stor), m_mask(BIT_MASK_OF_SIZE(order)),
+        m_writeIndex(0), m_readIndex(0), m_truncated(false) {
+        // Arithmetic in this class (m_mask + 1) assumes order &lt; 32.
+        // BIT_MASK_OF_SIZE() assumes order &gt; 0
+        ACTIVE_PIPE_ASSERT(stor &amp;&amp; (order &gt; 0) and (order &lt; 32));
+    }
+    virtual ~Pipe() {}
+
+    void Reset(void){
+        QF_CRIT_STAT_TYPE crit;
+        QF_CRIT_ENTRY(crit);
+        m_writeIndex = 0;
+        m_readIndex = 0;
+        m_truncated = false;
+        QF_CRIT_EXIT(crit);
+    }
+    bool IsTruncated() const { return m_truncated; }
+    uint32_t GetWriteIndex() const { return m_writeIndex; }
+    uint32_t GetReadIndex() const { return m_readIndex; }
+    uint32_t GetUsedCount() const{
+        QF_CRIT_STAT_TYPE crit;
+        QF_CRIT_ENTRY(crit);
+        uint32_t count = GetUsedCountNoCrit();
+        QF_CRIT_EXIT(crit);
+        return count;
+    }
+    uint32_t GetUsedCountNoCrit() const {
+        return (m_writeIndex - m_readIndex) &amp; m_mask;
+    }
+    uint32_t GetAvailCount() const{
+        QF_CRIT_STAT_TYPE crit;
+        QF_CRIT_ENTRY(crit);
+        uint32_t count = GetAvailCountNoCrit();
+        QF_CRIT_EXIT(crit);
+        return count;
+    }
+    // Since (m_readIndex == m_writeIndex) is regarded as empty, the maximum available count =
+    // total storage - 1, i.e. m_mask.
+    uint32_t GetAvailCountNoCrit() const {
+        return (m_readIndex - m_writeIndex - 1) &amp; m_mask;
+    }
+    uint32_t GetDiff(uint32_t a, uint32_t b) { return (a - b) &amp; m_mask; }
+    uint32_t GetAddr(uint32_t index) { return reinterpret_cast&lt;uint32_t&gt;(&amp;m_stor[index &amp; m_mask]); }
+    uint32_t GetWriteAddr() { return GetAddr(m_writeIndex); }
+    uint32_t GetReadAddr() { return GetAddr(m_readIndex); }
+    uint32_t GetMaxAddr() { return GetAddr(m_mask); }
+    uint32_t GetBufSize() { return (m_mask + 1); }
+    void IncWriteIndex(uint32_t count){
+        QF_CRIT_STAT_TYPE crit;
+        QF_CRIT_ENTRY(crit);
+        IncIndex(m_writeIndex, count);
+        QF_CRIT_EXIT(crit);
+    }
+    void IncReadIndex(uint32_t count){
+        QF_CRIT_STAT_TYPE crit;
+        QF_CRIT_ENTRY(crit);
+        IncIndex(m_readIndex, count);
+        QF_CRIT_EXIT(crit);
+    }
+
+    // Return written count. If not enough space to write all, return 0 (i.e. no partial write).
+    // If overflow has occurred set m_truncated; otherwise clear m_truncated.
+    uint32_t Write(Type const *src, uint32_t count, bool *status = NULL){
+        QF_CRIT_STAT_TYPE crit;
+        QF_CRIT_ENTRY(crit);
+        count = WriteNoCrit(src, count, status);
+        QF_CRIT_EXIT(crit);
+        return count;
+    }
+
+    // Without critical section.
+    uint32_t WriteNoCrit(Type const *src, uint32_t count, bool *status = NULL){
+        ACTIVE_PIPE_ASSERT(src);
+        bool wasEmpty = IsEmpty();
+        if (count &gt; GetAvailCountNoCrit()) {
+            m_truncated = true;
+            count = 0;
+        } else {
+            m_truncated = false;
+            if ((m_writeIndex + count) &lt;= (m_mask + 1)) {
+                WriteBlock(src, count);
+            } else {
+                uint32_t partial = m_mask + 1 - m_writeIndex;
+                WriteBlock(src, partial);
+                WriteBlock(src + partial, count - partial);
+            }
+        }
+        if (status) {
+            if (count &amp;&amp; wasEmpty) {
+                *status = true;
+            } else {
+                *status = false;
+            }
+        }
+        return count;
+    }
+
+    // Return actual read count. Okay if data in pipe &lt; count.
+    uint32_t Read(Type *dest, uint32_t count, bool *status = NULL){
+        QF_CRIT_STAT_TYPE crit;
+        QF_CRIT_ENTRY(crit);
+        count = ReadNoCrit(dest, count, status);
+        QF_CRIT_EXIT(crit);
+        return count;
+    }
+
+    // Without critical section.
+    uint32_t ReadNoCrit(Type *dest, uint32_t count, bool *status = NULL){
+        ACTIVE_PIPE_ASSERT(dest);
+        uint32_t used = GetUsedCountNoCrit();
+        count = LESS(count, used);
+        if ((m_readIndex + count) &lt;= (m_mask + 1)) {
+            ReadBlock(dest, count);
+        } else {
+            uint32_t partial = m_mask + 1 - m_readIndex;
+            ReadBlock(dest, partial);
+            ReadBlock(dest + partial, count - partial);
+        }
+        if (status) {
+            if (count &amp;&amp; IsEmpty()) {
+                // Currently use &quot;empty&quot; as condition, but it can be half-empty, etc.
+                *status = true;
+            } else {
+                *status = 0;
+            }
+        }
+        return count;
+    }
+
+
+protected:
+    // Write contiguous block to m_stor. count can be 0.
+    void WriteBlock(Type const *src, uint32_t count){
+        ACTIVE_PIPE_ASSERT(src &amp;&amp; ((m_writeIndex + count) &lt;= (m_mask + 1)));
+        for (uint32_t i = 0; i &lt; count; i++) {
+            m_stor[m_writeIndex + i] = src[i];
+        }
+        IncIndex(m_writeIndex, count);
+    }
+    // Read contiguous block from m_stor. count can be 0.
+    void ReadBlock(Type *dest, uint32_t count){
+        ACTIVE_PIPE_ASSERT(dest &amp;&amp; ((m_readIndex + count) &lt;= (m_mask + 1)));
+        for (uint32_t i = 0; i &lt; count; i++) {
+            dest[i] = m_stor[m_readIndex + i];
+        }
+        IncIndex(m_readIndex, count);
+    }
+    void IncIndex(uint32_t &amp;index, uint32_t count) {
+        index = (index + count) &amp; m_mask;
+    }
+    bool IsEmpty() {
+        return (m_readIndex == m_writeIndex);
+    }
+
+    Type *      m_stor;
+    uint32_t    m_mask;
+    uint32_t    m_writeIndex;
+    uint32_t    m_readIndex;
+    bool        m_truncated;
+    // For future enhancement.
+    //QP::QSignal m_halfEmptySig; // signal to send when pipe has just crossed half-empty threshold upon read.
+
+    // Unimplemented to disallow built-in memberwise copy constructor and assignment operator.
+    Pipe(Pipe const &amp;);
+    Pipe&amp; operator= (Pipe const &amp;);
+};
+
+// Common template instantiation
+typedef Pipe&lt;uint8_t&gt; Fifo;
+
+} // namespace
+
+#endif //ACTIVE_PIPE_H
+</text>
+  </file>
+  <file name="active_log.h">
+   <text>#ifndef ACTIVE_LOG_H
+#define ACTIVE_LOG_H
+
+#include &quot;qpcpp.h&quot;
+#include &quot;active_pipe.h&quot;
+#include &quot;macros.h&quot;
+
+#define ACTIVE_LOG_ASSERT(t_) ((t_) ? (void)0 : Q_onAssert(&quot;active_log.h&quot;, (int_t)__LINE__))
+
+namespace StdEvents {
+
+#ifdef _ACTIVE_LOG_ENABLED_
+#define PRINT(format_, ...)      Log::Print(format_, ## __VA_ARGS__)
+#define DEBUG(format_, ...)      Log::Debug(me-&gt;m_name, __FUNCTION__, format_, ## __VA_ARGS__);
+// The following macros can only be used within an HSM. Newline is automatically appended.
+#define LOG_EVENT(e_)            Log::Event(me-&gt;m_name, __FUNCTION__, e_);
+#define LOG_EVENT_NOQP(e_)       Log::Event(me-&gt;m_name, __FUNCTION__, e_, false);
+
+#else
+
+#define PRINT(format_, ...)      (void)0;
+#define DEBUG(format_, ...)      (void)0;
+#define LOG_EVENT(e_)            (void)0;
+#define LOG_EVENT_NOQP(e_)       (void)0;
+
+#endif
+
+class Log {
+public:
+    static void AddQPInterface(Fifo *fifo, QP::QSignal sig);
+    static void DeleteQPInterface();
+    static void Write(char const *buf, uint32_t len, bool useQPInterface = true);
+    static uint32_t Print(char const *format, ...);
+    static void Event(char const *name, char const *func, QP::QEvt const *e, bool useQPInterface = true);
+    static void Debug(char const *name, char const *func, char const *format, ...);
+
+private:
+
+    enum {
+        BUF_LEN = 160,
+    };
+
+    static Fifo *m_fifo;
+    static QP::QSignal m_writeSuccessSig;
+    static char const m_truncatedError[];
+};
+
+} // namespace
+
+#endif // ACTIVE_LOG_H</text>
+  </file>
+  <file name="active_log.cpp">
+   <text>#include &lt;stdarg.h&gt;
+#include &lt;stdio.h&gt;
+#include &quot;bsp.h&quot;
+#include &quot;qpcpp.h&quot;
+#include &quot;active_events.h&quot;
+#include &quot;active_pipe.h&quot;
+#include &quot;active_log.h&quot;
+#include &quot;app_ao_config.h&quot;
+
+Q_DEFINE_THIS_FILE
+
+using namespace QP;
+
+namespace StdEvents {
+
+char const Log::m_truncatedError[] = &quot;&lt;##TRUN##&gt;&quot;;
+
+Fifo * Log::m_fifo = NULL;
+QSignal Log::m_writeSuccessSig = 0;
+
+void Log::AddQPInterface(Fifo *fifo, QSignal writeSuccessSig) {
+    ACTIVE_LOG_ASSERT(fifo &amp;&amp; writeSuccessSig);
+    QF_CRIT_STAT_TYPE crit;
+    QF_CRIT_ENTRY(crit);
+    m_fifo = fifo;
+    m_writeSuccessSig = writeSuccessSig;
+    QF_CRIT_EXIT(crit);
+}
+
+void Log::DeleteQPInterface() {
+    QF_CRIT_STAT_TYPE crit;
+    QF_CRIT_ENTRY(crit);
+    m_fifo = NULL;
+    m_writeSuccessSig = 0;
+    QF_CRIT_EXIT(crit);
+}
+
+void Log::Write(char const *buf, uint32_t len, bool useQPInterface) {
+    if (m_fifo &amp;&amp; useQPInterface) {
+        bool status1 = false;
+        bool status2 = false;
+        if (m_fifo-&gt;IsTruncated()) {
+            m_fifo-&gt;WriteNoCrit(reinterpret_cast&lt;uint8_t const *&gt;(m_truncatedError), CONST_STRING_LEN(m_truncatedError), &amp;status1);
+        }
+        if (!m_fifo-&gt;IsTruncated()) {
+            m_fifo-&gt;WriteNoCrit(reinterpret_cast&lt;uint8_t const *&gt;(buf), len, &amp;status2);
+        }
+        // Post MUST be outside critical section.
+        if (status1 || status2) {
+            Q_ASSERT(m_writeSuccessSig);
+            Evt *evt = new Evt(m_writeSuccessSig);
+            QF::PUBLISH(evt, NULL);
+        }
+    } else {
+        // TODO remove. Test only - write to BSP usart directly.
+        BSP_XMIT_ON_DEFAULT_UART(buf, len);
+    }
+}
+
+uint32_t Log::Print(char const *format, ...) {
+    va_list arg;
+    va_start(arg, format);
+    char buf[BUF_LEN];
+    uint32_t len = vsnprintf(buf, sizeof(buf), format, arg);
+    va_end(arg);
+    len = LESS(len, sizeof(buf) - 1);
+    Write(buf, len);
+    return len;
+}
+
+void Log::Event(char const *name, char const *func, QP::QEvt const *e, bool useQPInterface) {
+    Q_ASSERT(name &amp;&amp; func &amp;&amp; e);
+    char buf[BUF_LEN];
+    uint32_t len = snprintf(buf, BUF_LEN, &quot;[%lu] %s (%s): %s(%d)\n\r&quot;, BSP_GET_SYSTEM_MS, name, func, SignalArray[e-&gt;sig], e-&gt;sig);
+    len = LESS(len, (BUF_LEN - 1));
+    buf[len] = 0;
+    Write(buf, len, useQPInterface);
+}
+
+void Log::Debug(char const *name, char const *func, char const *format, ...) {
+    char buf[BUF_LEN];
+    // Reserve 2 bytes for newline.
+    const uint32_t MAX_LEN = sizeof(buf) - 2;
+    // Note there is no space after type name.
+    uint32_t len = snprintf(buf, MAX_LEN, &quot;[%lu] %s (%s): &quot;, BSP_GET_SYSTEM_MS, name, func);
+    len = LESS(len, (MAX_LEN - 1));
+    if (len &lt; (MAX_LEN - 1)) {
+        va_list arg;
+        va_start(arg, format);
+        len += vsnprintf(&amp;buf[len], MAX_LEN - len, format, arg);
+        va_end(arg);
+        len = LESS(len, MAX_LEN - 1);
+    }
+    Q_ASSERT(len &lt;= (sizeof(buf) - 3));
+    buf[len++] = '\n';
+    buf[len++] = '\r';
+    buf[len] = 0;
+    Write(buf, len);
+}
+
+} // namespace</text>
+  </file>
+  <file name="active_enum.h">
+   <text>// Thanks to http://saltares.com/blog/computing/smart-enums-in-c-or-what-is-this-madness/
+
+#ifndef ACTIVE_ENUM_H
+#define ACTIVE_ENUM_H
+
+#ifdef __cplusplus
+extern &quot;C&quot; {
+#endif
+
+#include &lt;cstring&gt;
+
+#define SMARTENUM_VALUE(typeName, value) value,
+#define SMARTENUM_STRING(typeName, value) #value,
+
+#define SMARTENUM_DEFINE_ENUM(typeName, values) enum typeName { values(SMARTENUM_VALUE) e##typeName##_Count, };
+
+#define SMARTENUM_DECLARE_NAMES(typeName, values) extern const char* typeName##Array [e##typeName##_Count];
+
+#define SMARTENUM_DEFINE_NAMES(typeName, values) const char* typeName##Array [e##typeName##_Count] = { values(SMARTENUM_STRING) };
+
+#define SMARTENUM_DECLARE_GET_VALUE_FROM_STRING(typeName, name)    typeName get##typeName##FromString(const char* str);
+
+#define SMARTENUM_DEFINE_GET_VALUE_FROM_STRING(typeName, name)    \
+    typeName get##typeName##FromString(const char* str)                     \
+    {                                                                                                      \
+        for (int i = 0; i &lt; e##typeName##_Count; ++i)                       \
+        if (!strcmp(typeName##Array[i], str))                                            \
+            return (typeName)i;                                                                        \
+        return e##typeName##_Count;                                                                    \
+    }
+
+#define getStringFromEnumValue(typeName, value) typeName##Array[##value]
+#define getEnumValueFromString(typeName, name)    get##typeName##FromString(##name)
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* SMARTENUM_H_ */
+</text>
+  </file>
+ </directory>
+</model>

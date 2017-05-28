@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version="4.0.1" links="0">
+ <framework name="qpcpp"/>
+ <package name="UartCommander" stereotype="0x02" namespace="AOs::">
+  <class name="UartCommander" superclass="StdEvents::AO">
+   <attribute name="m_fifo" type="Fifo *" visibility="0x01" properties="0x00"/>
+   <operation name="UartCommander" type="" visibility="0x00" properties="0x00">
+    <documentation>constructor</documentation>
+    <parameter name="characterFifo" type="Fifo *"/>
+    <code>  : AO(DONT_CARE_SIG, Q_STATE_CAST(&amp;initial), &quot;Uart Commander&quot;)
+  , m_fifo(characterFifo)</code>
+   </operation>
+   <statechart>
+    <initial target="../1">
+     <action>me-&gt;subscribe(UART_COMMANDER_STOP_REQ_SIG);
+me-&gt;subscribe(UART_COMMANDER_START_REQ_SIG);
+me-&gt;subscribe(UART_COMMANDER_CMD_IND_SIG);
+me-&gt;subscribe(UART_COMMANDER_SHOW_USAGE_SIG);</action>
+     <initial_glyph conn="20,5,4,0,5">
+      <action box="0,-2,23,3"/>
+     </initial_glyph>
+    </initial>
+    <state name="Root">
+     <entry>LOG_EVENT(e);</entry>
+     <exit>LOG_EVENT(e);</exit>
+     <initial target="../1">
+      <action>LOG_EVENT(e);</action>
+      <initial_glyph conn="25,13,5,0,4,2">
+       <action box="0,-2,10,2"/>
+      </initial_glyph>
+     </initial>
+     <state name="Stopped">
+      <entry brief="Recall Deferred">LOG_EVENT(e);
+me-&gt;RecallDeferred();</entry>
+      <exit>LOG_EVENT(e);</exit>
+      <tran trig="UART_COMMANDER_START_REQ" target="../../2">
+       <action brief="^CFM">LOG_EVENT(e);
+me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    UART_COMMANDER_STOP_CFM_SIG);</action>
+       <tran_glyph conn="30,27,2,0,2,-5,3,5,2">
+        <action box="-4,3,30,2"/>
+       </tran_glyph>
+      </tran>
+      <tran trig="UART_COMMANDER_CMD_IND,UART_COMMANDER_SHOW_USAGE">
+       <action brief="Defer">LOG_EVENT(e);
+me-&gt;Defer(e);</action>
+       <tran_glyph conn="100,22,1,-1,-30">
+        <action box="-30,1,30,2"/>
+       </tran_glyph>
+      </tran>
+      <tran trig="UART_COMMANDER_STOP_REQ">
+       <action brief="^CFM">LOG_EVENT(e);
+me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    UART_COMMANDER_STOP_CFM_SIG);</action>
+       <tran_glyph conn="100,19,1,-1,-30">
+        <action box="-30,-2,30,2"/>
+       </tran_glyph>
+      </tran>
+      <state_glyph node="22,15,78,12">
+       <entry box="1,2,17,2"/>
+       <exit box="1,4,6,2"/>
+      </state_glyph>
+     </state>
+     <state name="Started">
+      <entry brief="^Recall">LOG_EVENT(e);
+me-&gt;RecallDeferred();</entry>
+      <exit>LOG_EVENT(e);</exit>
+      <tran trig="UART_COMMANDER_START_REQ">
+       <action brief="^CONFIRM">LOG_EVENT(e);
+me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    UART_COMMANDER_START_CFM_SIG
+);</action>
+       <tran_glyph conn="22,56,3,-1,41">
+        <action box="0,-2,39,2"/>
+       </tran_glyph>
+      </tran>
+      <tran trig="UART_COMMANDER_CMD_IND">
+       <action brief="Process Command">LOG_EVENT(e);
+uint32_t count = me-&gt;m_fifo-&gt;GetUsedCount();
+while(count--) {
+    uint8_t ch;
+    me-&gt;m_fifo-&gt;Read(&amp;ch, 1);
+    PRINT(&quot;Command:%c\r\n&quot;, ch);
+    _UartCommanderProcessCommand(ch);
+}</action>
+       <tran_glyph conn="22,46,3,-1,41">
+        <action box="0,-2,40,2"/>
+       </tran_glyph>
+      </tran>
+      <tran trig="UART_COMMANDER_STOP_REQ" target="../../1">
+       <action brief="^CFM">LOG_EVENT(e);
+me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    UART_COMMANDER_STOP_CFM_SIG);</action>
+       <tran_glyph conn="76,34,0,2,-2,-7,-3,7,-2">
+        <action box="-6,-4,31,2"/>
+       </tran_glyph>
+      </tran>
+      <tran trig="UART_COMMANDER_SHOW_USAGE">
+       <action brief="ShowUsage">LOG_EVENT(e);
+PRINT(UART_CMDR_GetUsage());</action>
+       <tran_glyph conn="22,49,3,-1,41">
+        <action box="0,-2,10,2"/>
+       </tran_glyph>
+      </tran>
+      <state_glyph node="22,34,78,26">
+       <entry box="1,2,45,2"/>
+       <exit box="1,4,4,2"/>
+      </state_glyph>
+     </state>
+     <state_glyph node="15,10,89,54">
+      <entry box="1,2,6,2"/>
+      <exit box="1,4,6,2"/>
+     </state_glyph>
+    </state>
+    <state_diagram size="124,82"/>
+   </statechart>
+  </class>
+ </package>
+ <package file="./std_events.qmp"/>
+ <directory name="UartCMD">
+  <file name="UartCommander.h">
+   <text>#ifndef UART_COMMANDER_H
+#define UART_COMMANDER_H
+
+#include &quot;active_log.h&quot;
+#include &quot;active_pipe.h&quot;
+
+using namespace StdEvents;
+
+//// CONSUMES EVENTS /////////////////////////
+//    UART_COMMANDER_STOP_REQ_SIG
+//    UART_COMMANDER_START_REQ_SIG
+//    UART_COMMANDER_CMD_IND_SIG
+//    UART_COMMANDER_SHOW_USAGE_SIG
+//// PRODUCES EVENTS /////////////////////////
+//    UART_COMMANDER_STOP_CFM_SIG
+//    UART_COMMANDER_START_CFM_SIG
+//////////////////////////////////////////////
+
+#ifdef __cplusplus
+extern &quot;C&quot; {
+#endif
+
+//// EXTERNAL PLUGS ////////
+extern const char * UART_CMDR_GetUsage();
+extern void UART_CMDR_ProcessCommand(char command);
+//// EXTERNAL PLUGS END ////
+
+#ifdef __cplusplus
+}
+#endif
+
+
+void _UartCommanderProcessCommand(char command);
+
+$declare(UartCommander::UartCommander)
+
+#endif // Header</text>
+  </file>
+  <file name="UartCommander.cpp">
+   <text>#include &quot;qpcpp.h&quot;
+#include &quot;UartCommander.h&quot;
+
+using namespace QP;
+using namespace StdEvents;
+
+void _UartCommanderProcessCommand(char command) {
+    if (command == 'u') {
+        PRINT(&quot;%s\r\n&quot;, UART_CMDR_GetUsage());
+    }
+    PRINT(&quot;Processing %c\r\n&quot;, command);
+    UART_CMDR_ProcessCommand(command);
+}
+
+$define(UartCommander::UartCommander)
+
+// define other elements...</text>
+  </file>
+ </directory>
+</model>

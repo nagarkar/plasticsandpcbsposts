@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package name="StdEvents" stereotype="0x01" namespace="StdEvents::">
+ <class name="Evt" superclass="qpcpp::QEvt">
+  <attribute name="m_seq" type="uint16_t" visibility="0x01" properties="0x00"/>
+  <operation name="Evt" type="" visibility="0x00" properties="0x02">
+   <parameter name="signal" type="QP::QSignal"/>
+   <parameter name="seq = 0" type="uint16_t"/>
+   <code>: QP::QEvt(signal), m_seq(seq)</code>
+  </operation>
+  <operation name="~Evt" type="" visibility="0x00" properties="0x02">
+   <code>(void)0;</code>
+  </operation>
+  <operation name="GetSeq" type="uint16_t" visibility="0x00" properties="0x0a">
+   <code>return m_seq;</code>
+  </operation>
+  <operation name="operator new" type="void *" visibility="0x00" properties="0x01">
+   <parameter name="evtSize" type="size_t"/>
+   <code>return QF::newX_(evtSize, 0, 0);</code>
+  </operation>
+  <operation name="operator delete" type="void" visibility="0x00" properties="0x01">
+   <parameter name="evt" type="void *"/>
+   <code>(void)evt;    // Avoid warning.
+Q_ASSERT(0);</code>
+  </operation>
+ </class>
+ <class name="ErrorEvt" superclass="StdEvents::Evt">
+  <attribute name="m_error" type="Error" visibility="0x01" properties="0x00">
+   <documentation>// Common error code.</documentation>
+  </attribute>
+  <attribute name="m_reason" type="Reason" visibility="0x01" properties="0x00">
+   <documentation>// CFM/RSP event specific reason code</documentation>
+  </attribute>
+  <operation name="ErrorEvt" type="" visibility="0x00" properties="0x02">
+   <parameter name="signal" type="QP::QSignal"/>
+   <parameter name="seq = 0" type="uint16_t"/>
+   <parameter name="error = ERROR_SUCCESS" type="Error "/>
+   <parameter name="reason = 0" type="Reason"/>
+   <code>:Evt(signal, seq), m_error(error), m_reason(reason)</code>
+  </operation>
+  <operation name="GetError" type="Error" visibility="0x00" properties="0x0a">
+   <code>return m_error;</code>
+  </operation>
+  <operation name="GetReason" type="Reason" visibility="0x00" properties="0x0a">
+   <code>return m_reason;</code>
+  </operation>
+  <operation name="ErrorEvt" type="" visibility="0x00" properties="0x02">
+   <parameter name="signal" type="QP::QSignal"/>
+   <parameter name="sourceEvt" type="ErrorEvt"/>
+   <parameter name="seq = 0" type="uint16_t"/>
+   <code>  :Evt(signal, seq)
+   , m_error(sourceEvt.m_error)
+   , m_reason(sourceEvt.m_reason)</code>
+  </operation>
+ </class>
+ <class name="AO" superclass="qpcpp::QActive">
+  <attribute name="{ EVT_QUEUE_COUNT = 16, DEFER_QUEUE_COUNT = 4 }" type="enum " visibility="0x01" properties="0x00"/>
+  <attribute name="m_evtQueueStor[EVT_QUEUE_COUNT]" type="QEvt const *" visibility="0x01" properties="0x00"/>
+  <attribute name=" m_nextSequence" type="uint16_t" visibility="0x01" properties="0x00"/>
+  <attribute name="m_timer" type="QTimeEvt" visibility="0x01" properties="0x00"/>
+  <attribute name="m_deferQueueStor[DEFER_QUEUE_COUNT]" type="QEvt const *" visibility="0x01" properties="0x00"/>
+  <attribute name="m_deferQueue" type="QEQueue" visibility="0x01" properties="0x00"/>
+  <attribute name="m_name" type="char const *" visibility="0x00" properties="0x00"/>
+  <attribute name="m_confirmationCount" type="uint8_t" visibility="0x00" properties="0x00"/>
+  <operation name="AO" type="" visibility="0x00" properties="0x02">
+   <parameter name=" timeoutSignal" type="enum_t"/>
+   <parameter name="initialPseudoState" type="QStateHandler"/>
+   <parameter name="name = &quot;Missing a name&quot;" type="char const *"/>
+   <code>: QActive(initialPseudoState)
+  , m_nextSequence(0)
+  , m_timer(this, timeoutSignal)
+  , m_name(name)
+  , m_confirmationCount(0)</code>
+  </operation>
+  <operation name="Start" type="void" visibility="0x00" properties="0x02">
+   <parameter name=" prio" type="uint8_t"/>
+   <code>QActive::start(prio, m_evtQueueStor, ARRAY_COUNT(m_evtQueueStor), NULL, 0);
+m_deferQueue.init(m_deferQueueStor, ARRAY_COUNT(m_deferQueueStor));</code>
+  </operation>
+  <operation name="ResetConfirmationCount" type="void" visibility="0x00" properties="0x00">
+   <code>m_confirmationCount = 0;</code>
+  </operation>
+  <operation name="HandleCfm" type="void" visibility="0x00" properties="0x00">
+   <parameter name="e" type="ErrorEvt const &amp;"/>
+   <parameter name="expectedCount" type="uint16_t"/>
+   <parameter name="doneSignal" type="QSignal"/>
+   <parameter name="failureSignal" type="QSignal"/>
+   <code>m_confirmationCount++;
+if (e.GetError() == ERROR_SUCCESS) {
+    // TODO - Compare seqeuence number.
+    if(m_confirmationCount == expectedCount) {
+        Evt *evt = new Evt(doneSignal);
+        postLIFO(evt);
+    }
+} else {
+    Evt *evt = new ErrorEvt(failureSignal, e, m_nextSequence++);
+    postLIFO(evt);
+}</code>
+  </operation>
+  <operation name="Publish" type="void" visibility="0x00" properties="0x00">
+   <parameter name="signal" type="QSignal"/>
+   <code>Evt *e = new Evt(signal, m_nextSequence++);
+QF::PUBLISH(e, this);</code>
+  </operation>
+  <operation name="RecallDeferred" type="void" visibility="0x00" properties="0x00">
+   <code>recall(&amp;m_deferQueue);</code>
+  </operation>
+  <operation name="Defer" type="void" visibility="0x00" properties="0x00">
+   <parameter name="e" type="QEvt const * const "/>
+   <code>defer(&amp;m_deferQueue, e);</code>
+  </operation>
+  <operation name="PublishError" type="void" visibility="0x00" properties="0x00">
+   <parameter name="errorEvt" type="ErrorEvt const &amp;"/>
+   <parameter name="seq" type="uint16_t"/>
+   <parameter name="errorSignal" type="QSignal"/>
+   <code>ErrorEvt *evt = new ErrorEvt(errorSignal, errorEvt, seq);
+QF::PUBLISH(evt, this);</code>
+  </operation>
+  <operation name="PublishConfirmationWithInvalidState" type="void" visibility="0x00" properties="0x00">
+   <parameter name="e" type="Evt const &amp;"/>
+   <parameter name="signal" type="QSignal"/>
+   <code>ErrorEvt *evt = new ErrorEvt(signal, e.GetSeq(), ERROR_STATE);
+QF::PUBLISH(evt, this);</code>
+  </operation>
+  <operation name="PublishConfirmation" type="void" visibility="0x00" properties="0x00">
+   <parameter name="e" type="Evt const &amp;"/>
+   <parameter name="signal" type="QSignal"/>
+   <code>ErrorEvt *evt = new ErrorEvt(signal, e.GetSeq(), ERROR_SUCCESS);
+QF::PUBLISH(evt, this);</code>
+  </operation>
+ </class>
+ <class name="ASM" superclass="qpcpp::QHsm">
+  <attribute name="{ DEFER_QUEUE_COUNT = 4 }" type="enum " visibility="0x01" properties="0x00"/>
+  <attribute name=" m_nextSequence" type="uint16_t" visibility="0x01" properties="0x00"/>
+  <attribute name="m_timer" type="QTimeEvt" visibility="0x01" properties="0x00"/>
+  <attribute name="m_deferQueueStor[DEFER_QUEUE_COUNT]" type="QEvt const *" visibility="0x01" properties="0x00"/>
+  <attribute name="m_deferQueue" type="QEQueue" visibility="0x01" properties="0x00"/>
+  <attribute name="m_owner" type="QP::QActive *" visibility="0x01" properties="0x00"/>
+  <attribute name="m_name" type="char const *" visibility="0x01" properties="0x00"/>
+  <attribute name="m_confirmationCount" type="uint8_t" visibility="0x00" properties="0x00"/>
+  <operation name="ASM" type="" visibility="0x00" properties="0x02">
+   <parameter name="timeoutSignal" type="enum_t"/>
+   <parameter name="initialPseudoState" type="QStateHandler"/>
+   <parameter name="owner" type="QP::QActive *"/>
+   <parameter name="name = &quot;Missing a Name&quot;" type="char const *"/>
+   <code>: QHsm(initialPseudoState)
+  , m_nextSequence(0)
+  , m_timer(owner, timeoutSignal)
+  , m_owner(owner)
+  , m_name(name)</code>
+  </operation>
+  <operation name="Init" type="void" visibility="0x00" properties="0x02">
+   <code>QHsm::init();
+m_deferQueue.init(m_deferQueueStor, ARRAY_COUNT(m_deferQueueStor));</code>
+  </operation>
+  <operation name="HandleCfm" type="void" visibility="0x00" properties="0x00">
+   <parameter name="e" type="ErrorEvt const &amp;"/>
+   <parameter name="expectedCount" type="uint16_t"/>
+   <parameter name="doneSignal" type="QSignal"/>
+   <parameter name="failureSignal" type="QSignal"/>
+   <code>m_confirmationCount++;
+if (e.GetError() == ERROR_SUCCESS) {
+    // TODO - Compare seqeuence number.
+    if(m_confirmationCount == expectedCount) {
+        PostToOwnerLifo(doneSignal);
+    }
+} else {
+    Evt *evt = new ErrorEvt(failureSignal, e, m_nextSequence++);
+    PostToOwnerLifo(evt);
+}</code>
+  </operation>
+  <operation name="ResetConfirmationCount" type="void" visibility="0x00" properties="0x00">
+   <code>m_confirmationCount = 0;</code>
+  </operation>
+  <operation name="Publish" type="void" visibility="0x00" properties="0x00">
+   <parameter name="signal" type="QSignal"/>
+   <code>Evt *e = new Evt(signal, m_nextSequence++);
+QF::PUBLISH(e, this);</code>
+  </operation>
+  <operation name="RecallDeferred" type="void" visibility="0x00" properties="0x00">
+   <code>m_owner-&gt;recall(&amp;m_deferQueue);</code>
+  </operation>
+  <operation name="Defer" type="void" visibility="0x00" properties="0x00">
+   <parameter name="e" type="QEvt const * const "/>
+   <code>m_owner-&gt;defer(&amp;m_deferQueue, e);</code>
+  </operation>
+  <operation name="PublishError" type="void" visibility="0x00" properties="0x00">
+   <parameter name="errorEvt" type="ErrorEvt const &amp;"/>
+   <parameter name="seq" type="uint16_t"/>
+   <parameter name="errorSignal" type="QSignal"/>
+   <code>ErrorEvt *evt = new ErrorEvt(errorSignal, errorEvt, seq);
+QF::PUBLISH(evt, this);</code>
+  </operation>
+  <operation name="PublishConfirmationWithInvalidState" type="void" visibility="0x00" properties="0x00">
+   <parameter name="e" type="Evt const &amp;"/>
+   <parameter name="signal" type="QSignal"/>
+   <code>ErrorEvt *evt = new ErrorEvt(signal, e.GetSeq(), ERROR_STATE);
+QF::PUBLISH(evt, this);</code>
+  </operation>
+  <operation name="PublishConfirmation" type="void" visibility="0x00" properties="0x00">
+   <parameter name="e" type="Evt const &amp;"/>
+   <parameter name="signal" type="QSignal"/>
+   <code>ErrorEvt *evt = new ErrorEvt(signal, e.GetSeq(), ERROR_SUCCESS);
+QF::PUBLISH(evt, this);</code>
+  </operation>
+  <operation name="PublishTimeout" type="void" visibility="0x00" properties="0x00">
+   <parameter name="signal" type="QSignal"/>
+   <code>ErrorEvt *e = new ErrorEvt(signal, m_nextSequence++, ERROR_TIMEOUT);
+QF::PUBLISH(e, this);</code>
+  </operation>
+  <operation name="PostToOwnerLifo" type="void" visibility="0x00" properties="0x00">
+   <parameter name="signal" type="QSignal"/>
+   <code>Evt *e = new Evt(signal, m_nextSequence++);
+m_owner-&gt;postLIFO(e);</code>
+  </operation>
+  <operation name="PostToOwnerLifo" type="void" visibility="0x00" properties="0x00">
+   <parameter name="e" type="QEvt *"/>
+   <code>m_owner-&gt;postLIFO(e);</code>
+  </operation>
+ </class>
+</package>

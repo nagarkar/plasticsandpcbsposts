@@ -1,0 +1,499 @@
+
+--- Module:   C:\qp_lab\qpcpp\source\qs.cpp (C++)
+
+--- Module:   C:\qp_lab\qpcpp\source\qs_64bit.cpp (C++)
+
+--- Module:   C:\qp_lab\qpcpp\source\qs_fp.cpp (C++)
+"C:\qp_lab\qpcpp\source\qs_fp.cpp" 96 24 Info 708: union initialization
+
+--- Module:   C:\qp_lab\qpcpp\source\qs_rx.cpp (C++)
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 173 46 Note 930: cast from enum to unsigned char [MISRA C++ Rule 5-2-7], [MISRA C++ Rule 5-2-8]
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 214 52 Note 930: cast from enum to unsigned int [MISRA C++ Rule 5-2-7], [MISRA C++ Rule 5-2-8]
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 516 72 Note 928: cast from pointer to pointer [MISRA C++ Rule 5-2-7]
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 517 55 Note 1960: Violates MISRA C++ 2008 Required Rule 5-0-15, pointer arithmetic other than array indexing used
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 607 71 Note 923: cast from unsigned long to pointer [MISRA C++ Rule 5-2-7], [MISRA C++ Rule 5-2-8]
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 619 67 Note 923: cast from unsigned long to pointer [MISRA C++ Rule 5-2-7], [MISRA C++ Rule 5-2-8]
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 651 69 Note 923: cast from unsigned long to pointer [MISRA C++ Rule 5-2-7], [MISRA C++ Rule 5-2-8]
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 655 69 Note 923: cast from unsigned long to pointer [MISRA C++ Rule 5-2-7], [MISRA C++ Rule 5-2-8]
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 659 69 Note 923: cast from unsigned long to pointer [MISRA C++ Rule 5-2-7], [MISRA C++ Rule 5-2-8]
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 663 69 Note 923: cast from unsigned long to pointer [MISRA C++ Rule 5-2-7], [MISRA C++ Rule 5-2-8]
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 667 69 Note 923: cast from unsigned long to pointer [MISRA C++ Rule 5-2-7], [MISRA C++ Rule 5-2-8]
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 671 69 Note 923: cast from unsigned long to pointer [MISRA C++ Rule 5-2-7], [MISRA C++ Rule 5-2-8]
+
+/// Start of Pass 2 ///
+
+--- Module:   C:\qp_lab\qpcpp\source\qs.cpp (C++)
+
+During Specific Walk:
+  File C:\qp_lab\qpcpp\source\qs.cpp line 81: QP::QS::filterOff(255) #1
+"C:\qp_lab\qpcpp\source\qs.cpp" 178 1 Warning 416: Likely creation of out-of-bounds pointer (16 beyond end of data) by operator '[' [Reference: file C:\qp_lab\qpcpp\source\qs.cpp: lines 81, 178; file C:\qp_lab\qpcpp\include\qs.h: line 163] [MISRA C++ Rule 5-0-16]
+"C:\qp_lab\qpcpp\source\qs.cpp" 81 1 Info 831: Reference cited in prior message
+"C:\qp_lab\qpcpp\source\qs.cpp" 178 1 Info 831: Reference cited in prior message
+"C:\qp_lab\qpcpp\include\qs.h" 163 1 Info 831: Reference cited in prior message
+
+During Specific Walk:
+  File C:\qp_lab\qpcpp\source\qs.cpp line 81: QP::QS::filterOff(255) #1
+"C:\qp_lab\qpcpp\source\qs.cpp" 178 1 Warning 415: Likely access of out-of-bounds pointer (16 beyond end of data) by operator '[' [Reference: file C:\qp_lab\qpcpp\source\qs.cpp: lines 81, 178; file C:\qp_lab\qpcpp\include\qs.h: line 163] [MISRA C++ Rule 5-0-16]
+"C:\qp_lab\qpcpp\source\qs.cpp" 81 1 Info 831: Reference cited in prior message
+"C:\qp_lab\qpcpp\source\qs.cpp" 178 1 Info 831: Reference cited in prior message
+"C:\qp_lab\qpcpp\include\qs.h" 163 1 Info 831: Reference cited in prior message
+
+--- Module:   C:\qp_lab\qpcpp\source\qs_64bit.cpp (C++)
+
+--- Module:   C:\qp_lab\qpcpp\source\qs_fp.cpp (C++)
+
+--- Module:   C:\qp_lab\qpcpp\source\qs_rx.cpp (C++)
+
+--- Global Wrap-up
+
+"C:\qp_lab\qpcpp\ports\lint\qv\qf_port.h" 199 1 Info 757: global declarator 'intEnable(void)' (line 199, file C:\qp_lab\qpcpp\ports\lint\qv\qf_port.h) not referenced [MISRA C++ Rule 0-1-3]
+"C:\qp_lab\qpcpp\ports\lint\stdint.h" 32 1 Info 756: global typedef 'uint64_t' (line 32, file C:\qp_lab\qpcpp\ports\lint\stdint.h) not referenced [MISRA C++ Rule 0-1-5]
+"C:\qp_lab\qpcpp\ports\lint\stdint.h" 27 1 Info 756: global typedef 'int64_t' (line 27, file C:\qp_lab\qpcpp\ports\lint\stdint.h) not referenced [MISRA C++ Rule 0-1-5]
+"C:\qp_lab\qpcpp\ports\lint\qv\qf_port.h" 253 1 Warning 526: Symbol 'critEntry(void)' (line 253, file C:\qp_lab\qpcpp\ports\lint\qv\qf_port.h, module C:\qp_lab\qpcpp\source\qs.cpp) not defined
+"C:\qp_lab\qpcpp\ports\lint\qv\qf_port.h" 254 1 Warning 526: Symbol 'critExit(crit_stat_t)' (line 254, file C:\qp_lab\qpcpp\ports\lint\qv\qf_port.h, module C:\qp_lab\qpcpp\source\qs.cpp) not defined
+"C:\qp_lab\qpcpp\ports\lint\stdint.h" 24 1 Info 756: global typedef 'int8_t' (line 24, file C:\qp_lab\qpcpp\ports\lint\stdint.h) not referenced [MISRA C++ Rule 0-1-5]
+"C:\qp_lab\qpcpp\include\qv.h" 95 1 Info 757: global declarator 'QV_readySet_' (line 95, file C:\qp_lab\qpcpp\include\qv.h) not referenced [MISRA C++ Rule 0-1-3]
+"C:\qp_lab\qpcpp\ports\lint\stdint.h" 37 1 Info 756: global typedef 'int_fast16_t' (line 37, file C:\qp_lab\qpcpp\ports\lint\stdint.h) not referenced [MISRA C++ Rule 0-1-5]
+"C:\qp_lab\qpcpp\ports\lint\stdint.h" 39 1 Info 756: global typedef 'int_fast32_t' (line 39, file C:\qp_lab\qpcpp\ports\lint\stdint.h) not referenced [MISRA C++ Rule 0-1-5]
+"C:\qp_lab\qpcpp\ports\lint\stdint.h" 25 1 Info 756: global typedef 'int16_t' (line 25, file C:\qp_lab\qpcpp\ports\lint\stdint.h) not referenced [MISRA C++ Rule 0-1-5]
+"C:\qp_lab\qpcpp\include\qassert.h" 223 1 Warning 526: Symbol 'Q_onAssert(const char_t *, int_t)' (line 223, file C:\qp_lab\qpcpp\include\qassert.h, module C:\qp_lab\qpcpp\source\qs.cpp) not defined
+"C:\qp_lab\qpcpp\ports\lint\stdint.h" 26 1 Info 756: global typedef 'int32_t' (line 26, file C:\qp_lab\qpcpp\ports\lint\stdint.h) not referenced [MISRA C++ Rule 0-1-5]
+"C:\qp_lab\qpcpp\ports\lint\qv\qf_port.h" 198 1 Info 757: global declarator 'intDisable(void)' (line 198, file C:\qp_lab\qpcpp\ports\lint\qv\qf_port.h) not referenced [MISRA C++ Rule 0-1-3]
+"C:\qp_lab\qpcpp\include\qep.h" 129 1 Info 755: global macro 'QEVT_INITIALIZER' (line 129, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 614 1 Info 755: global macro 'QM_SM_EXIT' (line 614, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 644 1 Info 755: global macro 'QM_SUPER_SUB' (line 644, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 845 1 Info 755: global macro 'QS_MEM' (line 845, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 619 1 Info 755: global macro 'QM_TRAN' (line 619, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 630 1 Info 755: global macro 'QM_TRAN_HIST' (line 630, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 635 1 Info 755: global macro 'QM_TRAN_EP' (line 635, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 624 1 Info 755: global macro 'QM_TRAN_INIT' (line 624, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 641 1 Info 755: global macro 'QM_TRAN_XP' (line 641, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 604 1 Info 755: global macro 'QM_ENTRY' (line 604, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 607 1 Info 755: global macro 'QM_EXIT' (line 607, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 54 1 Info 755: global macro 'QP_RELEASE' (line 54, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 853 1 Info 755: global macro 'QS_OBJ' (line 853, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 939 1 Info 755: global macro 'QS_OBJ_DICTIONARY' (line 939, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qmpool.h" 164 1 Info 755: global macro 'QF_MPOOL_EL' (line 164, file C:\qp_lab\qpcpp\include\qmpool.h) not referenced
+"C:\qp_lab\qpcpp\include\qassert.h" 256 1 Info 755: global macro 'Q_ENSURE' (line 256, file C:\qp_lab\qpcpp\include\qassert.h) not referenced
+"C:\qp_lab\qpcpp\include\qassert.h" 267 1 Info 755: global macro 'Q_ENSURE_ID' (line 267, file C:\qp_lab\qpcpp\include\qassert.h) not referenced
+"C:\qp_lab\qpcpp\include\qf.h" 666 1 Info 755: global macro 'Q_NEW' (line 666, file C:\qp_lab\qpcpp\include\qf.h) not referenced
+"C:\qp_lab\qpcpp\include\qf.h" 692 1 Info 755: global macro 'Q_NEW_X' (line 692, file C:\qp_lab\qpcpp\include\qf.h) not referenced
+"C:\qp_lab\qpcpp\include\qf.h" 716 1 Info 755: global macro 'Q_NEW_REF' (line 716, file C:\qp_lab\qpcpp\include\qf.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 982 1 Info 755: global macro 'QS_ASSERTION' (line 982, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 600 1 Info 755: global macro 'Q_ACTION_CAST' (line 600, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qassert.h" 112 1 Info 755: global macro 'Q_ASSERT' (line 112, file C:\qp_lab\qpcpp\include\qassert.h) not referenced
+"C:\qp_lab\qpcpp\include\qassert.h" 301 1 Info 755: global macro 'Q_ASSERT_COMPILE' (line 301, file C:\qp_lab\qpcpp\include\qassert.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 732 1 Info 755: global macro 'QS_2U8_' (line 732, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 665 1 Info 755: global macro 'QS_BEGIN' (line 665, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 587 1 Info 755: global macro 'QS_BEGIN_NOCRIT' (line 587, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 707 1 Info 755: global macro 'QS_BEGIN_NOCRIT_' (line 707, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qf.h" 810 1 Info 755: global macro 'POST' (line 810, file C:\qp_lab\qpcpp\include\qf.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 51 1 Info 755: global macro 'QP_VERSION_STR' (line 51, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 842 1 Info 755: global macro 'QS_STR' (line 842, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 920 1 Info 755: global macro 'QS_SIG_DICTIONARY' (line 920, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 651 1 Info 755: global macro 'Q_TRAN' (line 651, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 657 1 Info 755: global macro 'Q_TRAN_HIST' (line 657, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 1027 1 Info 755: global macro 'QF_QS_ACTION' (line 1027, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 998 1 Info 755: global macro 'QF_QS_CRIT_ENTRY' (line 998, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 1006 1 Info 755: global macro 'QF_QS_CRIT_EXIT' (line 1006, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 1015 1 Info 755: global macro 'QF_QS_ISR_ENTRY' (line 1015, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 1024 1 Info 755: global macro 'QF_QS_ISR_EXIT' (line 1024, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 592 1 Info 755: global macro 'Q_STATE_CAST' (line 592, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qassert.h" 171 1 Info 755: global macro 'Q_ERROR' (line 171, file C:\qp_lab\qpcpp\include\qassert.h) not referenced
+"C:\qp_lab\qpcpp\include\qassert.h" 187 1 Info 755: global macro 'Q_ERROR_ID' (line 187, file C:\qp_lab\qpcpp\include\qassert.h) not referenced
+"C:\qp_lab\qpcpp\include\qassert.h" 277 1 Info 755: global macro 'Q_INVARIANT' (line 277, file C:\qp_lab\qpcpp\include\qassert.h) not referenced
+"C:\qp_lab\qpcpp\include\qassert.h" 288 1 Info 755: global macro 'Q_INVARIANT_ID' (line 288, file C:\qp_lab\qpcpp\include\qassert.h) not referenced
+"C:\qp_lab\qpcpp\include\qassert.h" 237 1 Info 755: global macro 'Q_REQUIRE' (line 237, file C:\qp_lab\qpcpp\include\qassert.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 671 1 Info 755: global macro 'QS_END' (line 671, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 591 1 Info 755: global macro 'QS_END_NOCRIT' (line 591, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 715 1 Info 755: global macro 'QS_END_NOCRIT_' (line 715, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 432 1 Info 755: global macro 'QS_EXIT' (line 432, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 804 1 Info 755: global macro 'QS_U16' (line 804, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 814 1 Info 755: global macro 'QS_U32' (line 814, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 738 1 Info 755: global macro 'QS_U32_' (line 738, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 794 1 Info 755: global macro 'QS_U8' (line 794, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 834 1 Info 755: global macro 'QS_U64' (line 834, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 839 1 Info 755: global macro 'QS_U32_HEX' (line 839, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 968 1 Info 755: global macro 'QS_USR_DICTIONARY' (line 968, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 662 1 Info 755: global macro 'Q_SUPER' (line 662, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\ports\lint\qv\qf_port.h" 250 1 Info 755: global macro 'QF_CPU_SLEEP' (line 250, file C:\qp_lab\qpcpp\ports\lint\qv\qf_port.h) not referenced
+"C:\qp_lab\qpcpp\include\qv.h" 110 1 Info 755: global macro 'QACTIVE_EQUEUE_WAIT_' (line 110, file C:\qp_lab\qpcpp\include\qv.h) not referenced
+"C:\qp_lab\qpcpp\include\qv.h" 112 1 Info 755: global macro 'QACTIVE_EQUEUE_SIGNAL_' (line 112, file C:\qp_lab\qpcpp\include\qv.h) not referenced
+"C:\qp_lab\qpcpp\include\qv.h" 105 1 Info 755: global macro 'QF_SCHED_LOCK_' (line 105, file C:\qp_lab\qpcpp\include\qv.h) not referenced
+"C:\qp_lab\qpcpp\include\qv.h" 104 1 Info 755: global macro 'QF_SCHED_STAT_' (line 104, file C:\qp_lab\qpcpp\include\qv.h) not referenced
+"C:\qp_lab\qpcpp\include\qv.h" 106 1 Info 755: global macro 'QF_SCHED_UNLOCK_' (line 106, file C:\qp_lab\qpcpp\include\qv.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 450 1 Info 755: global macro 'QS_FILTER_OFF' (line 450, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 819 1 Info 755: global macro 'QS_F32' (line 819, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 824 1 Info 755: global macro 'QS_F64' (line 824, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 495 1 Info 755: global macro 'QS_FILTER_AO_OBJ' (line 495, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 513 1 Info 755: global macro 'QS_FILTER_MP_OBJ' (line 513, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 532 1 Info 755: global macro 'QS_FILTER_EQ_OBJ' (line 532, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 566 1 Info 755: global macro 'QS_FILTER_AP_OBJ' (line 566, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 442 1 Info 755: global macro 'QS_FILTER_ON' (line 442, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 475 1 Info 755: global macro 'QS_FILTER_SM_OBJ' (line 475, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 551 1 Info 755: global macro 'QS_FILTER_TE_OBJ' (line 551, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 867 1 Info 755: global macro 'QS_FUN' (line 867, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 990 1 Info 755: global macro 'QS_FLUSH' (line 990, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 957 1 Info 755: global macro 'QS_FUN_DICTIONARY' (line 957, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qf.h" 735 1 Info 755: global macro 'Q_DELETE_REF' (line 735, file C:\qp_lab\qpcpp\include\qf.h) not referenced
+"C:\qp_lab\qpcpp\include\qassert.h" 80 1 Info 755: global macro 'Q_DEFINE_THIS_FILE' (line 80, file C:\qp_lab\qpcpp\include\qassert.h) not referenced
+"C:\qp_lab\qpcpp\include\qv.h" 115 1 Info 755: global macro 'QF_EPOOL_TYPE_' (line 115, file C:\qp_lab\qpcpp\include\qv.h) not referenced
+"C:\qp_lab\qpcpp\include\qv.h" 119 1 Info 755: global macro 'QF_EPOOL_EVENT_SIZE_' (line 119, file C:\qp_lab\qpcpp\include\qv.h) not referenced
+"C:\qp_lab\qpcpp\include\qv.h" 121 1 Info 755: global macro 'QF_EPOOL_GET_' (line 121, file C:\qp_lab\qpcpp\include\qv.h) not referenced
+"C:\qp_lab\qpcpp\include\qv.h" 117 1 Info 755: global macro 'QF_EPOOL_INIT_' (line 117, file C:\qp_lab\qpcpp\include\qv.h) not referenced
+"C:\qp_lab\qpcpp\include\qv.h" 122 1 Info 755: global macro 'QF_EPOOL_PUT_' (line 122, file C:\qp_lab\qpcpp\include\qv.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 112 1 Info 755: global macro 'Q_EVT_CAST' (line 112, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qf.h" 857 1 Info 755: global macro 'TICK' (line 857, file C:\qp_lab\qpcpp\include\qf.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 789 1 Info 755: global macro 'QS_I8' (line 789, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 799 1 Info 755: global macro 'QS_I16' (line 799, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 809 1 Info 755: global macro 'QS_I32' (line 809, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 829 1 Info 755: global macro 'QS_I64' (line 829, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 425 1 Info 755: global macro 'QS_INIT' (line 425, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 69 1 Info 755: global macro 'Q_DIM' (line 69, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qassert.h" 146 1 Info 755: global macro 'Q_ALLEGE' (line 146, file C:\qp_lab\qpcpp\include\qassert.h) not referenced
+"C:\qp_lab\qpcpp\include\qassert.h" 161 1 Info 755: global macro 'Q_ALLEGE_ID' (line 161, file C:\qp_lab\qpcpp\include\qassert.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 121 1 Info 755: global macro 'Q_UINT2PTR_CAST' (line 121, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\ports\lint\qv\qf_port.h" 186 1 Info 755: global macro 'QF_INT_DISABLE' (line 186, file C:\qp_lab\qpcpp\ports\lint\qv\qf_port.h) not referenced
+"C:\qp_lab\qpcpp\ports\lint\qv\qf_port.h" 196 1 Info 755: global macro 'QF_INT_ENABLE' (line 196, file C:\qp_lab\qpcpp\ports\lint\qv\qf_port.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 378 1 Info 758: global enum 'QP::QHsm::ReservedHsmSignals' (line 378, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-5]
+"C:\qp_lab\qpcpp\include\qep.h" 138 1 Warning 526: Symbol 'QP::versionStr' (line 138, file C:\qp_lab\qpcpp\include\qep.h) not defined
+"C:\qp_lab\qpcpp\include\qep.h" 213 1 Info 768: global struct member 'QP::QEvt::sig' (line 213, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 214 1 Info 768: global struct member 'QP::QEvt::poolId_' (line 214, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 215 1 Info 768: global struct member 'QP::QEvt::refCtr_' (line 215, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 318 1 Warning 1526: Member function 'QP::QHsm::init(const struct QP::QEvt *)' (line 318, file C:\qp_lab\qpcpp\include\qep.h) not defined
+"C:\qp_lab\qpcpp\include\qep.h" 319 1 Info 1716: Virtual member function 'QP::QHsm::init(void)' (line 319, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 322 1 Info 1716: Virtual member function 'QP::QHsm::dispatch(const struct QP::QEvt *)' (line 322, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 322 1 Warning 1526: Member function 'QP::QHsm::dispatch(const struct QP::QEvt *)' (line 322, file C:\qp_lab\qpcpp\include\qep.h) not defined
+"C:\qp_lab\qpcpp\include\qep.h" 326 1 Info 1714: Member function 'QP::QHsm::isIn(QP::QStateHandler)' (line 326, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 326 1 Warning 1526: Member function 'QP::QHsm::isIn(QP::QStateHandler)' (line 326, file C:\qp_lab\qpcpp\include\qep.h) not defined
+"C:\qp_lab\qpcpp\include\qep.h" 329 1 Info 1714: Member function 'QP::QHsm::top(void *, const struct QP::QEvt *)' (line 329, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 329 1 Warning 1526: Member function 'QP::QHsm::top(void *, const struct QP::QEvt *)' (line 329, file C:\qp_lab\qpcpp\include\qep.h) not defined
+"C:\qp_lab\qpcpp\include\qep.h" 333 1 Info 1714: Member function 'QP::QHsm::state(void) const' (line 333, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 339 1 Info 1714: Member function 'QP::QHsm::childState(QP::QStateHandler)' (line 339, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 339 1 Warning 1526: Member function 'QP::QHsm::childState(QP::QStateHandler)' (line 339, file C:\qp_lab\qpcpp\include\qep.h) not defined
+"C:\qp_lab\qpcpp\include\qep.h" 343 1 Info 1714: Member function 'QP::QHsm::QHsm(QP::QStateHandler)' (line 343, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 343 1 Warning 1526: Member function 'QP::QHsm::QHsm(QP::QStateHandler)' (line 343, file C:\qp_lab\qpcpp\include\qep.h) not defined
+"C:\qp_lab\qpcpp\include\qep.h" 348 1 Info 1714: Member function 'QP::QHsm::Q_HANDLED(void)' (line 348, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 356 1 Info 1714: Member function 'QP::QHsm::Q_UNHANDLED(void)' (line 356, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 361 1 Info 1714: Member function 'QP::QHsm::tran_(QP::QStateHandler)' (line 361, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 367 1 Info 1714: Member function 'QP::QHsm::tran_hist_(QP::QStateHandler)' (line 367, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 373 1 Info 1714: Member function 'QP::QHsm::super_(QP::QStateHandler)' (line 373, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 379 1 Info 769: global enumeration constant 'QP::QHsm::ReservedHsmSignals::Q_ENTRY_SIG' (line 379, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 380 1 Info 769: global enumeration constant 'QP::QHsm::ReservedHsmSignals::Q_EXIT_SIG' (line 380, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 381 1 Info 769: global enumeration constant 'QP::QHsm::ReservedHsmSignals::Q_INIT_SIG' (line 381, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 386 1 Info 1714: Member function 'QP::QHsm::qm_tran_(const struct QP::QMTranActTable *)' (line 386, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 392 1 Info 1714: Member function 'QP::QHsm::qm_tran_hist_(const struct QP::QMState *, const struct QP::QMTranActTable *)' (line 392, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 401 1 Info 1714: Member function 'QP::QHsm::qm_tran_init_(const struct QP::QMTranActTable *)' (line 401, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 408 1 Info 1714: Member function 'QP::QHsm::qm_tran_ep_(const struct QP::QMTranActTable *)' (line 408, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 415 1 Info 1714: Member function 'QP::QHsm::qm_tran_xp_(QP::QActionHandler, const struct QP::QMTranActTable *)' (line 415, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 424 1 Info 1714: Member function 'QP::QHsm::qm_entry_(const struct QP::QMState *)' (line 424, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 430 1 Info 1714: Member function 'QP::QHsm::qm_exit_(const struct QP::QMState *)' (line 430, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 437 1 Info 1714: Member function 'QP::QHsm::qm_super_sub_(const struct QP::QMState *)' (line 437, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 444 1 Info 1714: Member function 'QP::QHsm::QM_HANDLED(void)' (line 444, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 450 1 Info 1714: Member function 'QP::QHsm::QM_UNHANDLED(void)' (line 450, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 456 1 Info 1714: Member function 'QP::QHsm::QM_SUPER(void)' (line 456, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 500 1 Warning 1526: Member function 'QP::QMsm::init(const struct QP::QEvt *)' (line 500, file C:\qp_lab\qpcpp\include\qep.h) not defined
+"C:\qp_lab\qpcpp\include\qep.h" 504 1 Info 1716: Virtual member function 'QP::QMsm::dispatch(const struct QP::QEvt *)' (line 504, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 504 1 Warning 1526: Member function 'QP::QMsm::dispatch(const struct QP::QEvt *)' (line 504, file C:\qp_lab\qpcpp\include\qep.h) not defined
+"C:\qp_lab\qpcpp\include\qep.h" 507 1 Info 1714: Member function 'QP::QMsm::isInState(const struct QP::QMState *) const' (line 507, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 507 1 Warning 1526: Member function 'QP::QMsm::isInState(const struct QP::QMState *) const' (line 507, file C:\qp_lab\qpcpp\include\qep.h) not defined
+"C:\qp_lab\qpcpp\include\qep.h" 510 1 Info 1714: Member function 'QP::QMsm::stateObj(void) const' (line 510, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 515 1 Info 1714: Member function 'QP::QMsm::childStateObj(const struct QP::QMState *) const' (line 515, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 515 1 Warning 1526: Member function 'QP::QMsm::childStateObj(const struct QP::QMState *) const' (line 515, file C:\qp_lab\qpcpp\include\qep.h) not defined
+"C:\qp_lab\qpcpp\include\qep.h" 519 1 Info 1714: Member function 'QP::QMsm::QMsm(QP::QStateHandler)' (line 519, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qep.h" 519 1 Warning 1526: Member function 'QP::QMsm::QMsm(QP::QStateHandler)' (line 519, file C:\qp_lab\qpcpp\include\qep.h) not defined
+"C:\qp_lab\qpcpp\include\qep.h" 532 1 Info 768: global struct member 'QP::QMsm::MAX_ENTRY_DEPTH_' (line 532, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 532 1 Info 1715: static member 'QP::QMsm::MAX_ENTRY_DEPTH_' (line 532, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 535 1 Info 768: global struct member 'QP::QMsm::msm_top_s' (line 535, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 535 1 Info 1715: static member 'QP::QMsm::msm_top_s' (line 535, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 535 1 Warning 1527: static member 'QP::QMsm::msm_top_s' (line 535, file C:\qp_lab\qpcpp\include\qep.h) not defined
+"C:\qp_lab\qpcpp\include\qep.h" 555 1 Info 768: global struct member 'QP::QMState::superstate' (line 555, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 556 1 Info 768: global struct member 'QP::QMState::stateHandler' (line 556, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 557 1 Info 768: global struct member 'QP::QMState::entryAction' (line 557, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 558 1 Info 768: global struct member 'QP::QMState::exitAction' (line 558, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 559 1 Info 768: global struct member 'QP::QMState::initAction' (line 559, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 564 1 Info 768: global struct member 'QP::QMTranActTable::target' (line 564, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 565 1 Info 768: global struct member 'QP::QMTranActTable::act' (line 565, file C:\qp_lab\qpcpp\include\qep.h) not referenced
+"C:\qp_lab\qpcpp\include\qep.h" 574 1 Info 1714: Member function 'QP::QEP::getVersion(void)' (line 574, file C:\qp_lab\qpcpp\include\qep.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qequeue.h" 139 1 Info 768: global struct member 'QP::QEQueue::m_ring' (line 139, file C:\qp_lab\qpcpp\include\qequeue.h) not referenced
+"C:\qp_lab\qpcpp\include\qequeue.h" 142 1 Info 768: global struct member 'QP::QEQueue::m_end' (line 142, file C:\qp_lab\qpcpp\include\qequeue.h) not referenced
+"C:\qp_lab\qpcpp\include\qequeue.h" 145 1 Info 768: global struct member 'QP::QEQueue::m_head' (line 145, file C:\qp_lab\qpcpp\include\qequeue.h) not referenced
+"C:\qp_lab\qpcpp\include\qequeue.h" 148 1 Info 768: global struct member 'QP::QEQueue::m_tail' (line 148, file C:\qp_lab\qpcpp\include\qequeue.h) not referenced
+"C:\qp_lab\qpcpp\include\qequeue.h" 157 1 Info 768: global struct member 'QP::QEQueue::m_nMin' (line 157, file C:\qp_lab\qpcpp\include\qequeue.h) not referenced
+"C:\qp_lab\qpcpp\include\qequeue.h" 161 1 Warning 1526: Member function 'QP::QEQueue::QEQueue(void)' (line 161, file C:\qp_lab\qpcpp\include\qequeue.h) not defined
+"C:\qp_lab\qpcpp\include\qequeue.h" 171 1 Info 1714: Member function 'QP::QEQueue::init(const struct QP::QEvt **, uint_fast16_t)' (line 171, file C:\qp_lab\qpcpp\include\qequeue.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qequeue.h" 171 1 Warning 1526: Member function 'QP::QEQueue::init(const struct QP::QEvt **, uint_fast16_t)' (line 171, file C:\qp_lab\qpcpp\include\qequeue.h) not defined
+"C:\qp_lab\qpcpp\include\qequeue.h" 187 1 Info 1714: Member function 'QP::QEQueue::post(const struct QP::QEvt *, uint_fast16_t)' (line 187, file C:\qp_lab\qpcpp\include\qequeue.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qequeue.h" 187 1 Warning 1526: Member function 'QP::QEQueue::post(const struct QP::QEvt *, uint_fast16_t)' (line 187, file C:\qp_lab\qpcpp\include\qequeue.h) not defined
+"C:\qp_lab\qpcpp\include\qequeue.h" 197 1 Info 1714: Member function 'QP::QEQueue::postLIFO(const struct QP::QEvt *)' (line 197, file C:\qp_lab\qpcpp\include\qequeue.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qequeue.h" 197 1 Warning 1526: Member function 'QP::QEQueue::postLIFO(const struct QP::QEvt *)' (line 197, file C:\qp_lab\qpcpp\include\qequeue.h) not defined
+"C:\qp_lab\qpcpp\include\qequeue.h" 211 1 Info 1714: Member function 'QP::QEQueue::get(void)' (line 211, file C:\qp_lab\qpcpp\include\qequeue.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qequeue.h" 211 1 Warning 1526: Member function 'QP::QEQueue::get(void)' (line 211, file C:\qp_lab\qpcpp\include\qequeue.h) not defined
+"C:\qp_lab\qpcpp\include\qequeue.h" 223 1 Info 1714: Member function 'QP::QEQueue::getNFree(void) const' (line 223, file C:\qp_lab\qpcpp\include\qequeue.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qequeue.h" 237 1 Info 1714: Member function 'QP::QEQueue::isEmpty(void) const' (line 237, file C:\qp_lab\qpcpp\include\qequeue.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qmpool.h" 110 1 Info 768: global struct member 'QP::QMPool::m_start' (line 110, file C:\qp_lab\qpcpp\include\qmpool.h) not referenced
+"C:\qp_lab\qpcpp\include\qmpool.h" 113 1 Info 768: global struct member 'QP::QMPool::m_end' (line 113, file C:\qp_lab\qpcpp\include\qmpool.h) not referenced
+"C:\qp_lab\qpcpp\include\qmpool.h" 116 1 Info 768: global struct member 'QP::QMPool::m_free_head' (line 116, file C:\qp_lab\qpcpp\include\qmpool.h) not referenced
+"C:\qp_lab\qpcpp\include\qmpool.h" 122 1 Info 768: global struct member 'QP::QMPool::m_nTot' (line 122, file C:\qp_lab\qpcpp\include\qmpool.h) not referenced
+"C:\qp_lab\qpcpp\include\qmpool.h" 125 1 Info 768: global struct member 'QP::QMPool::m_nFree' (line 125, file C:\qp_lab\qpcpp\include\qmpool.h) not referenced
+"C:\qp_lab\qpcpp\include\qmpool.h" 133 1 Info 768: global struct member 'QP::QMPool::m_nMin' (line 133, file C:\qp_lab\qpcpp\include\qmpool.h) not referenced
+"C:\qp_lab\qpcpp\include\qmpool.h" 136 1 Note 1914: Default constructor 'QP::QMPool::QMPool(void)' (line 136, file C:\qp_lab\qpcpp\include\qmpool.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qmpool.h" 136 1 Warning 1526: Member function 'QP::QMPool::QMPool(void)' (line 136, file C:\qp_lab\qpcpp\include\qmpool.h) not defined
+"C:\qp_lab\qpcpp\include\qmpool.h" 139 1 Info 1714: Member function 'QP::QMPool::init(void *, uint_fast32_t, uint_fast16_t)' (line 139, file C:\qp_lab\qpcpp\include\qmpool.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qmpool.h" 139 1 Warning 1526: Member function 'QP::QMPool::init(void *, uint_fast32_t, uint_fast16_t)' (line 139, file C:\qp_lab\qpcpp\include\qmpool.h) not defined
+"C:\qp_lab\qpcpp\include\qmpool.h" 143 1 Info 1714: Member function 'QP::QMPool::get(uint_fast16_t)' (line 143, file C:\qp_lab\qpcpp\include\qmpool.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qmpool.h" 143 1 Warning 1526: Member function 'QP::QMPool::get(uint_fast16_t)' (line 143, file C:\qp_lab\qpcpp\include\qmpool.h) not defined
+"C:\qp_lab\qpcpp\include\qmpool.h" 146 1 Info 1714: Member function 'QP::QMPool::put(void *)' (line 146, file C:\qp_lab\qpcpp\include\qmpool.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qmpool.h" 146 1 Warning 1526: Member function 'QP::QMPool::put(void *)' (line 146, file C:\qp_lab\qpcpp\include\qmpool.h) not defined
+"C:\qp_lab\qpcpp\include\qmpool.h" 149 1 Info 1714: Member function 'QP::QMPool::getBlockSize(void) const' (line 149, file C:\qp_lab\qpcpp\include\qmpool.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qpset.h" 57 1 Warning 526: Symbol 'QP::QF_log2Lkup' (line 57, file C:\qp_lab\qpcpp\include\qpset.h) not defined
+"C:\qp_lab\qpcpp\include\qpset.h" 111 1 Info 1714: Member function 'QP::QPSet::setEmpty(void)' (line 111, file C:\qp_lab\qpcpp\include\qpset.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qpset.h" 116 1 Info 1714: Member function 'QP::QPSet::isEmpty(void) const' (line 116, file C:\qp_lab\qpcpp\include\qpset.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qpset.h" 121 1 Info 1714: Member function 'QP::QPSet::notEmpty(void) const' (line 121, file C:\qp_lab\qpcpp\include\qpset.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qpset.h" 126 1 Info 1714: Member function 'QP::QPSet::hasElement(uint_fast8_t) const' (line 126, file C:\qp_lab\qpcpp\include\qpset.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qpset.h" 133 1 Info 1714: Member function 'QP::QPSet::insert(uint_fast8_t)' (line 133, file C:\qp_lab\qpcpp\include\qpset.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qpset.h" 139 1 Info 1714: Member function 'QP::QPSet::remove(uint_fast8_t)' (line 139, file C:\qp_lab\qpcpp\include\qpset.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qpset.h" 145 1 Info 1714: Member function 'QP::QPSet::findMax(void) const' (line 145, file C:\qp_lab\qpcpp\include\qpset.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qv.h" 74 1 Info 1714: Member function 'QP::QV::getVersion(void)' (line 74, file C:\qp_lab\qpcpp\include\qv.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qv.h" 88 1 Info 1714: Member function 'QP::QV::onIdle(void)' (line 88, file C:\qp_lab\qpcpp\include\qv.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qv.h" 88 1 Warning 1526: Member function 'QP::QV::onIdle(void)' (line 88, file C:\qp_lab\qpcpp\include\qv.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 87 1 Info 756: global typedef 'QP::QEvtSize' (line 87, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-5]
+"C:\qp_lab\qpcpp\include\qf.h" 154 1 Info 768: global struct member 'QP::QActive::m_eQueue' (line 154, file C:\qp_lab\qpcpp\include\qf.h) not referenced
+"C:\qp_lab\qpcpp\include\qf.h" 181 1 Info 1714: Member function 'QP::QActive::QActive(QP::QStateHandler)' (line 181, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 181 1 Warning 1526: Member function 'QP::QActive::QActive(QP::QStateHandler)' (line 181, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 186 1 Warning 1526: Member function 'QP::QActive::start(uint_fast8_t, const struct QP::QEvt **, uint_fast16_t, void *, uint_fast16_t, const struct QP::QEvt *)' (line 186, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 192 1 Info 1716: Virtual member function 'QP::QActive::start(uint_fast8_t, const struct QP::QEvt **, uint_fast16_t, void *, uint_fast16_t)' (line 192, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 205 1 Warning 1526: Member function 'QP::QActive::post_(const struct QP::QEvt *, uint_fast16_t, const void *)' (line 205, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 211 1 Info 1716: Virtual member function 'QP::QActive::postLIFO(const struct QP::QEvt *)' (line 211, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 211 1 Warning 1526: Member function 'QP::QActive::postLIFO(const struct QP::QEvt *)' (line 211, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 214 1 Info 1714: Member function 'QP::QActive::unsubscribeAll(void) const' (line 214, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 214 1 Warning 1526: Member function 'QP::QActive::unsubscribeAll(void) const' (line 214, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 218 1 Info 1714: Member function 'QP::QActive::stop(void)' (line 218, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 218 1 Warning 1526: Member function 'QP::QActive::stop(void)' (line 218, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 221 1 Info 1714: Member function 'QP::QActive::subscribe(enum_t) const' (line 221, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 221 1 Warning 1526: Member function 'QP::QActive::subscribe(enum_t) const' (line 221, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 224 1 Info 1714: Member function 'QP::QActive::unsubscribe(enum_t) const' (line 224, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 224 1 Warning 1526: Member function 'QP::QActive::unsubscribe(enum_t) const' (line 224, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 227 1 Info 1714: Member function 'QP::QActive::defer(QP::QEQueue *, const struct QP::QEvt *) const' (line 227, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 227 1 Warning 1526: Member function 'QP::QActive::defer(QP::QEQueue *, const struct QP::QEvt *) const' (line 227, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 230 1 Info 1714: Member function 'QP::QActive::recall(QP::QEQueue *)' (line 230, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 230 1 Warning 1526: Member function 'QP::QActive::recall(QP::QEQueue *)' (line 230, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 233 1 Info 1714: Member function 'QP::QActive::flushDeferred(QP::QEQueue *) const' (line 233, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 233 1 Warning 1526: Member function 'QP::QActive::flushDeferred(QP::QEQueue *) const' (line 233, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 236 1 Info 1714: Member function 'QP::QActive::getPrio(void) const' (line 236, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 241 1 Info 1714: Member function 'QP::QActive::setPrio(uint_fast8_t)' (line 241, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 258 1 Info 1714: Member function 'QP::QActive::get_(void)' (line 258, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 258 1 Warning 1526: Member function 'QP::QActive::get_(void)' (line 258, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 298 1 Warning 1526: Member function 'QP::QMActive::init(const struct QP::QEvt *)' (line 298, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 299 1 Warning 1526: Member function 'QP::QMActive::init(void)' (line 299, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 300 1 Info 1716: Virtual member function 'QP::QMActive::dispatch(const struct QP::QEvt *)' (line 300, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 300 1 Warning 1526: Member function 'QP::QMActive::dispatch(const struct QP::QEvt *)' (line 300, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 303 1 Info 1714: Member function 'QP::QMActive::isInState(const struct QP::QMState *) const' (line 303, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 303 1 Warning 1526: Member function 'QP::QMActive::isInState(const struct QP::QMState *) const' (line 303, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 306 1 Info 1714: Member function 'QP::QMActive::stateObj(void) const' (line 306, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 311 1 Info 1714: Member function 'QP::QMActive::childStateObj(const struct QP::QMState *) const' (line 311, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 311 1 Warning 1526: Member function 'QP::QMActive::childStateObj(const struct QP::QMState *) const' (line 311, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 315 1 Info 1714: Member function 'QP::QMActive::QMActive(QP::QStateHandler)' (line 315, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 315 1 Warning 1526: Member function 'QP::QMActive::QMActive(QP::QStateHandler)' (line 315, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 367 1 Info 768: global struct member 'QP::QTimeEvt::m_next' (line 367, file C:\qp_lab\qpcpp\include\qf.h) not referenced
+"C:\qp_lab\qpcpp\include\qf.h" 380 1 Info 768: global struct member 'QP::QTimeEvt::m_ctr' (line 380, file C:\qp_lab\qpcpp\include\qf.h) not referenced
+"C:\qp_lab\qpcpp\include\qf.h" 388 1 Info 768: global struct member 'QP::QTimeEvt::m_interval' (line 388, file C:\qp_lab\qpcpp\include\qf.h) not referenced
+"C:\qp_lab\qpcpp\include\qf.h" 393 1 Info 1714: Member function 'QP::QTimeEvt::QTimeEvt(QP::QActive *, enum_t, uint8_t)' (line 393, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 393 1 Warning 1526: Member function 'QP::QTimeEvt::QTimeEvt(QP::QActive *, enum_t, uint8_t)' (line 393, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 397 1 Info 1714: Member function 'QP::QTimeEvt::armX(QP::QTimeEvtCtr, QP::QTimeEvtCtr)' (line 397, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 397 1 Warning 1526: Member function 'QP::QTimeEvt::armX(QP::QTimeEvtCtr, QP::QTimeEvtCtr)' (line 397, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 401 1 Info 1714: Member function 'QP::QTimeEvt::disarm(void)' (line 401, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 401 1 Warning 1526: Member function 'QP::QTimeEvt::disarm(void)' (line 401, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 404 1 Info 1714: Member function 'QP::QTimeEvt::rearm(QP::QTimeEvtCtr)' (line 404, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 404 1 Warning 1526: Member function 'QP::QTimeEvt::rearm(QP::QTimeEvtCtr)' (line 404, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 407 1 Info 1714: Member function 'QP::QTimeEvt::ctr(void) const' (line 407, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 407 1 Warning 1526: Member function 'QP::QTimeEvt::ctr(void) const' (line 407, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 453 1 Info 1714: Member function 'QP::QTimeEvt::toActive(void)' (line 453, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 456 1 Info 1714: Member function 'QP::QTimeEvt::toTimeEvt(void)' (line 456, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 484 1 Info 1714: Member function 'QP::QF::getVersion(void)' (line 484, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 489 1 Info 1714: Member function 'QP::QF::init(void)' (line 489, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 489 1 Warning 1526: Member function 'QP::QF::init(void)' (line 489, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 492 1 Info 1714: Member function 'QP::QF::psInit(QP::QSubscrList *, enum_t)' (line 492, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 492 1 Warning 1526: Member function 'QP::QF::psInit(QP::QSubscrList *, enum_t)' (line 492, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 496 1 Info 1714: Member function 'QP::QF::poolInit(void *, uint_fast32_t, uint_fast16_t)' (line 496, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 496 1 Warning 1526: Member function 'QP::QF::poolInit(void *, uint_fast32_t, uint_fast16_t)' (line 496, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 500 1 Warning 1526: Member function 'QP::QF::poolGetMaxBlockSize(void)' (line 500, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 504 1 Info 1714: Member function 'QP::QF::run(void)' (line 504, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 504 1 Warning 1526: Member function 'QP::QF::run(void)' (line 504, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 507 1 Info 1714: Member function 'QP::QF::onStartup(void)' (line 507, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 507 1 Warning 1526: Member function 'QP::QF::onStartup(void)' (line 507, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 510 1 Info 1714: Member function 'QP::QF::onCleanup(void)' (line 510, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 510 1 Warning 1526: Member function 'QP::QF::onCleanup(void)' (line 510, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 514 1 Info 1714: Member function 'QP::QF::stop(void)' (line 514, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 514 1 Warning 1526: Member function 'QP::QF::stop(void)' (line 514, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 522 1 Warning 1526: Member function 'QP::QF::publish_(const struct QP::QEvt *, const void *)' (line 522, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 525 1 Warning 1526: Member function 'QP::QF::tickX_(uint8_t, const void *)' (line 525, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 531 1 Info 1714: Member function 'QP::QF::noTimeEvtsActiveX(uint8_t)' (line 531, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 531 1 Warning 1526: Member function 'QP::QF::noTimeEvtsActiveX(uint8_t)' (line 531, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 536 1 Info 1714: Member function 'QP::QF::getPoolMin(uint_fast8_t)' (line 536, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 536 1 Warning 1526: Member function 'QP::QF::getPoolMin(uint_fast8_t)' (line 536, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 540 1 Info 1714: Member function 'QP::QF::getQueueMin(uint_fast8_t)' (line 540, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 540 1 Warning 1526: Member function 'QP::QF::getQueueMin(uint_fast8_t)' (line 540, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 543 1 Warning 1526: Member function 'QP::QF::newX_(uint_fast16_t, uint_fast16_t, enum_t)' (line 543, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 547 1 Warning 1526: Member function 'QP::QF::gc(const struct QP::QEvt *)' (line 547, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 550 1 Info 1714: Member function 'QP::QF::newRef_(const struct QP::QEvt *, const struct QP::QEvt *)' (line 550, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 550 1 Warning 1526: Member function 'QP::QF::newRef_(const struct QP::QEvt *, const struct QP::QEvt *)' (line 550, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 554 1 Info 1714: Member function 'QP::QF::remove_(QP::QActive *)' (line 554, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 554 1 Warning 1526: Member function 'QP::QF::remove_(QP::QActive *)' (line 554, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 557 1 Warning 1527: static member 'QP::QF::active_' (line 557, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 560 1 Info 1714: Member function 'QP::QF::thread_(QP::QActive *)' (line 560, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 560 1 Warning 1526: Member function 'QP::QF::thread_(QP::QActive *)' (line 560, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 563 1 Info 1714: Member function 'QP::QF::add_(QP::QActive *)' (line 563, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 563 1 Warning 1526: Member function 'QP::QF::add_(QP::QActive *)' (line 563, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 566 1 Info 1714: Member function 'QP::QF::bzero(void *, uint_fast16_t)' (line 566, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 566 1 Warning 1526: Member function 'QP::QF::bzero(void *, uint_fast16_t)' (line 566, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 572 1 Info 768: global struct member 'QP::QF::timeEvtHead_' (line 572, file C:\qp_lab\qpcpp\include\qf.h) not referenced
+"C:\qp_lab\qpcpp\include\qf.h" 572 1 Info 1715: static member 'QP::QF::timeEvtHead_' (line 572, file C:\qp_lab\qpcpp\include\qf.h) not referenced
+"C:\qp_lab\qpcpp\include\qf.h" 572 1 Warning 1527: static member 'QP::QF::timeEvtHead_' (line 572, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 594 1 Info 1714: Member function 'QP::QTicker::QTicker(uint8_t)' (line 594, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 594 1 Warning 1526: Member function 'QP::QTicker::QTicker(uint8_t)' (line 594, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 596 1 Warning 1526: Member function 'QP::QTicker::init(const struct QP::QEvt *)' (line 596, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 598 1 Info 1716: Virtual member function 'QP::QTicker::dispatch(const struct QP::QEvt *)' (line 598, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 598 1 Warning 1526: Member function 'QP::QTicker::dispatch(const struct QP::QEvt *)' (line 598, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 602 1 Warning 1526: Member function 'QP::QTicker::post_(const struct QP::QEvt *, uint_fast16_t, const void *)' (line 602, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qf.h" 605 1 Info 1716: Virtual member function 'QP::QTicker::postLIFO(const struct QP::QEvt *)' (line 605, file C:\qp_lab\qpcpp\include\qf.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qf.h" 605 1 Warning 1526: Member function 'QP::QTicker::postLIFO(const struct QP::QEvt *)' (line 605, file C:\qp_lab\qpcpp\include\qf.h) not defined
+"C:\qp_lab\qpcpp\include\qs.h" 79 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QEP_STATE_ENTRY' (line 79, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 80 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QEP_STATE_EXIT' (line 80, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 81 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QEP_STATE_INIT' (line 81, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 82 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QEP_INIT_TRAN' (line 82, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 83 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QEP_INTERN_TRAN' (line 83, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 84 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QEP_TRAN' (line 84, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 85 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QEP_IGNORED' (line 85, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 86 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QEP_DISPATCH' (line 86, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 87 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QEP_UNHANDLED' (line 87, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 90 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_ACTIVE_ADD' (line 90, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 91 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_ACTIVE_REMOVE' (line 91, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 92 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_ACTIVE_SUBSCRIBE' (line 92, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 93 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_ACTIVE_UNSUBSCRIBE' (line 93, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 94 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_ACTIVE_POST_FIFO' (line 94, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 95 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_ACTIVE_POST_LIFO' (line 95, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 96 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_ACTIVE_GET' (line 96, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 97 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_ACTIVE_GET_LAST' (line 97, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 98 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_EQUEUE_INIT' (line 98, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 99 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_EQUEUE_POST_FIFO' (line 99, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 100 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_EQUEUE_POST_LIFO' (line 100, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 101 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_EQUEUE_GET' (line 101, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 102 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_EQUEUE_GET_LAST' (line 102, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 103 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_MPOOL_INIT' (line 103, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 104 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_MPOOL_GET' (line 104, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 105 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_MPOOL_PUT' (line 105, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 106 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_PUBLISH' (line 106, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 107 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_RESERVED8' (line 107, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 108 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_NEW' (line 108, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 109 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_GC_ATTEMPT' (line 109, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 110 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_GC' (line 110, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 111 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_TICK' (line 111, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 112 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_TIMEEVT_ARM' (line 112, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 113 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_TIMEEVT_AUTO_DISARM' (line 113, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 114 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_TIMEEVT_DISARM_ATTEMPT' (line 114, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 115 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_TIMEEVT_DISARM' (line 115, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 116 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_TIMEEVT_REARM' (line 116, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 117 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_TIMEEVT_POST' (line 117, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 118 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_TIMEEVT_CTR' (line 118, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 119 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_CRIT_ENTRY' (line 119, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 120 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_CRIT_EXIT' (line 120, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 121 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_ISR_ENTRY' (line 121, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 122 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_ISR_EXIT' (line 122, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 123 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_INT_DISABLE' (line 123, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 124 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_INT_ENABLE' (line 124, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 125 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_ACTIVE_POST_ATTEMPT' (line 125, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 126 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_EQUEUE_POST_ATTEMPT' (line 126, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 127 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_MPOOL_GET_ATTEMPT' (line 127, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 128 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_RESERVED1' (line 128, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 129 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QF_RESERVED0' (line 129, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 132 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_SCHED_LOCK' (line 132, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 133 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_SCHED_UNLOCK' (line 133, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 134 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_SCHED_NEXT' (line 134, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 135 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_SCHED_IDLE' (line 135, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 136 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_SCHED_RESUME' (line 136, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 139 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QEP_TRAN_HIST' (line 139, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 140 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QEP_TRAN_EP' (line 140, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 141 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QEP_TRAN_XP' (line 141, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 142 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QEP_RESERVED1' (line 142, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 143 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_QEP_RESERVED0' (line 143, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 151 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_RESERVED0' (line 151, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 153 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_TEST_STATUS' (line 153, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 155 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_ASSERT_FAIL' (line 155, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 158 1 Info 769: global enumeration constant 'QP::QSpyRecords::QS_USER' (line 158, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 199 1 Info 1714: Member function 'QP::QS::getVersion(void)' (line 199, file C:\qp_lab\qpcpp\include\qs.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs.cpp" 73 1 Info 1714: Member function 'QP::QS::initBuf(uint8_t *, uint_fast16_t)' (line 73, file C:\qp_lab\qpcpp\source\qs.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs.cpp" 122 1 Info 1714: Member function 'QP::QS::filterOn(uint_fast8_t)' (line 122, file C:\qp_lab\qpcpp\source\qs.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs.cpp" 497 1 Info 1714: Member function 'QP::QS::u8u8_(uint8_t, uint8_t)' (line 497, file C:\qp_lab\qpcpp\source\qs.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs.cpp" 412 1 Info 1714: Member function 'QP::QS::u8(uint8_t, uint8_t)' (line 412, file C:\qp_lab\qpcpp\source\qs.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs.cpp" 432 1 Info 1714: Member function 'QP::QS::u16(uint8_t, uint16_t)' (line 432, file C:\qp_lab\qpcpp\source\qs.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs.cpp" 457 1 Info 1714: Member function 'QP::QS::u32(uint8_t, uint32_t)' (line 457, file C:\qp_lab\qpcpp\source\qs.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs_fp.cpp" 50 1 Info 1714: Member function 'QP::QS::f32(uint8_t, float32_t)' (line 50, file C:\qp_lab\qpcpp\source\qs_fp.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs_fp.cpp" 79 1 Info 1714: Member function 'QP::QS::f64(uint8_t, float64_t)' (line 79, file C:\qp_lab\qpcpp\source\qs_fp.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs.cpp" 778 1 Info 1714: Member function 'QP::QS::str(const char_t *)' (line 778, file C:\qp_lab\qpcpp\source\qs.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs.cpp" 749 1 Info 1714: Member function 'QP::QS::mem(const uint8_t *, uint8_t)' (line 749, file C:\qp_lab\qpcpp\source\qs.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs.cpp" 673 1 Info 1714: Member function 'QP::QS::sig_dict(enum_t, const void *, const char_t *)' (line 673, file C:\qp_lab\qpcpp\source\qs.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs.cpp" 694 1 Info 1714: Member function 'QP::QS::obj_dict(const void *, const char_t *)' (line 694, file C:\qp_lab\qpcpp\source\qs.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs.cpp" 714 1 Info 1714: Member function 'QP::QS::fun_dict(void (*)(void), const char_t *)' (line 714, file C:\qp_lab\qpcpp\source\qs.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs.cpp" 732 1 Info 1714: Member function 'QP::QS::usr_dict(enum_t, const char_t *)' (line 732, file C:\qp_lab\qpcpp\source\qs.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 199 1 Info 1714: Member function 'QP::QS::rxInitBuf(uint8_t *, uint16_t)' (line 199, file C:\qp_lab\qpcpp\source\qs_rx.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 245 1 Info 1714: Member function 'QP::QS::rxParse(void)' (line 245, file C:\qp_lab\qpcpp\source\qs_rx.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs_rx.cpp" 229 1 Info 1714: Member function 'QP::QS::rxGetNfree(void)' (line 229, file C:\qp_lab\qpcpp\source\qs_rx.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qs.h" 293 1 Info 1714: Member function 'QP::QS::rxPut(uint8_t)' (line 293, file C:\qp_lab\qpcpp\include\qs.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs.cpp" 592 1 Info 1714: Member function 'QP::QS::getByte(void)' (line 592, file C:\qp_lab\qpcpp\source\qs.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\source\qs.cpp" 637 1 Info 1714: Member function 'QP::QS::getBlock(uint16_t *)' (line 637, file C:\qp_lab\qpcpp\source\qs.cpp) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qs.h" 319 1 Info 1714: Member function 'QP::QS::onStartup(const void *)' (line 319, file C:\qp_lab\qpcpp\include\qs.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qs.h" 319 1 Warning 1526: Member function 'QP::QS::onStartup(const void *)' (line 319, file C:\qp_lab\qpcpp\include\qs.h) not defined
+"C:\qp_lab\qpcpp\include\qs.h" 322 1 Info 1714: Member function 'QP::QS::onCleanup(void)' (line 322, file C:\qp_lab\qpcpp\include\qs.h) not referenced [MISRA C++ Rule 0-1-10]
+"C:\qp_lab\qpcpp\include\qs.h" 322 1 Warning 1526: Member function 'QP::QS::onCleanup(void)' (line 322, file C:\qp_lab\qpcpp\include\qs.h) not defined
+"C:\qp_lab\qpcpp\include\qs.h" 325 1 Warning 1526: Member function 'QP::QS::onFlush(void)' (line 325, file C:\qp_lab\qpcpp\include\qs.h) not defined
+"C:\qp_lab\qpcpp\include\qs.h" 328 1 Warning 1526: Member function 'QP::QS::onGetTime(void)' (line 328, file C:\qp_lab\qpcpp\include\qs.h) not defined
+"C:\qp_lab\qpcpp\include\qs.h" 331 1 Warning 1526: Member function 'QP::QS::onReset(void)' (line 331, file C:\qp_lab\qpcpp\include\qs.h) not defined
+"C:\qp_lab\qpcpp\include\qs.h" 334 1 Warning 1526: Member function 'QP::QS::onCommand(uint8_t, uint32_t)' (line 334, file C:\qp_lab\qpcpp\include\qs.h) not defined
+"C:\qp_lab\qpcpp\include\qs.h" 342 1 Info 769: global enumeration constant 'QP::QS::QSType::I8_T' (line 342, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 343 1 Info 769: global enumeration constant 'QP::QS::QSType::U8_T' (line 343, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 344 1 Info 769: global enumeration constant 'QP::QS::QSType::I16_T' (line 344, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 345 1 Info 769: global enumeration constant 'QP::QS::QSType::U16_T' (line 345, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 346 1 Info 769: global enumeration constant 'QP::QS::QSType::I32_T' (line 346, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 347 1 Info 769: global enumeration constant 'QP::QS::QSType::U32_T' (line 347, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 348 1 Info 769: global enumeration constant 'QP::QS::QSType::F32_T' (line 348, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 349 1 Info 769: global enumeration constant 'QP::QS::QSType::F64_T' (line 349, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 352 1 Info 769: global enumeration constant 'QP::QS::QSType::SIG_T' (line 352, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 353 1 Info 769: global enumeration constant 'QP::QS::QSType::OBJ_T' (line 353, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 354 1 Info 769: global enumeration constant 'QP::QS::QSType::FUN_T' (line 354, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 355 1 Info 769: global enumeration constant 'QP::QS::QSType::I64_T' (line 355, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 356 1 Info 769: global enumeration constant 'QP::QS::QSType::U64_T' (line 356, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 357 1 Info 769: global enumeration constant 'QP::QS::QSType::U32_HEX_T' (line 357, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 377 1 Info 768: global struct member 'QP::QS::full' (line 377, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 401 1 Info 769: global enumeration constant 'QP::QSpyRxRecords::QS_RX_RESERVED7' (line 401, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 402 1 Info 769: global enumeration constant 'QP::QSpyRxRecords::QS_RX_RESERVED6' (line 402, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 403 1 Info 769: global enumeration constant 'QP::QSpyRxRecords::QS_RX_RESERVED5' (line 403, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 404 1 Info 769: global enumeration constant 'QP::QSpyRxRecords::QS_RX_RESERVED4' (line 404, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 408 1 Info 769: global enumeration constant 'QP::QSpyRxRecords::QS_RX_RESERVED3' (line 408, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 409 1 Info 769: global enumeration constant 'QP::QSpyRxRecords::QS_RX_RESERVED2' (line 409, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\include\qs.h" 410 1 Info 769: global enumeration constant 'QP::QSpyRxRecords::QS_RX_RESERVED1' (line 410, file C:\qp_lab\qpcpp\include\qs.h) not referenced
+"C:\qp_lab\qpcpp\source\qs.cpp" 49 1 Warning 526: Symbol 'QP::BUILD_DATE' (line 49, file C:\qp_lab\qpcpp\source\qs.cpp) not defined
+"C:\qp_lab\qpcpp\source\qs.cpp" 50 1 Warning 526: Symbol 'QP::BUILD_TIME' (line 50, file C:\qp_lab\qpcpp\source\qs.cpp) not defined
+
+Count   Type    Number  Text
+
+1       Warning 415     ___ of out-of-bounds pointer (___ beyond end of data) by operator '___'___
+1       Warning 416     ___ of out-of-bounds pointer (___ beyond end of data) by operator '___'___
+7       Warning 526     Symbol '___' (___) not defined
+75      Warning 1526    Member function '___' (___) not defined
+3       Warning 1527    static member '___' (___) not defined
+1       Info    708     union initialization
+96      Info    755     global macro '___' (___) not referenced
+8       Info    756     global typedef '___' (___) not referenced
+3       Info    757     global declarator '___' (___) not referenced
+1       Info    758     global ___ '___' (___) not referenced
+29      Info    768     global struct member '___' (___) not referenced
+87      Info    769     global enumeration constant '___' (___) not referenced
+107     Info    1714    Member function '___' (___) not referenced
+3       Info    1715    static member '___' (___) not referenced
+8       Info    1716    Virtual member function '___' (___) not referenced
+8       Note    923     cast from ___ to ___
+1       Note    928     cast from ___ to ___
+2       Note    930     cast from ___ to ___
+1       Note    1914    Default constructor '___' (___) not referenced
+1       Note    1960    Violates MISRA C++ 2008 Required Rule ___, ___
