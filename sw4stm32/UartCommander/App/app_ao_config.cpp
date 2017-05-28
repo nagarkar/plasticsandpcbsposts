@@ -1,10 +1,3 @@
-/*
- * app_ao_config.c
- *
- *  Created on: May 19, 2017
- *      Author: chinm_000
- */
-
 #include "app_ao_config.h"
 #include "active_config.h"
 #include "active_events.h"
