@@ -87,6 +87,7 @@ __weak void QXK::onIdle(void) {
 __weak void QF::onStartup(void) {
     (void)0;
 }
+
 extern "C" __weak void Q_onAssert(char const *module, int loc) {
     //
     // NOTE: add here your application-specific error handling
