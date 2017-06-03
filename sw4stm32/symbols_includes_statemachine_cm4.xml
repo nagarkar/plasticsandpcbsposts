@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+<language name="C Source File">
+<includepath workspace_path="true">/${ProjName}/statemachines/bsp_stmf4xre_hal</includepath>
+<includepath workspace_path="true">/${ProjName}/statemachines/Uart</includepath>
+<includepath workspace_path="true">/${ProjName}/statemachines/UartCMD</includepath>
+<includepath workspace_path="true">/${ProjName}/statemachines/stdevents</includepath>
+</language>
+<language name="C++ Source File">
+<includepath workspace_path="true">/${ProjName}/statemachines/bsp_stmf4xre_hal</includepath>
+<includepath workspace_path="true">/${ProjName}/statemachines/Uart</includepath>
+<includepath workspace_path="true">/${ProjName}/statemachines/UartCMD</includepath>
+<includepath workspace_path="true">/${ProjName}/statemachines/stdevents</includepath></language>
+</section>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+<language name="S">
+<macro>
+<name>USE_HAL_DRIVER</name><value/>
+</macro>
+<macro>
+<name>STM32F401xE</name><value/>
+</macro>
+<macro>
+<name>USE_STM32F4XX_NUCLEO</name><value/>
+</macro>
+
+</language>
+<language name="C Source File">
+<macro>
+<name>USE_HAL_DRIVER</name><value/>
+</macro>
+<macro>
+<name>STM32F401xE</name><value/>
+</macro>
+<macro>
+<name>USE_STM32F4XX_NUCLEO</name><value/>
+</macro>
+
+</language>
+<language name="C++ Source File">
+<macro>
+<name>USE_HAL_DRIVER</name><value/>
+</macro>
+<macro>
+<name>STM32F401xE</name><value/>
+</macro>
+<macro>
+<name>USE_STM32F4XX_NUCLEO</name><value/>
+</macro>
+
+</language>
+<language name="S">
+<macro>
+<name>USE_HAL_DRIVER</name><value/>
+</macro>
+<macro>
+<name>STM32F401xE</name><value/>
+</macro>
+<macro>
+<name>USE_STM32F4XX_NUCLEO</name><value/>
+</macro>
+
+</language>
+</section>
+</cdtprojectproperties>
