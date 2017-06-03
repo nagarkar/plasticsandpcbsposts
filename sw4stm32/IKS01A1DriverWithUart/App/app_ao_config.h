@@ -94,6 +94,7 @@ using namespace QP;
 	m(Signal, ABUMP_DET_STOP_CFM_SIG)    \
 	m(Signal, ABUMP_DET_FAILED_SIG)    \
 	m(Signal, ABUMP_DET_TIMEOUT_SIG)    \
+	m(Signal, ABUMP_DETECTED_SIG)	\
 	m(Signal, MAX_PUB_SIG)
 
 SMARTENUM_DEFINE_ENUM(Signal, SIG_LIST)
@@ -101,7 +102,8 @@ SMARTENUM_DECLARE_NAMES(Signal, SIG_LIST)
 SMARTENUM_DECLARE_GET_VALUE_FROM_STRING(Signal, SIG_LIST)
 
 enum SignalAliases {
-	UART_COMMANDER_CMD_IND_SIG = UART_IN_DATA_IND_SIG
+	UART_COMMANDER_CMD_IND_SIG = UART_IN_DATA_IND_SIG,
+	WHEEL_DRIVE_X_BUMP = ABUMP_DETECTED_SIG
 };
 
 // Higher value corresponds to higher priority, so later enum values are higher
