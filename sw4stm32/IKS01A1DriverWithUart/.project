@@ -39,12 +39,12 @@
 		<link>
 			<name>qpcpp</name>
 			<type>2</type>
-			<locationURI>copy_PARENT/qpcpp</locationURI>
+			<location>E:/repositories/plasticsandpcbsposts/qpcpp</location>
 		</link>
 		<link>
 			<name>statemachines</name>
 			<type>2</type>
-			<locationURI>copy_PARENT/statemachines</locationURI>
+			<location>E:/repositories/plasticsandpcbsposts/statemachines</location>
 		</link>
 	</linkedResources>
 	<variableList>

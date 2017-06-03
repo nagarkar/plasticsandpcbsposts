@@ -8,6 +8,7 @@
 #include "UartCommander.h"
 #include "x_nucleo_iks01a1_accelero.h"
 #include "AO_IKS01A1.h"
+#include "ABumpDetector.h"
 #include "CircularBuffer.h"
 #include "macros.h"
 #include "bsp.h"
@@ -18,9 +19,8 @@ using namespace AOs;
 using namespace QP;
 using namespace StdDataStruct;
 
-static CircularBufferElement buffer[256];
-
 using namespace IKS01A1;
+using namespace SigProc;
 
 /*** DEFINE SIGNALS **/
 SMARTENUM_DEFINE_NAMES(Signal, SIG_LIST)
@@ -34,6 +34,7 @@ static UartCommander commander(&uart2Act.GetInFifo());
 
 //static void *LSM6DS0_X_0_handle = NULL;
 static AO_IKS01A1 accel(20 /* Milliseconds */);
+static BumpDetector bumper(100, &accel.m_circbuf, 15);
 
 QP::QSubscrList subscrSto[MAX_PUB_SIG];
 extern "C" {
@@ -55,6 +56,9 @@ void QP_StartActiveObjectsAndPublishBootTimeEvents(void) {
 
 	accel.Start(PRIO_IKS01A1_PRIO);
 	QF::PUBLISH(new Evt(IKS01A1_ACC_START_REQ_SIG), NULL);
+
+	bumper.Start(PRIO_BUMPER);
+	QF::PUBLISH(new Evt(ABUMP_DET_START_REQ_SIG), NULL);
 }
 
 void QP_AllocateSubscriberLists(void) {
@@ -83,6 +87,15 @@ void UART_CMDR_ProcessCommand(char command) {
 			break;
 		case 'l':
 			TOGGLE_EVENT_LOGGING();
+			break;
+		case 'i':
+			bumper.m_bumpThreshold++;
+			PRINT("Bumper threshold now %d.\r\n", (int)(bumper.m_bumpThreshold));
+			break;
+		case 'd':
+			bumper.m_bumpThreshold--;
+			PRINT("Bumper threshold now %d.\r\n", (int)(bumper.m_bumpThreshold));
+			break;
 		default :
 			PRINT("Unknown Command. Type 'u' to print usage.\r\n");
 	}

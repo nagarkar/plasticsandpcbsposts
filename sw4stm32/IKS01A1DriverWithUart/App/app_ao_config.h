@@ -104,18 +104,16 @@ enum SignalAliases {
 	UART_COMMANDER_CMD_IND_SIG = UART_IN_DATA_IND_SIG
 };
 
-// Higher value corresponds to higher priority.
-// The maximum priority is defined in qf_port.h as QF_MAX_ACTIVE (32)
+// Higher value corresponds to higher priority, so later enum values are higher
+// priority. The maximum priority is defined in qf_port.h as QF_MAX_ACTIVE (32)
 enum
 {
-	PRIO_UART2_COMMANDER  = 11, //30,
-    PRIO_UART2_ACT  = 10, //30,
-	//PRIO_CONSOLE    = 28,
-	//PRIO_SYSTEM     = 26,
-	//PRIO_USER_BTN   = 24,
-    PRIO_USER_LED   = 22,
-	PRIO_IKS01A1_PRIO = 21
-	//PRIO_SAMPLE     = 5
+	PRIO_UART2_ACT = 1 /* Can't start with zero; throws assertion*/,
+	PRIO_UART2_COMMANDER,
+	PRIO_BUMPER,
+	PRIO_USER_LED,
+	PRIO_IKS01A1_PRIO,
+	PRIO_MAX = QF_MAX_ACTIVE
 };
 
 #ifdef __cplusplus
