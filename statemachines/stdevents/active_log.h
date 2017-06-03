@@ -26,24 +26,6 @@
 
 namespace StdEvents {
 
-#ifdef _ACTIVE_LOG_ENABLED_
-#define PRINT(format_, ...)      Log::Print(format_, ## __VA_ARGS__)
-#define DEBUG(format_, ...)      Log::Debug(me->m_name, __FUNCTION__, format_, ## __VA_ARGS__);
-// The following macros can only be used within an HSM. Newline is automatically appended.
-#define LOG_EVENT(e_)            Log::Event(me->m_name, __FUNCTION__, e_);
-#define LOG_EVENT_NOQP(e_)       Log::Event(me->m_name, __FUNCTION__, e_, false);
-#define TOGGLE_EVENT_LOGGING()   Log::ToggleEventLogging()
-
-#else
-
-#define PRINT(format_, ...)      (void)0;
-#define DEBUG(format_, ...)      (void)0;
-#define LOG_EVENT(e_)            (void)0;
-#define LOG_EVENT_NOQP(e_)       (void)0;
-#define TOGGLE_EVENT_LOGGING()   (void)0;
-
-#endif
-
 class Log {
 public:
     static void AddQPInterface(Fifo *fifo, QP::QSignal sig);
@@ -67,6 +49,13 @@ protected:
     static bool m_eventLoggingEnabled;
 
 };
+
+#define PRINT(format_, ...)      Log::Print(format_, ## __VA_ARGS__)
+#define DEBUG(format_, ...)      Log::Debug(me->m_name, __FUNCTION__, format_, ## __VA_ARGS__);
+// The following macros can only be used within an HSM. Newline is automatically appended.
+#define LOG_EVENT(e_)            Log::Event(me->m_name, __FUNCTION__, e_);
+#define LOG_EVENT_NOQP(e_)       Log::Event(me->m_name, __FUNCTION__, e_, false);
+#define TOGGLE_EVENT_LOGGING()   Log::ToggleEventLogging()
 
 } // namespace
 
