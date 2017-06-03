@@ -34,6 +34,7 @@ char const Log::m_truncatedError[] = "<##TRUN##>";
 
 Fifo * Log::m_fifo = NULL;
 QSignal Log::m_writeSuccessSig = 0;
+bool Log::m_eventLoggingEnabled = true;
 
 void Log::AddQPInterface(Fifo *fifo, QSignal writeSuccessSig) {
     ACTIVE_LOG_ASSERT(fifo && writeSuccessSig);
@@ -77,16 +78,22 @@ void Log::Write(char const *buf, uint32_t len, bool useQPInterface) {
 uint32_t Log::Print(char const *format, ...) {
     va_list arg;
     va_start(arg, format);
-    char buf[BUF_LEN];
-    uint32_t len = vsnprintf(buf, sizeof(buf), format, arg);
+    char printbuf[BUF_LEN];
+    uint32_t len = vsnprintf(printbuf, sizeof(printbuf), format, arg);
     va_end(arg);
-    len = LESS(len, sizeof(buf) - 1);
-    Write(buf, len);
+    len = LESS(len, sizeof(printbuf) - 1);
+    Write(printbuf, len, true);
     return len;
+}
+void Log::ToggleEventLogging() {
+	m_eventLoggingEnabled = !m_eventLoggingEnabled;
 }
 
 void Log::Event(char const *name, char const *func, QP::QEvt const *e, bool useQPInterface) {
     Q_ASSERT(name && func && e);
+    if (!m_eventLoggingEnabled) {
+    	return;
+    }
     char buf[BUF_LEN];
     uint32_t len = snprintf(buf, BUF_LEN, "[%lu] %s (%s): %s(%d)\n\r", BSP_GET_SYSTEM_MS, name, func, SignalArray[e->sig], e->sig);
     len = LESS(len, (BUF_LEN - 1));

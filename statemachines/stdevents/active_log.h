@@ -32,6 +32,7 @@ namespace StdEvents {
 // The following macros can only be used within an HSM. Newline is automatically appended.
 #define LOG_EVENT(e_)            Log::Event(me->m_name, __FUNCTION__, e_);
 #define LOG_EVENT_NOQP(e_)       Log::Event(me->m_name, __FUNCTION__, e_, false);
+#define TOGGLE_EVENT_LOGGING()   Log::ToggleEventLogging()
 
 #else
 
@@ -39,6 +40,7 @@ namespace StdEvents {
 #define DEBUG(format_, ...)      (void)0;
 #define LOG_EVENT(e_)            (void)0;
 #define LOG_EVENT_NOQP(e_)       (void)0;
+#define TOGGLE_EVENT_LOGGING()   (void)0;
 
 #endif
 
@@ -48,18 +50,22 @@ public:
     static void DeleteQPInterface();
     static void Write(char const *buf, uint32_t len, bool useQPInterface = true);
     static uint32_t Print(char const *format, ...);
+    static void ToggleEventLogging();
     static void Event(char const *name, char const *func, QP::QEvt const *e, bool useQPInterface = true);
     static void Debug(char const *name, char const *func, char const *format, ...);
 
 private:
 
     enum {
-        BUF_LEN = 160,
+        BUF_LEN = 1000,
     };
-
     static Fifo *m_fifo;
     static QP::QSignal m_writeSuccessSig;
     static char const m_truncatedError[];
+
+protected:
+    static bool m_eventLoggingEnabled;
+
 };
 
 } // namespace

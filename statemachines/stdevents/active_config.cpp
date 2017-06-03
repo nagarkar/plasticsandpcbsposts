@@ -76,12 +76,12 @@ __weak void QF::onCleanup(void) {
 }
 
 __weak void QXK::onIdle(void) {
-  QF_INT_DISABLE();
-  uint32_t counter = 1;
-  while(--counter) {
-    asm("");
-  }
-  QF_INT_ENABLE();
+  //QF_INT_DISABLE();
+  //uint32_t counter = 1;
+  //while(--counter) {
+//    asm("");
+  //}
+  //QF_INT_ENABLE();
 }
 
 __weak void QF::onStartup(void) {
