@@ -29,22 +29,17 @@
 		<link>
 			<name>iksDrivers</name>
 			<type>2</type>
-			<location>E:/repositories/plasticsandpcbsposts/hardware/iks01a1/drivers</location>
-		</link>
-		<link>
-			<name>qm_workspace</name>
-			<type>2</type>
-			<location>E:/software/qp/qm_workspace</location>
+			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/hardware/iks01a1/drivers</locationURI>
 		</link>
 		<link>
 			<name>qpcpp</name>
 			<type>2</type>
-			<location>E:/repositories/plasticsandpcbsposts/qpcpp</location>
+			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/qpcpp</locationURI>
 		</link>
 		<link>
 			<name>statemachines</name>
 			<type>2</type>
-			<location>E:/repositories/plasticsandpcbsposts/statemachines</location>
+			<locationURI>$%7BPARENT-2-PROJECT_LOC%7D/statemachines</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>

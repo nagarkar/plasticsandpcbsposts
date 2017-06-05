@@ -138,7 +138,6 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.1625358419.568385482" name="WheelDrives.h" rcbsApplicability="disable" resourcePath="qm_workspace/WheelDrives/WheelDrives.h" toolsToInvoke=""/>
 					<fileInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.1625358419.415492599" name="qs.h" rcbsApplicability="disable" resourcePath="qpcpp/include/qs.h" toolsToInvoke=""/>
 					<fileInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.1625358419.694410741" name="qs_pkg.h" rcbsApplicability="disable" resourcePath="qpcpp/source/qs_pkg.h" toolsToInvoke=""/>
 					<fileInfo id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.1625358419.1015732483" name="qs_port.h" rcbsApplicability="disable" resourcePath="qpcpp/ports/arm-cm/qk/gnu/qs_port.h" toolsToInvoke=""/>
