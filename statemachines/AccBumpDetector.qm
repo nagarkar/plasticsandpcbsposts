@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version="4.0.1" links="0">
+ <framework name="qpcpp"/>
+ <package name="SigProc" stereotype="0x02" namespace="SigProc::">
+  <class name="BumpDetector" superclass="StdEvents::AO">
+   <attribute name="m_collectionInterval" type="uint32_t" visibility="0x00" properties="0x00"/>
+   <attribute name="m_showBumps = true" type="bool" visibility="0x00" properties="0x00"/>
+   <attribute name="m_buffer" type="CircularBuffer&lt;SensorAxesBufferElement&gt; *" visibility="0x02" properties="0x00"/>
+   <attribute name="m_bumpThreshold" type="double" visibility="0x00" properties="0x00"/>
+   <operation name="BumpDetector" type="" visibility="0x00" properties="0x00">
+    <parameter name="interval" type="uint32_t"/>
+    <parameter name="buffer" type="CircularBuffer&lt;SensorAxesBufferElement&gt; *"/>
+    <parameter name="threshold" type="double"/>
+    <code>  :AO(ABUMP_DET_TIMEOUT_SIG
+     ,(QStateHandler)&amp;initial
+     ,&quot;Bump Detector&quot;)
+   , m_collectionInterval(interval)
+   , m_buffer(buffer)
+   , m_bumpThreshold(threshold)</code>
+   </operation>
+   <operation name="ProcessData" type="void" visibility="0x00" properties="0x00">
+    <code>CircularBufferRange range = m_buffer-&gt;getRange(HAL_GetTick() - 100, HAL_GetTick());
+if (range.end &lt; 0 || range.start &lt; 0 || range.end - range.start &lt; 4) {
+    // InSufficient data
+    return;
+}
+SensorAxes_t prevAxes = m_buffer-&gt;get(range.start).axes;
+double maxDiff = 0;
+uint32_t bumpIndex = -1;
+for(int i = range.start + 1; i &lt;= range.end; i++) {
+    SensorAxes_t currAxes = m_buffer-&gt;get(i).axes;
+    double diff = sqrt((currAxes.AXIS_X - prevAxes.AXIS_X)^2 + (currAxes.AXIS_Y - prevAxes.AXIS_Y)^2 + (currAxes.AXIS_Z - prevAxes.AXIS_Z)^2);
+    if (diff &gt; maxDiff) {
+        maxDiff = diff;
+        bumpIndex = i;
+    }
+    prevAxes = currAxes;
+}
+if (maxDiff  &gt; m_bumpThreshold &amp;&amp; m_showBumps) {
+    uint32_t bumpTimestamp = m_buffer-&gt;get(bumpIndex).timestamp;
+    PRINT(&quot;Found Bump with magnitude %d at time %d\r\n&quot;, ((int)maxDiff), bumpTimestamp);
+    Publish(new ABumpEvent(maxDiff, bumpTimestamp, m_nextSequence++));
+}
+</code>
+   </operation>
+   <statechart>
+    <initial target="../1/0">
+     <action>me-&gt;subscribe(ABUMP_DET_START_REQ_SIG);
+me-&gt;subscribe(ABUMP_DET_START_CFM_SIG);
+me-&gt;subscribe(ABUMP_DET_STOP_REQ_SIG);
+me-&gt;subscribe(ABUMP_DET_STOP_CFM_SIG);
+me-&gt;subscribe(ABUMP_DET_FAILED_SIG);
+me-&gt;subscribe(ABUMP_DET_TIMEOUT_SIG);</action>
+     <initial_glyph conn="9,2,5,0,2,10">
+      <action box="9,1,10,2"/>
+     </initial_glyph>
+    </initial>
+    <state name="Root">
+     <state name="Stopped">
+      <tran trig="ABUMP_DET_START_REQ" target="../../1">
+       <action brief="^CFM">me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    ABUMP_DET_START_CFM_SIG);</action>
+       <tran_glyph conn="15,20,2,0,6">
+        <action box="1,2,25,2"/>
+       </tran_glyph>
+      </tran>
+      <state_glyph node="4,12,85,8"/>
+     </state>
+     <state name="Started">
+      <initial target="../2">
+       <initial_glyph conn="8,29,5,0,8,3">
+        <action box="0,-2,10,2"/>
+       </initial_glyph>
+      </initial>
+      <tran trig="ABUMP_DET_STOP_REQ" target="../../0">
+       <action brief="^CFM">me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    ABUMP_DET_STOP_CFM_SIG);</action>
+       <tran_glyph conn="74,26,0,2,-6">
+        <action box="-24,-4,24,3"/>
+       </tran_glyph>
+      </tran>
+      <state name="CollectingData">
+       <entry brief="ArmTimer">me-&gt;m_timer.armX(
+    me-&gt;m_collectionInterval,
+    me-&gt;m_collectionInterval);</entry>
+       <exit brief="DisarmT">me-&gt;m_timer.disarm();</exit>
+       <tran trig="ABUMP_DET_FAILED" target="../../3">
+        <tran_glyph conn="61,46,1,2,24,-6">
+         <action box="2,-3,23,2"/>
+        </tran_glyph>
+       </tran>
+       <tran trig="ABUMP_DET_TIMEOUT">
+        <action brief="ProcessData">me-&gt;ProcessData();</action>
+        <tran_glyph conn="61,42,1,-1,-35">
+         <action box="-30,-3,30,2"/>
+        </tran_glyph>
+       </tran>
+       <state_glyph node="8,32,53,17">
+        <entry box="1,2,12,2"/>
+        <exit box="1,4,12,2"/>
+       </state_glyph>
+      </state>
+      <state name="Failed">
+       <state_glyph node="66,32,21,8"/>
+      </state>
+      <state_glyph node="4,26,85,24"/>
+     </state>
+     <state_glyph node="2,5,90,50"/>
+    </state>
+    <state_diagram size="93,57"/>
+   </statechart>
+  </class>
+  <class name="ABumpEvent" superclass="StdEvents::Evt">
+   <attribute name="m_magnitude" type="double" visibility="0x00" properties="0x00"/>
+   <attribute name="m_timestamp" type="uint32_t" visibility="0x00" properties="0x00"/>
+   <operation name="ABumpEvent" type="" visibility="0x00" properties="0x02">
+    <parameter name="magnitude" type="double"/>
+    <parameter name="timestamp" type="uint32_t"/>
+    <parameter name="sequence = 0" type="uint32_t"/>
+    <code>  : Evt(ABUMP_DETECTED_SIG, sequence)
+    , m_magnitude(magnitude)
+    , m_timestamp(timestamp)</code>
+   </operation>
+  </class>
+  <directory name="ABumpDetector">
+   <file name="ABumpDetector.h">
+    <text>#ifndef _ABUMP_DETECTOR_H
+#define _ABUMP_DETECTOR_H
+
+#include &quot;qpcpp.h&quot;
+#include &quot;bsp.h&quot;
+#include &quot;active_events.h&quot;
+#include &quot;active_log.h&quot;
+#include &quot;CircularBuffer.h&quot;
+#include &quot;stm32f4xx_hal.h&quot;
+#include &quot;AO_IKS01A1.h&quot;
+
+
+using namespace IKS01A1;
+using namespace StdDataStruct;
+
+//// CONSUMES EVENTS /////////////////////////
+//    ABUMP_DET_START_REQ_SIG
+//    ABUMP_DET_STOP_REQ_SIG
+//// PRODUCES EVENTS /////////////////////////
+//    ABUMP_DET_START_CFM_SIG
+//    ABUMP_DET_STOP_CFM_SIG
+//    ABUMP_DET_FAILED_SIG
+//    ABUMP_DETECTED_SIG
+//////////////////////////////////////////////
+
+$declare(SigProc::ABumpEvent)
+
+$declare(SigProc::BumpDetector)
+
+#endif</text>
+   </file>
+   <file name="ABumpDetector.cpp">
+    <text>#include &quot;ABumpDetector.h&quot;
+#include &quot;CircularBuffer.h&quot;
+#include &quot;app_ao_config.h&quot;
+#include &quot;active_log.h&quot;
+#include &quot;AO_IKS01A1.h&quot;
+#include &lt;math.h&gt;
+
+using namespace IKS01A1;
+using namespace StdDataStruct;
+using namespace StdEvents;
+using namespace QP;
+
+$define(SigProc::BumpDetector)</text>
+   </file>
+  </directory>
+ </package>
+ <package file="./std_events.qmp"/>
+</model>

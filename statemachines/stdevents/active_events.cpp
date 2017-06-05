@@ -53,8 +53,10 @@ void Evt::operator delete(void * evt) {
 void AO::ResetConfirmationCount() {
     m_confirmationCount = 0;
 }
+
+/** Returns zero if all confirmations have been received, -1 if the received confirmation is an error, and 0 if not all confirmations have been received yet. */
 //${StdEvents::AO::HandleCfm} ................................................
-void AO::HandleCfm(
+uint8_t AO::HandleCfm(
     ErrorEvt const & e,
     uint16_t expectedCount,
     QSignal doneSignal,
@@ -66,11 +68,14 @@ void AO::HandleCfm(
         if(m_confirmationCount == expectedCount) {
             Evt *evt = new Evt(doneSignal);
             postLIFO(evt);
+            return 1;
         }
     } else {
         Evt *evt = new ErrorEvt(failureSignal, e, m_nextSequence++);
         postLIFO(evt);
+        return -1;
     }
+    return 0;
 }
 //${StdEvents::AO::Publish} ..................................................
 void AO::Publish(QSignal signal) {
@@ -103,11 +108,17 @@ void AO::PublishConfirmationWithInvalidState(Evt const & e, QSignal signal) {
 void AO::PublishConfirmation(Evt const & e, QSignal signal) {
     ErrorEvt *evt = new ErrorEvt(signal, e.GetSeq(), ERROR_SUCCESS);
     QF::PUBLISH(evt, this);
+}
+//${StdEvents::AO::Publish} ..................................................
+void AO::Publish(Evt * e) {
+    QF::PUBLISH(e, this);
 }//${StdEvents::ASM} ..........................................................
 
 
+
+/** Returns zero if all confirmations have been received, -1 if the received confirmation is an error, and 0 if not all confirmations have been received yet. */
 //${StdEvents::ASM::HandleCfm} ...............................................
-void ASM::HandleCfm(
+uint8_t ASM::HandleCfm(
     ErrorEvt const & e,
     uint16_t expectedCount,
     QSignal doneSignal,
@@ -118,11 +129,14 @@ void ASM::HandleCfm(
         // TODO - Compare seqeuence number.
         if(m_confirmationCount == expectedCount) {
             PostToOwnerLifo(doneSignal);
+            return 1;
         }
     } else {
         Evt *evt = new ErrorEvt(failureSignal, e, m_nextSequence++);
         PostToOwnerLifo(evt);
+        return -1;
     }
+    return 0;
 }
 //${StdEvents::ASM::ResetConfirmationCount} ..................................
 void ASM::ResetConfirmationCount() {

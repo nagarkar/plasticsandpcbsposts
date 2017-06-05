@@ -23,7 +23,8 @@ using namespace StdEvents;
 
 void _UartCommanderProcessCommand(char command) {
     if (command == 'u') {
-        PRINT("%s\r\n", UART_CMDR_GetUsage());
+        UART_CMDR_PrintUsage();
+        return;
     }
     PRINT("Processing %c\r\n", command);
     UART_CMDR_ProcessCommand(command);
@@ -183,7 +184,7 @@ QP::QState UartCommander::Started(UartCommander * const me, QP::QEvt const * con
         // ${UartCommander::UartCommander::SM::Root::Started::UART_COMMANDER_SHOW_USAGE}
         case UART_COMMANDER_SHOW_USAGE_SIG: {
             LOG_EVENT(e);
-            PRINT(UART_CMDR_GetUsage());
+            UART_CMDR_PrintUsage();
             status_ = Q_HANDLED();
             break;
         }

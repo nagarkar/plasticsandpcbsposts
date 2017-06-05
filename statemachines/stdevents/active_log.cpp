@@ -86,13 +86,13 @@ uint32_t Log::Print(char const *format, ...) {
     return len;
 }
 void Log::ToggleEventLogging() {
-	m_eventLoggingEnabled = !m_eventLoggingEnabled;
+    m_eventLoggingEnabled = !m_eventLoggingEnabled;
 }
 
 void Log::Event(char const *name, char const *func, QP::QEvt const *e, bool useQPInterface) {
     Q_ASSERT(name && func && e);
     if (!m_eventLoggingEnabled) {
-    	return;
+        return;
     }
     char buf[BUF_LEN];
     uint32_t len = snprintf(buf, BUF_LEN, "[%lu] %s (%s): %s(%d)\n\r", BSP_GET_SYSTEM_MS, name, func, SignalArray[e->sig], e->sig);
@@ -123,3 +123,4 @@ void Log::Debug(char const *name, char const *func, char const *format, ...) {
 }
 
 } // namespace
+

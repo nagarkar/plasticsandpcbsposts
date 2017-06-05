@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version="4.0.1" links="0">
+ <framework name="qpcpp"/>
+ <package file="./std_events.qmp"/>
+ <package name="IKS01A1" stereotype="0x02" namespace="IKS01A1::">
+  <class name="AO_IKS01A1" superclass="StdEvents::AO">
+   <attribute name="m_handle" type="void *" visibility="0x01" properties="0x00"/>
+   <attribute name="m_dataCollectionInterval" type="uint32_t const" visibility="0x01" properties="0x00"/>
+   <attribute name="{ ACC_BUFFER_SIZE = 1000 }" type="enum" visibility="0x01" properties="0x00"/>
+   <attribute name="m_buffer[ACC_BUFFER_SIZE]" type="SensorAxesBufferElement" visibility="0x01" properties="0x00"/>
+   <attribute name="m_circbuf" type="CircularBuffer&lt;SensorAxesBufferElement&gt;" visibility="0x00" properties="0x00"/>
+   <attribute name="m_xInitStatus = COMPONENT_ERROR" type="DrvStatusTypeDef" visibility="0x00" properties="0x00"/>
+   <attribute name="m_xPrintStream" type="bool" visibility="0x00" properties="0x00"/>
+   <operation name="AO_IKS01A1" type="" visibility="0x00" properties="0x00">
+    <parameter name="interval" type="uint32_t"/>
+    <code>  : AO(IKS01A1_ACC_INTERVAL_TIMER_SIG,
+        (QStateHandler)&amp;initial,
+        &quot;IKS01A1&quot;)
+    , m_dataCollectionInterval(interval)
+    , m_circbuf(m_buffer, ACC_BUFFER_SIZE)</code>
+   </operation>
+   <operation name="armTimer" type="void" visibility="0x00" properties="0x00">
+    <code>m_timer.disarm();
+m_timer.armX(m_dataCollectionInterval, 0);</code>
+   </operation>
+   <statechart>
+    <initial target="../1">
+     <action brief="SubscribeEvents">me-&gt;subscribe(IKS01A1_ACC_STOP_REQ_SIG);
+me-&gt;subscribe(IKS01A1_ACC_STOP_CFM_SIG);
+me-&gt;subscribe(IKS01A1_ACC_START_REQ_SIG);
+me-&gt;subscribe(IKS01A1_ACC_START_CFM_SIG);
+me-&gt;subscribe(IKS01A1_ACC_INTERVAL_TIMER_SIG);
+me-&gt;subscribe(IKS01A1_ACC_COMPONENT_FAILED_SIG);</action>
+     <initial_glyph conn="3,3,5,0,14,1">
+      <action box="0,-2,15,2"/>
+     </initial_glyph>
+    </initial>
+    <state name="Root">
+     <initial target="../1">
+      <initial_glyph conn="15,9,5,0,4,2">
+       <action box="0,-2,10,2"/>
+      </initial_glyph>
+     </initial>
+     <state name="Stopped">
+      <entry>LOG_EVENT(e);</entry>
+      <tran trig="IKS01A1_ACC_START_REQ" target="../../2">
+       <action brief="^CFM">LOG_EVENT(e);
+me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    IKS01A1_ACC_START_CFM_SIG);</action>
+       <tran_glyph conn="21,21,2,0,4,-6,4,6,5">
+        <action box="-4,5,29,2"/>
+       </tran_glyph>
+      </tran>
+      <tran trig="IKS01A1_ACC_STOP_REQ">
+       <action brief="^CFM">LOG_EVENT(e);
+me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    IKS01A1_ACC_STOP_CFM_SIG);</action>
+       <tran_glyph conn="11,15,3,-1,30">
+        <action box="4,-2,32,3"/>
+       </tran_glyph>
+      </tran>
+      <state_glyph node="11,11,79,10">
+       <entry box="1,2,6,2"/>
+      </state_glyph>
+     </state>
+     <state name="Started">
+      <entry brief="Init, Enable">LOG_EVENT(e);
+if (me-&gt;m_xInitStatus != COMPONENT_OK) {
+    me-&gt;m_xInitStatus = BSP_ACCELERO_Init(LSM6DS0_X_0, &amp;me-&gt;m_handle);
+    if (me-&gt;m_xInitStatus == COMPONENT_OK) {
+        BSP_ACCELERO_Sensor_Enable(me-&gt;m_handle);
+    }
+}
+//BSP_ACCELERO_Sensor_Enable(me-&gt;m_handle);</entry>
+      <exit brief="Disable">LOG_EVENT(e);
+//BSP_ACCELERO_Sensor_Disable(me-&gt;m_handle);
+//BSP_ACCELERO_DeInit(&amp;me-&gt;m_handle);
+//me-&gt;m_timer.disarm();</exit>
+      <initial target="../3">
+       <initial_glyph conn="19,39,5,0,5,4">
+        <action box="0,-2,10,2"/>
+       </initial_glyph>
+      </initial>
+      <tran trig="IKS01A1_ACC_STOP_REQ" target="../../1">
+       <action brief="^CFM">LOG_EVENT(e);
+me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    IKS01A1_ACC_STOP_CFM_SIG);</action>
+       <tran_glyph conn="70,34,0,2,-4,-6,-4,6,-5">
+        <action box="-5,-7,26,3"/>
+       </tran_glyph>
+      </tran>
+      <tran trig="IKS01A1_ACC_START_REQ">
+       <action brief="^CFM">LOG_EVENT(e);
+me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    IKS01A1_ACC_START_CFM_SIG);</action>
+       <tran_glyph conn="12,58,3,-1,33">
+        <action box="0,-2,30,2"/>
+       </tran_glyph>
+      </tran>
+      <state name="CollectingData">
+       <entry brief="PublishData, ArmTimer">
+uint32_t const interval = me-&gt;m_dataCollectionInterval;
+me-&gt;m_timer.armX(interval, interval);</entry>
+       <exit>
+me-&gt;m_timer.disarm();</exit>
+       <tran trig="IKS01A1_ACC_COMPONENT_FAILED" target="../../4">
+        <action>LOG_EVENT(e);</action>
+        <tran_glyph conn="38,54,2,2,2,44,-2">
+         <action box="17,3,31,3"/>
+        </tran_glyph>
+       </tran>
+       <tran trig="IKS01A1_ACC_INTERVAL_TIMER">
+        <action>LOG_EVENT(e);
+SensorAxes_t acceleration;
+DrvStatusTypeDef result;
+result = BSP_ACCELERO_Get_Axes(me-&gt;m_handle, &amp;acceleration);
+if (result != COMPONENT_OK) {
+    me-&gt;Publish(IKS01A1_ACC_COMPONENT_FAILED_SIG);
+} else {
+    SensorAxesBufferElement el(acceleration);
+    me-&gt;m_circbuf.push(el);
+    if (me-&gt;m_xPrintStream) {
+       el.print();
+    }
+}</action>
+        <tran_glyph conn="40,52,1,-1,-9">
+         <action box="1,-3,25,2"/>
+        </tran_glyph>
+       </tran>
+       <state_glyph node="18,43,22,11">
+        <entry box="1,2,21,2"/>
+        <exit box="1,4,6,2"/>
+       </state_glyph>
+      </state>
+      <state name="Failed">
+       <entry>LOG_EVENT(e);</entry>
+       <state_glyph node="68,48,19,6">
+        <entry box="1,2,6,2"/>
+       </state_glyph>
+      </state>
+      <state_glyph node="12,34,78,26">
+       <entry box="1,2,17,2"/>
+       <exit box="1,4,6,2"/>
+      </state_glyph>
+     </state>
+     <state_glyph node="5,4,91,59"/>
+    </state>
+    <state_diagram size="98,65"/>
+   </statechart>
+  </class>
+  <directory name="IKS01A1">
+   <file name="AO_IKS01A1.h">
+    <text>#ifndef _AO_IKS01A1_H
+#define _AO_IKS01A1_H
+
+#include &quot;qpcpp.h&quot;
+#include &quot;bsp.h&quot;
+#include &quot;active_events.h&quot;
+#include &quot;active_log.h&quot;
+#include &quot;x_nucleo_iks01a1_accelero.h&quot;
+#include &quot;CircularBuffer.h&quot;
+#include &quot;stm32f4xx_hal.h&quot;
+
+//// CONSUMES EVENTS /////////////////////////
+//    IKS01A1_ACC_START_REQ_SIG
+//    IKS01A1_ACC_STOP_REQ_SIG
+//// PRODUCES EVENTS /////////////////////////
+//    IKS01A1_ACC_START_CFM_SIG
+//    IKS01A1_ACC_COMPONENT_FAILED_SIG
+//    IKS01A1_ACC_STOP_CFM_SIG
+//////////////////////////////////////////////
+
+using namespace StdDataStruct;
+
+namespace IKS01A1 {
+class SensorAxesBufferElement : public CircularBufferElement {
+public:
+    SensorAxes_t axes;
+    SensorAxesBufferElement(const SensorAxesBufferElement&amp; el)
+        : CircularBufferElement(el.timestamp), axes(el.axes) {}
+    SensorAxesBufferElement() : CircularBufferElement(HAL_GetTick()) {}
+    SensorAxesBufferElement(uint32_t ts): CircularBufferElement(ts) {}
+    SensorAxesBufferElement(SensorAxes_t axes) : CircularBufferElement(), axes(axes) {}
+    SensorAxesBufferElement(SensorAxes_t axes, uint32_t timestamp):
+        CircularBufferElement(timestamp), axes(axes) {}
+    virtual void print(void) override;
+};
+
+} // namespace;
+
+$declare(IKS01A1)
+
+#endif // _AO_IKS01A1_H</text>
+   </file>
+   <file name="AO_IKS01A1.cpp">
+    <text>#include &quot;AO_IKS01A1.h&quot;
+#include &quot;x_nucleo_iks01a1_accelero.h&quot;
+#include &quot;CircularBuffer.h&quot;
+#include &quot;app_ao_config.h&quot;
+#include &quot;active_log.h&quot;
+
+using namespace StdEvents;
+using namespace QP;
+
+namespace IKS01A1 {
+    void SensorAxesBufferElement::print() {
+        PRINT(&quot;%d\t%d\t%d\t%d\r\n&quot;, timestamp, axes.AXIS_X, axes.AXIS_Y, axes.AXIS_Z);
+    }
+}// namespace
+
+$define(IKS01A1)</text>
+   </file>
+  </directory>
+ </package>
+</model>

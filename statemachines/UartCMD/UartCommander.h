@@ -38,7 +38,7 @@ extern "C" {
 #endif
 
 //// EXTERNAL PLUGS ////////
-extern const char * UART_CMDR_GetUsage();
+extern void UART_CMDR_PrintUsage();
 extern void UART_CMDR_ProcessCommand(char command);
 //// EXTERNAL PLUGS END ////
 

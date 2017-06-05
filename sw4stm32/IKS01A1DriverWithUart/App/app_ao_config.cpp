@@ -6,6 +6,7 @@
 #include "UartOut.h"
 #include "UartAct.h"
 #include "UartCommander.h"
+#include "WheelDrives.h"
 #include "x_nucleo_iks01a1_accelero.h"
 #include "AO_IKS01A1.h"
 #include "ABumpDetector.h"
@@ -21,6 +22,8 @@ using namespace StdDataStruct;
 
 using namespace IKS01A1;
 using namespace SigProc;
+using namespace std;
+using namespace WheelDrives;
 
 /*** DEFINE SIGNALS **/
 SMARTENUM_DEFINE_NAMES(Signal, SIG_LIST)
@@ -35,6 +38,8 @@ static UartCommander commander(&uart2Act.GetInFifo());
 //static void *LSM6DS0_X_0_handle = NULL;
 static AO_IKS01A1 accel(20 /* Milliseconds */);
 static BumpDetector bumper(100, &accel.m_circbuf, 15);
+
+static DiffDrive drivex;
 
 QP::QSubscrList subscrSto[MAX_PUB_SIG];
 extern "C" {
@@ -59,6 +64,9 @@ void QP_StartActiveObjectsAndPublishBootTimeEvents(void) {
 
 	bumper.Start(PRIO_BUMPER);
 	QF::PUBLISH(new Evt(ABUMP_DET_START_REQ_SIG), NULL);
+
+	drivex.Start(PRIO_DRIVE);
+	QF::PUBLISH(new Evt(WHEEL_DRIVES_DD_START_REQ_SIG), NULL);
 }
 
 void QP_AllocateSubscriberLists(void) {
@@ -68,19 +76,25 @@ void QP_AllocateSubscriberLists(void) {
 /** END QP CONFIGURATION **/
 
 /** UART COMMANDER PLUGS 		**/
-const char * UART_CMDR_GetUsage() {
-	return "Usage: \r\n u: Print Usage \r\n t: Stop UartAct \r\n s: Start UartAct \r\n a: Print Accel Data";
+void UART_CMDR_PrintUsage() {
+	PRINT("Usage: \r\n %s \r\n %s \r\n %s \r\n %s \r\n %s \r\n %s \r\n %s \r\n %s \r\n %s "
+			, "u: Print Usage"
+			, "t: Stop UartAct"
+			, "a: Print Accel Sensor Data Stream"
+			, "i: Increase bumper threshold"
+			, "d: Reduce bumper threshold"
+			, "l: Toggle Logging"
+			, "h: Set Differential Drive Heading to: xVelocity = 10, yVelocity = 10"
+			, "s: Stop DIfferential Drive"
+			);
 }
 
 void UART_CMDR_ProcessCommand(char command) {
+	std::shared_ptr<TwoDVelocityGoal> goalPtr = NULL;
+	HeadingRequestEvt *evt = NULL;
 	switch(command) {
-		case 's':
-			QF::PUBLISH(new Evt(UART_ACT_START_REQ_SIG), NULL);
-			break;
 		case 't':
 			QF::PUBLISH(new Evt(UART_ACT_STOP_REQ_SIG), NULL);
-			break;
-		case 'u':
 			break;
 		case 'a':
 			accel.m_xPrintStream = !accel.m_xPrintStream;
@@ -95,6 +109,21 @@ void UART_CMDR_ProcessCommand(char command) {
 		case 'd':
 			bumper.m_bumpThreshold--;
 			PRINT("Bumper threshold now %d.\r\n", (int)(bumper.m_bumpThreshold));
+			break;
+		case 'h':
+			PRINT("Heading Input: 10, 10\r\n");
+			goalPtr = std::make_shared<TwoDVelocityGoal>();
+			goalPtr.get()->xVelocity = 10;
+			goalPtr.get()->yVelocity = 10;
+			evt = new HeadingRequestEvt(0, goalPtr);
+			QF::PUBLISH(evt, NULL);
+			break;
+		case 's':
+			goalPtr = std::make_shared<TwoDVelocityGoal>();
+			goalPtr.get()->xVelocity = 0;
+			goalPtr.get()->yVelocity = 0;
+			evt = new HeadingRequestEvt(0, goalPtr);
+			QF::PUBLISH(evt, NULL);
 			break;
 		default :
 			PRINT("Unknown Command. Type 'u' to print usage.\r\n");

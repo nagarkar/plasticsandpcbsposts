@@ -127,6 +127,10 @@ QF::PUBLISH(evt, this);</code>
    <code>ErrorEvt *evt = new ErrorEvt(signal, e.GetSeq(), ERROR_SUCCESS);
 QF::PUBLISH(evt, this);</code>
   </operation>
+  <operation name="Publish" type="void" visibility="0x00" properties="0x00">
+   <parameter name="e" type="Evt *"/>
+   <code>QF::PUBLISH(e, this);</code>
+  </operation>
  </class>
  <class name="ASM" superclass="qpcpp::QHsm">
   <attribute name="{ DEFER_QUEUE_COUNT = 4 }" type="enum " visibility="0x01" properties="0x00"/>

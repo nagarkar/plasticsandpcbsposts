@@ -134,7 +134,9 @@ public:
         m_deferQueue.init(m_deferQueueStor, ARRAY_COUNT(m_deferQueueStor));
     }
     void ResetConfirmationCount();
-    void HandleCfm(
+
+    /** Returns zero if all confirmations have been received, -1 if the received confirmation is an error, and 0 if not all confirmations have been received yet. */
+    uint8_t HandleCfm(
         ErrorEvt const & e,
         uint16_t expectedCount,
         QSignal doneSignal,
@@ -148,6 +150,7 @@ public:
         QSignal errorSignal);
     void PublishConfirmationWithInvalidState(Evt const & e, QSignal signal);
     void PublishConfirmation(Evt const & e, QSignal signal);
+    void Publish(Evt * e);
 };
 //${StdEvents::ASM} ..........................................................
 class ASM : public QP::QHsm {
@@ -179,7 +182,9 @@ public:
         QHsm::init();
         m_deferQueue.init(m_deferQueueStor, ARRAY_COUNT(m_deferQueueStor));
     }
-    void HandleCfm(
+
+    /** Returns zero if all confirmations have been received, -1 if the received confirmation is an error, and 0 if not all confirmations have been received yet. */
+    uint8_t HandleCfm(
         ErrorEvt const & e,
         uint16_t expectedCount,
         QSignal doneSignal,

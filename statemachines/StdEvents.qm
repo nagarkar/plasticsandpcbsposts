@@ -394,41 +394,36 @@ typedef Pipe&lt;uint8_t&gt; Fifo;
 
 namespace StdEvents {
 
-#ifdef _ACTIVE_LOG_ENABLED_
-#define PRINT(format_, ...)      Log::Print(format_, ## __VA_ARGS__)
-#define DEBUG(format_, ...)      Log::Debug(me-&gt;m_name, __FUNCTION__, format_, ## __VA_ARGS__);
-// The following macros can only be used within an HSM. Newline is automatically appended.
-#define LOG_EVENT(e_)            Log::Event(me-&gt;m_name, __FUNCTION__, e_);
-#define LOG_EVENT_NOQP(e_)       Log::Event(me-&gt;m_name, __FUNCTION__, e_, false);
-
-#else
-
-#define PRINT(format_, ...)      (void)0;
-#define DEBUG(format_, ...)      (void)0;
-#define LOG_EVENT(e_)            (void)0;
-#define LOG_EVENT_NOQP(e_)       (void)0;
-
-#endif
-
 class Log {
 public:
     static void AddQPInterface(Fifo *fifo, QP::QSignal sig);
     static void DeleteQPInterface();
     static void Write(char const *buf, uint32_t len, bool useQPInterface = true);
     static uint32_t Print(char const *format, ...);
+    static void ToggleEventLogging();
     static void Event(char const *name, char const *func, QP::QEvt const *e, bool useQPInterface = true);
     static void Debug(char const *name, char const *func, char const *format, ...);
 
 private:
 
     enum {
-        BUF_LEN = 160,
+        BUF_LEN = 1000,
     };
-
     static Fifo *m_fifo;
     static QP::QSignal m_writeSuccessSig;
     static char const m_truncatedError[];
+
+protected:
+    static bool m_eventLoggingEnabled;
+
 };
+
+#define PRINT(format_, ...)      Log::Print(format_, ## __VA_ARGS__)
+#define DEBUG(format_, ...)      Log::Debug(me-&gt;m_name, __FUNCTION__, format_, ## __VA_ARGS__);
+// The following macros can only be used within an HSM. Newline is automatically appended.
+#define LOG_EVENT(e_)            Log::Event(me-&gt;m_name, __FUNCTION__, e_);
+#define LOG_EVENT_NOQP(e_)       Log::Event(me-&gt;m_name, __FUNCTION__, e_, false);
+#define TOGGLE_EVENT_LOGGING()   Log::ToggleEventLogging()
 
 } // namespace
 
@@ -454,6 +449,7 @@ char const Log::m_truncatedError[] = &quot;&lt;##TRUN##&gt;&quot;;
 
 Fifo * Log::m_fifo = NULL;
 QSignal Log::m_writeSuccessSig = 0;
+bool Log::m_eventLoggingEnabled = true;
 
 void Log::AddQPInterface(Fifo *fifo, QSignal writeSuccessSig) {
     ACTIVE_LOG_ASSERT(fifo &amp;&amp; writeSuccessSig);
@@ -497,16 +493,22 @@ void Log::Write(char const *buf, uint32_t len, bool useQPInterface) {
 uint32_t Log::Print(char const *format, ...) {
     va_list arg;
     va_start(arg, format);
-    char buf[BUF_LEN];
-    uint32_t len = vsnprintf(buf, sizeof(buf), format, arg);
+    char printbuf[BUF_LEN];
+    uint32_t len = vsnprintf(printbuf, sizeof(printbuf), format, arg);
     va_end(arg);
-    len = LESS(len, sizeof(buf) - 1);
-    Write(buf, len);
+    len = LESS(len, sizeof(printbuf) - 1);
+    Write(printbuf, len, true);
     return len;
+}
+void Log::ToggleEventLogging() {
+    m_eventLoggingEnabled = !m_eventLoggingEnabled;
 }
 
 void Log::Event(char const *name, char const *func, QP::QEvt const *e, bool useQPInterface) {
     Q_ASSERT(name &amp;&amp; func &amp;&amp; e);
+    if (!m_eventLoggingEnabled) {
+        return;
+    }
     char buf[BUF_LEN];
     uint32_t len = snprintf(buf, BUF_LEN, &quot;[%lu] %s (%s): %s(%d)\n\r&quot;, BSP_GET_SYSTEM_MS, name, func, SignalArray[e-&gt;sig], e-&gt;sig);
     len = LESS(len, (BUF_LEN - 1));
@@ -535,7 +537,8 @@ void Log::Debug(char const *name, char const *func, char const *format, ...) {
     Write(buf, len);
 }
 
-} // namespace</text>
+} // namespace
+</text>
   </file>
   <file name="active_enum.h">
    <text>// Thanks to http://saltares.com/blog/computing/smart-enums-in-c-or-what-is-this-madness/

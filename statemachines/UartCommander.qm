@@ -16,7 +16,7 @@
 me-&gt;subscribe(UART_COMMANDER_START_REQ_SIG);
 me-&gt;subscribe(UART_COMMANDER_CMD_IND_SIG);
 me-&gt;subscribe(UART_COMMANDER_SHOW_USAGE_SIG);</action>
-     <initial_glyph conn="20,5,4,0,5">
+     <initial_glyph conn="18,4,5,0,-8,7">
       <action box="0,-2,23,3"/>
      </initial_glyph>
     </initial>
@@ -25,7 +25,7 @@ me-&gt;subscribe(UART_COMMANDER_SHOW_USAGE_SIG);</action>
      <exit>LOG_EVENT(e);</exit>
      <initial target="../1">
       <action>LOG_EVENT(e);</action>
-      <initial_glyph conn="25,13,5,0,4,2">
+      <initial_glyph conn="15,14,5,0,4,2">
        <action box="0,-2,10,2"/>
       </initial_glyph>
      </initial>
@@ -38,14 +38,14 @@ me-&gt;RecallDeferred();</entry>
 me-&gt;PublishConfirmation(
     EVT_CAST(*e),
     UART_COMMANDER_STOP_CFM_SIG);</action>
-       <tran_glyph conn="30,27,2,0,2,-5,3,5,2">
+       <tran_glyph conn="20,28,2,0,2,-5,3,5,2">
         <action box="-4,3,30,2"/>
        </tran_glyph>
       </tran>
       <tran trig="UART_COMMANDER_CMD_IND,UART_COMMANDER_SHOW_USAGE">
        <action brief="Defer">LOG_EVENT(e);
 me-&gt;Defer(e);</action>
-       <tran_glyph conn="100,22,1,-1,-30">
+       <tran_glyph conn="90,23,1,-1,-30">
         <action box="-30,1,30,2"/>
        </tran_glyph>
       </tran>
@@ -54,11 +54,11 @@ me-&gt;Defer(e);</action>
 me-&gt;PublishConfirmation(
     EVT_CAST(*e),
     UART_COMMANDER_STOP_CFM_SIG);</action>
-       <tran_glyph conn="100,19,1,-1,-30">
+       <tran_glyph conn="90,20,1,-1,-30">
         <action box="-30,-2,30,2"/>
        </tran_glyph>
       </tran>
-      <state_glyph node="22,15,78,12">
+      <state_glyph node="12,16,78,12">
        <entry box="1,2,17,2"/>
        <exit box="1,4,6,2"/>
       </state_glyph>
@@ -73,7 +73,7 @@ me-&gt;PublishConfirmation(
     EVT_CAST(*e),
     UART_COMMANDER_START_CFM_SIG
 );</action>
-       <tran_glyph conn="22,56,3,-1,41">
+       <tran_glyph conn="12,57,3,-1,41">
         <action box="0,-2,39,2"/>
        </tran_glyph>
       </tran>
@@ -86,7 +86,7 @@ while(count--) {
     PRINT(&quot;Command:%c\r\n&quot;, ch);
     _UartCommanderProcessCommand(ch);
 }</action>
-       <tran_glyph conn="22,46,3,-1,41">
+       <tran_glyph conn="12,47,3,-1,41">
         <action box="0,-2,40,2"/>
        </tran_glyph>
       </tran>
@@ -95,28 +95,28 @@ while(count--) {
 me-&gt;PublishConfirmation(
     EVT_CAST(*e),
     UART_COMMANDER_STOP_CFM_SIG);</action>
-       <tran_glyph conn="76,34,0,2,-2,-7,-3,7,-2">
+       <tran_glyph conn="66,35,0,2,-2,-7,-3,7,-2">
         <action box="-6,-4,31,2"/>
        </tran_glyph>
       </tran>
       <tran trig="UART_COMMANDER_SHOW_USAGE">
        <action brief="ShowUsage">LOG_EVENT(e);
-PRINT(UART_CMDR_GetUsage());</action>
-       <tran_glyph conn="22,49,3,-1,41">
-        <action box="0,-2,10,2"/>
+UART_CMDR_PrintUsage();</action>
+       <tran_glyph conn="12,50,3,-1,41">
+        <action box="0,-2,38,3"/>
        </tran_glyph>
       </tran>
-      <state_glyph node="22,34,78,26">
+      <state_glyph node="12,35,78,26">
        <entry box="1,2,45,2"/>
        <exit box="1,4,4,2"/>
       </state_glyph>
      </state>
-     <state_glyph node="15,10,89,54">
+     <state_glyph node="5,11,89,54">
       <entry box="1,2,6,2"/>
       <exit box="1,4,6,2"/>
      </state_glyph>
     </state>
-    <state_diagram size="124,82"/>
+    <state_diagram size="99,69"/>
    </statechart>
   </class>
  </package>
@@ -146,7 +146,7 @@ extern &quot;C&quot; {
 #endif
 
 //// EXTERNAL PLUGS ////////
-extern const char * UART_CMDR_GetUsage();
+extern void UART_CMDR_PrintUsage();
 extern void UART_CMDR_ProcessCommand(char command);
 //// EXTERNAL PLUGS END ////
 
@@ -170,7 +170,8 @@ using namespace StdEvents;
 
 void _UartCommanderProcessCommand(char command) {
     if (command == 'u') {
-        PRINT(&quot;%s\r\n&quot;, UART_CMDR_GetUsage());
+        UART_CMDR_PrintUsage();
+        return;
     }
     PRINT(&quot;Processing %c\r\n&quot;, command);
     UART_CMDR_ProcessCommand(command);

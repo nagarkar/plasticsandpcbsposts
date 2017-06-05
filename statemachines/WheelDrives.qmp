@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package name="WheelDrives" stereotype="0x02" namespace="WheelDrives::">
+ <class name="Wheel" superclass="StdEvents::ASM">
+  <attribute name="m_wheelId" type="uint8_t" visibility="0x00" properties="0x00"/>
+  <operation name="Wheel" type="" visibility="0x00" properties="0x00">
+   <parameter name="wheelId" type="uint8_t"/>
+   <parameter name="owner" type="QP::QActive *"/>
+   <code>  : ASM(WHEEL_DRIVES_WHEEL_TIMEOUT_SIG
+      ,(QStateHandler)&amp;initial
+      , owner
+      , &quot;Wheel&quot;)
+    , m_wheelId(wheelId)</code>
+  </operation>
+  <statechart>
+   <initial target="../1/1">
+    <initial_glyph conn="5,3,5,0,15,9">
+     <action box="0,-2,10,2"/>
+    </initial_glyph>
+   </initial>
+   <state name="Root">
+    <entry>LOG_EVENT(e);</entry>
+    <exit>LOG_EVENT(e);</exit>
+    <state name="Started">
+     <entry>LOG_EVENT(e);
+me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    WHEEL_DRIVES_WHEEL_START_CFM_SIG);</entry>
+     <exit>LOG_EVENT(e);</exit>
+     <initial target="../1">
+      <initial_glyph conn="15,29,5,0,6,5">
+       <action box="0,-2,10,2"/>
+      </initial_glyph>
+     </initial>
+     <state name="Running">
+      <entry>LOG_EVENT(e);</entry>
+      <tran trig="WHEEL_DRIVES_WHEEL_MOVE_REQ">
+       <action brief="^CFM, Move">LOG_EVENT(e);
+const WheelMoveRequestEvt * evt = WHEEL_MOVE_EVT_CAST(e);
+
+me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    WHEEL_DRIVES_WHEEL_MOVE_CFM_SIG);
+
+double newVelocity = evt-&gt;m_goal.get()-&gt;xVelocity;
+PRINT(&quot;Moving wheel %d with velocity %f\r\n&quot;, me-&gt;m_wheelId, newVelocity);</action>
+       <tran_glyph conn="11,41,3,-1,45">
+        <action box="0,1,35,2"/>
+       </tran_glyph>
+      </tran>
+      <state_glyph node="11,34,54,16">
+       <entry box="1,2,6,2"/>
+      </state_glyph>
+     </state>
+     <state_glyph node="6,26,64,27">
+      <entry box="1,2,6,2"/>
+      <exit box="1,4,6,2"/>
+     </state_glyph>
+    </state>
+    <state name="Stopped">
+     <tran trig="WHEEL_DRIVES_WHEEL_START_REQ" target="../../0">
+      <action brief="CFM">me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    WHEEL_DRIVES_WHEEL_START_CFM_SIG);</action>
+      <tran_glyph conn="16,19,2,0,7">
+       <action box="0,3,34,2"/>
+      </tran_glyph>
+     </tran>
+     <state_glyph node="7,12,62,7"/>
+    </state>
+    <state_glyph node="2,7,71,49">
+     <entry box="1,2,6,2"/>
+     <exit box="1,4,6,2"/>
+    </state_glyph>
+   </state>
+   <state_diagram size="76,57"/>
+  </statechart>
+ </class>
+ <class name="DiffDrive" superclass="StdEvents::AO">
+  <attribute name="{DIFF_DRIVE_LEFT_WHEEL, DIFF_DRIVE_RIGHT_WHEEL}" type="enum" visibility="0x01" properties="0x00"/>
+  <attribute name="m_leftWheel" type="Wheel" visibility="0x00" properties="0x00"/>
+  <attribute name="m_rightWheel" type="Wheel" visibility="0x00" properties="0x00"/>
+  <operation name="DiffDrive" type="" visibility="0x00" properties="0x00">
+   <code>  : AO(WHEEL_DRIVES_DD_TIMEOUT_SIG
+        , (QStateHandler)&amp;initial
+        , &quot;Diff Drive&quot;)
+    , m_leftWheel(DIFF_DRIVE_LEFT_WHEEL, this)
+    , m_rightWheel(DIFF_DRIVE_RIGHT_WHEEL, this)</code>
+  </operation>
+  <operation name="PublishWheelVelocitiesFor" type="uint32_t" visibility="0x00" properties="0x00">
+   <parameter name="goalPtr" type="std::shared_ptr&lt;Goal&gt;"/>
+   <code>Goal* goal = goalPtr.get();
+switch(goal-&gt;type) {
+    case TWO_D_VELOCITY: {
+        TwoDVelocityGoal *twoDGoal = TWO_D_VELOCITY_GOAL(goal);
+        PublishLeftAndRightWheelVelocities(*twoDGoal);
+        return 1;
+    }
+    default: {
+        return -1;
+        break;
+    }
+}
+</code>
+  </operation>
+  <operation name="PublishLeftAndRightWheelVelocities" type="uint32_t" visibility="0x00" properties="0x00">
+   <parameter name="twoDGoal" type="TwoDVelocityGoal &amp;"/>
+   <code>double  R = 1, L = 1,
+        phiCurrent = 0,
+        u1 = 0, u2 = 0,
+        phiDesired = 0, omega = 0, v = 0,
+        vR = 0, vL = 0;
+u1 = twoDGoal.yVelocity;
+u2 = twoDGoal.xVelocity;
+phiDesired = atan2(u2,u1);
+omega = PID(phiDesired - phiCurrent);
+v = sqrt(u1*u1 + u2*u2);
+vR = v/R + omega*L/(2*R);
+vL = vR - 2*(omega*L/(2*R));
+std::shared_ptr&lt;OneDVelocityGoal&gt; leftGoal =
+    std::make_shared&lt;OneDVelocityGoal&gt;();
+leftGoal.get()-&gt;xVelocity = vL;
+m_leftWheel.dispatch(new WheelMoveRequestEvt(m_nextSequence++, leftGoal));
+
+std::shared_ptr&lt;OneDVelocityGoal&gt; rightGoal =
+    std::make_shared&lt;OneDVelocityGoal&gt;();
+rightGoal.get()-&gt;xVelocity = vR;
+m_rightWheel.dispatch(new WheelMoveRequestEvt(m_nextSequence++, rightGoal));
+return 1;</code>
+  </operation>
+  <statechart>
+   <initial target="../1/1">
+    <action>me-&gt;subscribe(WHEEL_DRIVES_WHEEL_TIMEOUT_SIG);
+me-&gt;subscribe(WHEEL_DRIVES_WHEEL_START_REQ_SIG);
+me-&gt;subscribe(WHEEL_DRIVES_WHEEL_START_CFM_SIG);
+me-&gt;subscribe(WHEEL_DRIVES_WHEEL_STOP_REQ_SIG);
+me-&gt;subscribe(WHEEL_DRIVES_WHEEL_STOP_CFM_SIG);
+me-&gt;subscribe(WHEEL_DRIVES_WHEEL_MOVE_REQ_SIG);
+me-&gt;subscribe(WHEEL_DRIVES_WHEEL_MOVE_CFM_SIG);
+
+
+me-&gt;subscribe(WHEEL_DRIVES_DD_TIMEOUT_SIG);
+me-&gt;subscribe(WHEEL_DRIVES_DD_START_REQ_SIG);
+me-&gt;subscribe(WHEEL_DRIVES_DD_START_CFM_SIG);
+me-&gt;subscribe(WHEEL_DRIVES_DD_STOP_REQ_SIG);
+me-&gt;subscribe(WHEEL_DRIVES_DD_STOP_CFM_SIG);
+me-&gt;subscribe(WHEEL_DRIVES_DD_FAILED_SIG);
+me-&gt;subscribe(WHEEL_DRIVES_DD_HEADING_CFM_SIG);
+me-&gt;subscribe(WHEEL_DRIVES_DD_HEADING_SIG);
+</action>
+    <initial_glyph conn="11,3,5,0,7,6">
+     <action box="0,-2,10,2"/>
+    </initial_glyph>
+   </initial>
+   <state name="Root">
+    <entry>LOG_EVENT(e);
+me-&gt;m_leftWheel.Init();
+me-&gt;m_rightWheel.Init();</entry>
+    <tran trig="WHEEL_DRIVES_WHEEL_MOVE_REQ,WHEEL_DRIVES_WHEEL_TIMEOUT">
+     <action brief="Dispatch">LOG_EVENT(e);
+// TODO: Dispatch event to correct wheel</action>
+     <tran_glyph conn="1,59,3,-1,103,4">
+      <action box="1,1,96,4"/>
+     </tran_glyph>
+    </tran>
+    <state name="Stopped">
+     <entry>LOG_EVENT(e);</entry>
+     <tran trig="WHEEL_DRIVES_DD_START_REQ" target="../../2">
+      <action brief="^CFM"/>
+      <tran_glyph conn="21,16,2,0,7">
+       <action box="0,3,33,2"/>
+      </tran_glyph>
+     </tran>
+     <state_glyph node="7,9,97,7">
+      <entry box="1,2,6,2"/>
+     </state_glyph>
+    </state>
+    <state name="Active">
+     <initial target="../3">
+      <initial_glyph conn="16,27,5,0,6,3">
+       <action box="0,-2,10,2"/>
+      </initial_glyph>
+     </initial>
+     <tran trig="WHEEL_DRIVES_DD_STOP_REQ" target="../../1">
+      <action brief="^CFM">me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    WHEEL_DRIVES_DD_STOP_CFM_SIG);</action>
+      <tran_glyph conn="73,23,0,2,-7">
+       <action box="1,-5,32,2"/>
+      </tran_glyph>
+     </tran>
+     <state name="Failed">
+      <entry>LOG_EVENT(e);</entry>
+      <tran trig="WHEEL_DRIVES_DD_HEADING">
+       <action brief="^CFM">me-&gt;PublishConfirmationWithInvalidState(
+    EVT_CAST(*e),
+    WHEEL_DRIVES_DD_START_CFM_SIG);</action>
+       <tran_glyph conn="75,37,3,-1,26">
+        <action box="0,-2,25,2"/>
+       </tran_glyph>
+      </tran>
+      <state_glyph node="75,30,28,9">
+       <entry box="1,2,6,2"/>
+      </state_glyph>
+     </state>
+     <state name="Starting">
+      <entry brief="Start Wheels">LOG_EVENT(e);
+me-&gt;m_leftWheel.dispatch(
+    new Evt(WHEEL_DRIVES_WHEEL_START_REQ_SIG));
+me-&gt;m_rightWheel.dispatch(
+    new Evt(WHEEL_DRIVES_WHEEL_START_REQ_SIG));
+me-&gt;m_timer.armX(10);</entry>
+      <tran trig="WHEEL_DRIVES_DD_TIMEOUT">
+       <action brief="Fail">LOG_EVENT(e);
+me-&gt;postLIFO(new Evt(WHEEL_DRIVES_DD_FAILED_SIG));</action>
+       <tran_glyph conn="70,37,1,-1,-24">
+        <action box="-27,-3,27,2"/>
+       </tran_glyph>
+      </tran>
+      <tran trig="WHEEL_DRIVES_WHEEL_START_CFM">
+       <action>uint8_t result = me-&gt;HandleCfm(
+    ERROR_EVT_CAST(*e),
+    2,    // Expected count
+    WHEEL_DRIVES_DD_START_CFM_SIG,
+    WHEEL_DRIVES_DD_FAILED_SIG);</action>
+       <choice target="../../../4">
+        <guard brief="All confirmed">result &gt; 0</guard>
+        <choice_glyph conn="39,40,5,0,1,4">
+         <action box="1,0,12,2"/>
+        </choice_glyph>
+       </choice>
+       <tran_glyph conn="11,37,3,-1,28,3">
+        <action box="0,-2,30,2"/>
+       </tran_glyph>
+      </tran>
+      <state_glyph node="11,30,59,12">
+       <entry box="1,2,14,2"/>
+      </state_glyph>
+     </state>
+     <state name="Started">
+      <entry brief="^CFM">me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    WHEEL_DRIVES_DD_START_CFM_SIG);
+LOG_EVENT(e);</entry>
+      <tran trig="WHEEL_DRIVES_DD_HEADING">
+       <action brief="^CFM">me-&gt;PublishConfirmation(
+    EVT_CAST(*e),
+    WHEEL_DRIVES_DD_HEADING_CFM_SIG);
+
+const HeadingRequestEvt * const evt = HEADING_EVT_CAST(e);
+me-&gt;PublishWheelVelocitiesFor(evt-&gt;m_goal);
+
+//TODO: Send Failure if heading
+//is not acheivable.</action>
+       <tran_glyph conn="11,51,3,-1,45">
+        <action box="0,-2,25,2"/>
+       </tran_glyph>
+      </tran>
+      <tran trig="WHEEL_DRIVES_DD_FAILED" target="../../2">
+       <tran_glyph conn="71,49,1,2,30,-10">
+        <action box="1,-4,25,2"/>
+       </tran_glyph>
+      </tran>
+      <state_glyph node="11,44,60,9">
+       <entry box="1,2,6,2"/>
+      </state_glyph>
+     </state>
+     <state_glyph node="8,23,97,31"/>
+    </state>
+    <state_glyph node="1,5,107,60">
+     <entry box="1,2,6,2"/>
+    </state_glyph>
+   </state>
+   <state_diagram size="109,66"/>
+  </statechart>
+ </class>
+ <class name="Bumper" superclass="StdEvents::AO">
+  <attribute name="m_pin" type="uint16_t" visibility="0x01" properties="0x00"/>
+  <attribute name="m_position" type="enum_t" visibility="0x01" properties="0x00"/>
+  <operation name="Bumper" type="" visibility="0x00" properties="0x00">
+   <parameter name="pin" type="uint16_t"/>
+   <parameter name="position" type="enum_t"/>
+   <code>  : AO(WHEEL_DRIVES_BUMPER_TIMEOUT_SIG
+        , (QStateHandler)initial, &quot;Bumper&quot;)
+    ,m_pin(pin)
+    ,m_position(position)</code>
+  </operation>
+  <statechart>
+   <initial target="../1/2">
+    <action>  me-&gt;subscribe(SYSTEM_PIN_SET_INTERRUPT_SIG);
+  me-&gt;subscribe(SYSTEM_PIN_RESET_INTERRUPT_SIG);</action>
+    <initial_glyph conn="27,3,5,0,7,10">
+     <action box="0,-2,10,2"/>
+    </initial_glyph>
+   </initial>
+   <state name="Root">
+    <state name="Bumping">
+     <entry brief="Publish m_evt">Evt *evt = new BumpedEvt(me-&gt;m_nextSequence++, me-&gt;m_position);
+QF::PUBLISH(evt, me);</entry>
+     <tran trig="SYSTEM_PIN_RESET_INTERRUPT" target="../../1">
+      <tran_glyph conn="28,32,1,3,22">
+       <action box="-2,1,31,2"/>
+      </tran_glyph>
+     </tran>
+     <state_glyph node="11,28,17,11">
+      <entry box="1,2,6,2"/>
+     </state_glyph>
+    </state>
+    <state name="NotBumping">
+     <entry>Evt *evt = new UnBumpedEvt(me-&gt;m_nextSequence++, me-&gt;m_position);
+QF::PUBLISH(evt, me);</entry>
+     <tran trig="SYSTEM_PIN_SET_INTERRUPT" target="../../0">
+      <tran_glyph conn="50,37,3,1,-22">
+       <action box="-23,2,29,2"/>
+      </tran_glyph>
+     </tran>
+     <state_glyph node="50,28,16,11">
+      <entry box="1,2,6,2"/>
+     </state_glyph>
+    </state>
+    <state name="NotInitialized">
+     <entry brief="Decide Bumping">if(BSP_PIN_SET(m_pin)) {
+  return Q_TRAN(&amp;Bumping);
+} else {
+  return Q_TRAN(&amp;NotBumping);
+}</entry>
+     <tran trig="SYSTEM_PIN_SET_INTERRUPT" target="../../0">
+      <tran_glyph conn="30,17,3,0,-12,11">
+       <action box="-17,5,29,2"/>
+      </tran_glyph>
+     </tran>
+     <tran trig="SYSTEM_PIN_RESET_INTERRUPT" target="../../1">
+      <tran_glyph conn="49,16,1,0,9,12">
+       <action box="-4,6,31,2"/>
+      </tran_glyph>
+     </tran>
+     <state_glyph node="30,13,19,7">
+      <entry box="1,2,16,2"/>
+     </state_glyph>
+    </state>
+    <state_glyph node="4,6,71,39"/>
+   </state>
+   <state_diagram size="80,50"/>
+  </statechart>
+ </class>
+ <class name="FWNavSystem" superclass="StdEvents::AO">
+  <statechart>
+   <initial target="../1">
+    <initial_glyph conn="15,1,5,0,8,3">
+     <action box="0,-2,10,2"/>
+    </initial_glyph>
+   </initial>
+   <state name="Root">
+    <state name="Stopped">
+     <state_glyph node="10,10,83,11"/>
+    </state>
+    <state name="Started">
+     <initial target="../6">
+      <initial_glyph conn="56,31,5,0,7,2">
+       <action box="0,-2,10,2"/>
+      </initial_glyph>
+     </initial>
+     <tran trig="NAV_UNOBSTRUCTED_GOAL" target="../6">
+      <tran_glyph conn="10,36,3,3,45">
+       <action box="0,-2,23,2"/>
+      </tran_glyph>
+     </tran>
+     <tran trig="NAV_OBST_DANGER_ZONE_IND" target="../7">
+      <tran_glyph conn="10,64,3,3,45">
+       <action box="0,-2,28,3"/>
+      </tran_glyph>
+     </tran>
+     <tran trig="NAV_OBST_CLOSE_IND">
+      <tran_glyph conn="10,44,3,-1,32">
+       <action box="0,-2,28,2"/>
+      </tran_glyph>
+     </tran>
+     <state name="FollowWallC">
+      <state_glyph node="55,41,17,7"/>
+     </state>
+     <state name="FollowWallCC">
+      <state_glyph node="55,50,17,6"/>
+     </state>
+     <state name="GTG">
+      <state_glyph node="55,33,17,6"/>
+     </state>
+     <state name="AvoidObst">
+      <state_glyph node="55,60,19,7"/>
+     </state>
+     <state_glyph node="10,27,83,42"/>
+    </state>
+    <state_glyph node="5,4,94,68"/>
+   </state>
+   <state_diagram size="102,74"/>
+  </statechart>
+ </class>
+ <class name="BumpedEvt" superclass="StdEvents::Evt">
+  <attribute name="m_position" type="enum_t" visibility="0x01" properties="0x00"/>
+  <operation name="BumpedEvt" type="" visibility="0x00" properties="0x00">
+   <parameter name="seq" type="uint16_t"/>
+   <parameter name="position" type="enum_t"/>
+   <code>  :Evt(WHEEL_DRIVES_BUMPER_BUMPED_SIG, seq), m_position(position)</code>
+  </operation>
+  <operation name="BumpedEvt" type="" visibility="0x01" properties="0x00">
+   <parameter name="timeoutSignal" type="QSignal"/>
+   <parameter name="seq" type="uint16_t"/>
+   <parameter name="position" type="enum_t"/>
+   <code>  :Evt(timeoutSignal, seq), m_position(position)</code>
+  </operation>
+ </class>
+ <class name="UnBumpedEvt" superclass="WheelDrives::BumpedEvt">
+  <operation name="UnBumpedEvt" type="" visibility="0x00" properties="0x00">
+   <parameter name="seq" type="uint16_t"/>
+   <parameter name="position" type="enum_t"/>
+   <code>  :BumpedEvt(WHEEL_DRIVES_BUMPER_UNBUMPED_SIG, seq, position)</code>
+  </operation>
+ </class>
+ <class name="HeadingRequestEvt" superclass="StdEvents::Evt">
+  <attribute name="m_goal" type="std::shared_ptr&lt;Goal&gt;" visibility="0x00" properties="0x00"/>
+  <operation name="HeadingRequestEvt" type="" visibility="0x00" properties="0x00">
+   <parameter name="seq" type="uint16_t"/>
+   <parameter name="goal" type="std::shared_ptr&lt;Goal&gt;"/>
+   <code>   :Evt(WHEEL_DRIVES_DD_HEADING_SIG, seq)
+    , m_goal(goal)</code>
+  </operation>
+ </class>
+ <class name="WheelMoveRequestEvt" superclass="StdEvents::Evt">
+  <attribute name="m_goal" type="std::shared_ptr&lt;OneDVelocityGoal&gt;" visibility="0x00" properties="0x00"/>
+  <operation name="WheelMoveRequestEvt" type="" visibility="0x00" properties="0x00">
+   <parameter name="seq" type="uint16_t"/>
+   <parameter name="goal" type="std::shared_ptr&lt;OneDVelocityGoal&gt;"/>
+   <code>   :Evt(WHEEL_DRIVES_WHEEL_MOVE_REQ_SIG, seq)
+    , m_goal(goal)</code>
+  </operation>
+ </class>
+ <class name="WheelTimeoutEvt" superclass="StdEvents::Evt">
+  <attribute name="m_wheelId" type="uint8_t" visibility="0x00" properties="0x00"/>
+  <operation name="WheelTimeoutEvt" type="" visibility="0x00" properties="0x00">
+   <parameter name="wheelId" type="uint8_t"/>
+   <code>   :Evt(WHEEL_DRIVES_WHEEL_TIMEOUT_SIG)
+    , m_wheelId(wheelId)</code>
+  </operation>
+ </class>
+ <directory name="WheelDrives">
+  <file name="WheelDrives.h">
+   <text>#include &quot;qpcpp.h&quot;
+#include &quot;active_log.h&quot;
+#include &quot;active_pipe.h&quot;
+#include &quot;active_events.h&quot;
+#include &lt;memory&gt;
+
+#ifndef _WHEEL_DRIVE_H
+#define _WHEEL_DRIVE_H
+
+#define HEADING_EVT_CAST(e_)    static_cast&lt;const WheelDrives::HeadingRequestEvt *&gt;(e_)
+#define WHEEL_MOVE_EVT_CAST(e_)    static_cast&lt;const WheelDrives::WheelMoveRequestEvt *&gt;(e_)
+#define TWO_D_VELOCITY_GOAL(g_)        static_cast&lt;WheelDrives::TwoDVelocityGoal *&gt;(g_)
+#define PID(x) x
+#define BSP_PIN_SET(e) (1)
+
+using namespace std;
+using namespace QP;
+using namespace StdEvents;
+
+namespace WheelDrives {
+
+    enum VelocityUnit{
+        CmPerSec,        // CM per sec
+        MetersPerSec     // Meters per sec
+    } ;
+
+    enum GoalType{
+        ONE_D_VELOCITY,
+        TWO_D_VELOCITY,
+        THREE_D_VELOCITY
+    };
+
+    struct Goal {
+        const GoalType type;
+        Goal(GoalType type): type(type) {}
+    };
+
+    struct OneDVelocityGoal : public Goal {
+        double xVelocity;
+        VelocityUnit unit;
+        OneDVelocityGoal() : Goal(ONE_D_VELOCITY) {}
+    };
+
+    struct TwoDVelocityGoal: public Goal {
+        double xVelocity;
+        double yVelocity;
+        TwoDVelocityGoal() : Goal(TWO_D_VELOCITY) {}
+    };
+
+    struct ThreeDVelocityGoal : public Goal {
+        double xVelocity;
+        double yVelocity;
+        double zVelocity;
+        ThreeDVelocityGoal() : Goal(THREE_D_VELOCITY) {}
+    };
+}
+
+$declare(WheelDrives)
+
+#endif // _WHEEL_DRIVE_H</text>
+  </file>
+  <file name="WheelDrives.cpp">
+   <text>#include &quot;WheelDrives.h&quot;
+#include &lt;math.h&gt;
+
+using namespace std;
+using namespace QP;
+using namespace StdEvents;
+
+$define(WheelDrives)</text>
+  </file>
+ </directory>
+</package>
