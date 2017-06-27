@@ -1,0 +1,41 @@
+CTRL_REG1_G
+Angular rate sensor control register 1 (Datasheet Section 7.11)
+
+Bits        Value       Meaning             Driver Function
+ODR_G   110         952 Hz              LSM6DS0_ACC_GYRO_W_GyroDataRate
+BW_G        11          LPF Cutoff 100Hz        LSM6DS0_ACC_GYRO_W_GyroBandwidthSelection
+FS_G        11          2000 dps                LSM6DS0_ACC_GYRO_R_GyroFullScale
+
+
+INT_CTRL
+INT pin control register (Section 7.9 in datasheet)
+
+Bits            Value       Meaning                     Driver Function
+INT_DRDY_G  1           Gyro Data Ready Interrupt Enable    LSM6DS0_ACC_GYRO_W_GYRO_DataReadyOnINT
+INT_DRDY_XL 1           Acc Data Ready  Interrupt Enable    LSM6DS0_ACC_GYRO_W_XL_DataReadyOnINT
+
+
+CTRL_REG4
+Control Register 4
+Bits            Value       Meaning
+LIR_XL1     1           Interrupt Latched   (you will need to unlatch it in handler)
+
+CTRL_REG6_XL
+Linear acceleration sensor control register 6.
+Bits            Value       Meaning                                     Driver Function
+FS_XL       00          +/- 2G                                      LSM6DS0_ACC_GYRO_W_AccelerometerFullScale
+ODR_XL      110         952 Hz ODR                                  LSM6DS0_ACC_GYRO_W_AccelerometerDataRate
+BW_SCAL_ODR 1           bandwidth selected according to BW_XL               LSM6DS0_ACC_GYRO_W_AccelerometerBandWitdthSelection (may be buggy)
+BW_XL       10          105Hz anti-aliasing filter BW   (matching with LPF cutoff)  LSM6DS0_ACC_GYRO_W_AccelerometerFilterBandwidth
+
+CTRL_REG7_XL
+Linear acceleration sensor control register 7.
+Bits            Value       Meaning
+HR          1           High Resolution mode enabled (required to set DCF)      LSM6DS0_ACC_GYRO_W_AccelerometerHighResolutionMode
+DCF         10          LPF/HPF cutoff freq = ODR/9 ~ 100Hz                 LSM6DS0_ACC_GYRO_W_AccelerometerCutOff_filter
+FDS         1           Data from internal filter sent to output register           LSM6DS0_ACC_GYRO_W_AccelerometerFilteredDataSelection
+
+CTRL_REG8
+Control register 8.
+Bits            Value       Meaning                     Driver
+H_LACTIVE   0            interrupt output pins active high  LSM6DS0_ACC_GYRO_W_InterruptActive
