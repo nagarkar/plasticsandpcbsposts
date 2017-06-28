@@ -249,6 +249,7 @@ extern "C" {
  */
 
 DrvStatusTypeDef Sensor_IO_Init( void );
+I2C_HandleTypeDef * GetI2CHandle( void );
 DrvStatusTypeDef LSM6DS0_Sensor_IO_ITConfig( void );
 DrvStatusTypeDef LSM6DS3_Sensor_IO_ITConfig( void );
 DrvStatusTypeDef LPS22HB_Sensor_IO_ITConfig( void );

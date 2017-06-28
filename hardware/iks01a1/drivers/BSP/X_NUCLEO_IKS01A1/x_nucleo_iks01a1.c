@@ -97,7 +97,9 @@ DrvStatusTypeDef Sensor_IO_Init( void )
   }
 }
 
-
+I2C_HandleTypeDef * GetI2CHandle( void ) {
+	return &I2C_EXPBD_Handle;
+}
 
 /**
  * @brief  Configures sensor interrupts interface for LSM6DS0 sensor).
