@@ -399,6 +399,12 @@ static void I2C_EXPBD_Error( uint8_t Addr )
   /* De-initialize the I2C comunication bus */
   HAL_I2C_DeInit( &I2C_EXPBD_Handle );
 
+  /* Reset I2C */
+  /* From the Stm32 Reference Manual: "This bit can be used to reinitialize the peripheral after an error or a locked state. As an
+	 example, if the BUSY bit is set and remains locked due to a glitch on the bus, the SWRST bit can be used to exit from this state */
+  I2C_EXPBD_Handle.Instance->CR1 |= I2C_CR1_SWRST;
+  I2C_EXPBD_Handle.Instance->CR1 ^= I2C_CR1_SWRST;
+
   /* Re-Initiaize the I2C comunication bus */
   I2C_EXPBD_Init();
 }
@@ -414,6 +420,9 @@ static void I2C_EXPBD_Error( uint8_t Addr )
 static void I2C_EXPBD_MspInit( void )
 {
   GPIO_InitTypeDef  GPIO_InitStruct;
+
+  /* Enable the I2C_EXPBD peripheral clock */
+  NUCLEO_I2C_EXPBD_CLK_ENABLE();
 
   /* Enable I2C GPIO clocks */
   NUCLEO_I2C_EXPBD_SCL_SDA_GPIO_CLK_ENABLE();
