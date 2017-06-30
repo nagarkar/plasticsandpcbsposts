@@ -38,7 +38,7 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN 0 */
-
+#include "x_nucleo_iks01a1.h"
 /* USER CODE END 0 */
 
 I2C_HandleTypeDef hi2c3;
@@ -65,7 +65,11 @@ void MX_I2C3_Init(void)
 
 void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
 {
-
+  /// I2C Busy Flag Stuck Problem (I2C keeps timing out because the busy flag is always set)
+  //  Mentioned here: https://goo.gl/mQdMUu
+  //  Once this code runs, the busy flag will be reset. 
+  //  Generally speaking, you can leave this in after the issue is fixed.
+  HAL_I2C_ClearBusyFlagErrata_2_14_7(i2cHandle);
   GPIO_InitTypeDef GPIO_InitStruct;
   if(i2cHandle->Instance==I2C3)
   {
@@ -125,7 +129,144 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
 } 
 
 /* USER CODE BEGIN 1 */
+/** Follow the steps given in section 2.14.7 of the stm32Fxx errata sheet:
+	1. Disable the I2C peripheral by clearing the PE bit in I2Cx_CR1 register.
+	2. Configure the SCL and SDA I/Os as General Purpose Output Open-Drain, High level
+	(Write 1 to GPIOx_ODR).
+	3. Check SCL and SDA High level in GPIOx_IDR.
+	4. Configure the SDA I/O as General Purpose Output Open-Drain, Low level (Write 0 to
+	GPIOx_ODR).
+	5. Check SDA Low level in GPIOx_IDR.
+	6. Configure the SCL I/O as General Purpose Output Open-Drain, Low level (Write 0 to
+	GPIOx_ODR).
+	7. Check SCL Low level in GPIOx_IDR.
+	8. Configure the SCL I/O as General Purpose Output Open-Drain, High level (Write 1 to
+	GPIOx_ODR).
+	9. Check SCL High level in GPIOx_IDR.
+	10. Configure the SDA I/O as General Purpose Output Open-Drain , High level (Write 1 to
+	GPIOx_ODR).
+	11. Check SDA High level in GPIOx_IDR.
+	12. Configure the SCL and SDA I/Os as Alternate function Open-Drain.
+	13. Set SWRST bit in I2Cx_CR1 register.
+	14. Clear SWRST bit in I2Cx_CR1 register.
+	15. Enable the I2C peripheral by setting the PE bit in I2Cx_CR1 register.
+	
+	This function only runs when the key symptom, hte busy flag being set, is true. It only
+	runs once.
+	
+	Also see
+	**/
+void HAL_I2C_ClearBusyFlagErrata_2_14_7(I2C_HandleTypeDef *hi2c) {
 
+	static uint8_t resetTried = 0;
+	static uint8_t verify = 1;
+	if (resetTried == 1) {
+		return;
+	}
+	if(__HAL_I2C_GET_FLAG(hi2c, I2C_FLAG_BUSY) != SET) {
+		return;
+	}
+	uint32_t SDA_PIN = NUCLEO_I2C_EXPBD_SDA_PIN;
+	uint32_t SCL_PIN = NUCLEO_I2C_EXPBD_SCL_PIN;
+	GPIO_InitTypeDef GPIO_InitStruct;
+
+	// 1
+	__HAL_I2C_DISABLE(hi2c);
+
+	// 2
+	GPIO_InitStruct.Pin = SDA_PIN|SCL_PIN;
+	HAL_GPIO_DeInit(GPIOB, &GPIO_InitStruct);
+	__HAL_RCC_GPIOB_CLK_DISABLE();
+
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+	HAL_GPIO_WRITE_ODR(GPIOB, SDA_PIN);
+	HAL_GPIO_WRITE_ODR(GPIOB, SCL_PIN);
+
+	// 3
+	if (verify && HAL_GPIO_ReadPin(GPIOB, SDA_PIN) == GPIO_PIN_RESET) {
+		for(;;){}
+	}
+	if (verify && HAL_GPIO_ReadPin(GPIOB, SCL_PIN) == GPIO_PIN_RESET) {
+		for(;;){}
+	}
+
+	// 4
+	GPIO_InitStruct.Pin = SDA_PIN;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+	HAL_GPIO_TogglePin(GPIOB, SDA_PIN);
+
+	// 5
+	if (verify && HAL_GPIO_ReadPin(GPIOB, SDA_PIN) == GPIO_PIN_SET) {
+		for(;;){}
+	}
+
+	// 6
+	GPIO_InitStruct.Pin = SCL_PIN;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+	HAL_GPIO_TogglePin(GPIOB, SCL_PIN);
+
+	// 7
+	if (verify && HAL_GPIO_ReadPin(GPIOB, SCL_PIN) == GPIO_PIN_SET) {
+		for(;;){}
+	}
+
+	// 8
+	GPIO_InitStruct.Pin = SDA_PIN;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+	HAL_GPIO_WRITE_ODR(GPIOB, SDA_PIN);
+
+	// 9
+	if (verify && HAL_GPIO_ReadPin(GPIOB, SDA_PIN) == GPIO_PIN_RESET) {
+		for(;;){}
+	}
+
+	// 10
+	GPIO_InitStruct.Pin = SCL_PIN;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+	HAL_GPIO_WRITE_ODR(GPIOB, SCL_PIN);
+
+	// 11
+	if (verify && HAL_GPIO_ReadPin(GPIOB, SCL_PIN) == GPIO_PIN_RESET) {
+		for(;;){}
+	}
+
+	// 12
+	GPIO_InitStruct.Pin 		= SDA_PIN|SCL_PIN;
+	GPIO_InitStruct.Mode 		= GPIO_MODE_AF_OD;
+	GPIO_InitStruct.Speed 		= GPIO_SPEED_FAST;
+	GPIO_InitStruct.Pull 		= GPIO_NOPULL;
+	GPIO_InitStruct.Alternate 	= NUCLEO_I2C_EXPBD_SCL_SDA_AF;
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+   // 13
+   hi2c->Instance->CR1 |= I2C_CR1_SWRST;
+
+   // 14
+   hi2c->Instance->CR1 ^= I2C_CR1_SWRST;
+
+   // 15
+   __HAL_I2C_ENABLE(hi2c);
+
+   resetTried = 1;
+}
+
+void HAL_GPIO_WRITE_ODR(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+{
+  /* Check the parameters */
+  assert_param(IS_GPIO_PIN(GPIO_Pin));
+
+  GPIOx->ODR |= GPIO_Pin;
+}
 /* USER CODE END 1 */
 
 /**

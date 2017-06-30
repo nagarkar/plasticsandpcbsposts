@@ -3,8 +3,8 @@
   <board id="nucleo-f401re">
     <name>NUCLEO-F401RE</name>
     <mcuId>stm32f401retx</mcuId>
-    <dbgIF>SWD</dbgIF>
     <dbgIF>JTAG</dbgIF>
+    <dbgIF>SWD</dbgIF>
     <dbgDEV>ST-Link</dbgDEV>
   </board>
 </targetDefinitions>

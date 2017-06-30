@@ -38,6 +38,7 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
+#include "stm32f4xx_nucleo.h"
 #include <stdbool.h>
 #include "LSM6DS0_ACC_GYRO_driver.h"
 #include "LSM6DS0_ACC_GYRO_driver_HL.h"
@@ -102,7 +103,9 @@ int main(void)
   while (1)
   {
 	  if (prevCounter == counter) {
+		  BSP_LED_Off(LED2); // If the LED2 is off, it means the program hanged at ACC_Init()
 		  ACC_Init();
+		  BSP_LED_On(LED2);
 	  }
 	  prevCounter = counter;
 	  HAL_Delay(1000); // milliseconds
@@ -250,6 +253,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 		return;
 	}
 	uint32_t prim = __get_PRIMASK();
+	BSP_LED_Off(LED2); // If the LED2 is off, it means the program hanged somewhere in this fn.
 
 	u8_t value;
 	LSM6DS0_ACC_GYRO_ReadReg(handle, LSM6DS0_ACC_GYRO_STATUS_REG, &value, 1);
@@ -265,6 +269,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	status = HAL_I2C_Mem_Read(GetI2CHandle(), ctx->address, LSM6DS0_ACC_GYRO_OUT_X_L_XL, I2C_MEMADD_SIZE_8BIT, acc_8_t, 6, NUCLEO_I2C_EXPBD_TIMEOUT_MAX);
 	status = HAL_I2C_Mem_Read(GetI2CHandle(), ctx->address, LSM6DS0_ACC_GYRO_OUT_X_L_G, I2C_MEMADD_SIZE_8BIT, acc_8_t, 6, NUCLEO_I2C_EXPBD_TIMEOUT_MAX);
 	counter++;
+	BSP_LED_On(LED2);
 }
 
 /* USER CODE END 4 */
