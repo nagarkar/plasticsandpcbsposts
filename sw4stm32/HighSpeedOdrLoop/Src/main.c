@@ -242,6 +242,7 @@ static void ACC_Init(void) {
 	DrvContextTypeDef *ctx = (DrvContextTypeDef *)handle;
 	u8_t acc_8_t[6] = {0, 0, 0, 0, 0, 0};
 	status = HAL_I2C_Mem_Read(GetI2CHandle(), ctx->address, LSM6DS0_ACC_GYRO_OUT_X_L_XL, I2C_MEMADD_SIZE_8BIT, acc_8_t, 6, NUCLEO_I2C_EXPBD_TIMEOUT_MAX);
+	//status = HAL_I2C_Mem_Read_DMA(GetI2CHandle(), ctx->address, LSM6DS0_ACC_GYRO_OUT_X_L_XL, I2C_MEMADD_SIZE_8BIT, acc_8_t, 6);
 
 	if (!prim) {
 		__enable_irq();

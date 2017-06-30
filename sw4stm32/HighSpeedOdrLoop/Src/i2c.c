@@ -39,6 +39,7 @@
 
 /* USER CODE BEGIN 0 */
 #include "x_nucleo_iks01a1.h"
+DMA_HandleTypeDef hdma_i2c1_rx;
 /* USER CODE END 0 */
 
 I2C_HandleTypeDef hi2c3;
@@ -71,6 +72,23 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
   //  Generally speaking, you can leave this in after the issue is fixed.
   HAL_I2C_ClearBusyFlagErrata_2_14_7(i2cHandle);
   GPIO_InitTypeDef GPIO_InitStruct;
+  if(i2cHandle->Instance==I2C1) {
+	  hdma_i2c1_rx.Instance = DMA1_Stream0;
+	  hdma_i2c1_rx.Init.Channel = DMA_CHANNEL_1;
+	  hdma_i2c1_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+	  hdma_i2c1_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+	  hdma_i2c1_rx.Init.MemInc = DMA_MINC_ENABLE;
+	  hdma_i2c1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+	  hdma_i2c1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+	  hdma_i2c1_rx.Init.Mode = DMA_NORMAL;
+	  hdma_i2c1_rx.Init.Priority = DMA_PRIORITY_VERY_HIGH;
+	  hdma_i2c1_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+	  if (HAL_DMA_Init(&hdma_i2c1_rx) != HAL_OK)
+	  {
+		Error_Handler();
+	  }
+	  __HAL_LINKDMA(i2cHandle,hdmarx,hdma_i2c1_rx);
+  }
   if(i2cHandle->Instance==I2C3)
   {
   /* USER CODE BEGIN I2C3_MspInit 0 */
