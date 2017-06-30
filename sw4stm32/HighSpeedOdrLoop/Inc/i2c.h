@@ -57,7 +57,8 @@ extern void Error_Handler(void);
 void MX_I2C3_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void HAL_I2C_ClearBusyFlagErrata_2_14_7(I2C_HandleTypeDef *hi2c);
+void HAL_GPIO_WRITE_ODR(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
